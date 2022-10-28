@@ -11,7 +11,7 @@ type Props = {};
 
 export default function Hero({}: Props) {
 	return (
-		<div className="relative h-screen flex flex-col gap-4 justify-center items-center text-center inset-0">
+		<div className="relative h-screen flex flex-col gap-4 justify-center items-center text-center inset-0 select-none">
 			<motion.div
 				initial={{
 					opacity: 0,

@@ -10,14 +10,11 @@ export default function Header({}: Props) {
 		<header
 			className={`relative text-white flex justify-center items-center z-50 md:h-auto ${
 				isOpen ? 'h-screen' : 'h-0'
-			} duration-200`}
+			} duration-200 select-none`}
 		>
 			<div className="absolute top-0 flex flex-row md:flex-nowrap flex-wrap justify-between items-stretch w-screen max-w-7xl py-6 px-10">
 				<div>
-					<button
-						onClick={() => (location.href = '/')}
-						className="uppercase font-semibold text-2xl"
-					>
+					<button onClick={() => (location.href = '/')} className="uppercase font-semibold text-2xl">
 						LIFeng87
 					</button>
 				</div>
