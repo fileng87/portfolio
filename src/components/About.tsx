@@ -14,8 +14,9 @@ export default function About({}: Props) {
 			<div className="relative flex md:flex-row flex-col gap-4 justify-center md:items-start items-center pt-6">
 				<motion.div
 					initial={{ x: -250, opacity: 0 }}
-					animate={{ x: 0, opacity: 1 }}
-					transition={{ duration: 1.5, type: 'circInOut' }}
+					whileInView={{ x: 0, opacity: 1 }}
+					transition={{ duration: 1.5, type: 'spring' }}
+					exit={{ x: -250, opacity: 0 }}
 					className="md:h-80 md:w-80 h-52 w-52"
 				>
 					<Image src="/images/AIArt.png" alt={''} height={500} width={500} />
@@ -23,22 +24,25 @@ export default function About({}: Props) {
 				<div className="flex flex-col w-80 h-full">
 					<motion.h2
 						initial={{ x: 250, opacity: 0 }}
-						animate={{ x: 0, opacity: 1 }}
-						transition={{ duration: 1.5, type: 'circInOut' }}
+						whileInView={{ x: 0, opacity: 1 }}
+						transition={{ duration: 1.5, type: 'spring' }}
+						exit={{ x: 250, opacity: 0 }}
 						className="font-medium text-3xl pb-2 md:text-start text-center"
 					>
 						👋 Hello there
 					</motion.h2>
 					<motion.div
 						initial={{ opacity: 0 }}
-						animate={{ opacity: 1 }}
+						whileInView={{ opacity: 1 }}
 						transition={{ duration: 1.5 }}
+						exit={{ opacity: 0 }}
 						className="bg-transparent border-b-[1px] border-gray-600"
 					/>
 					<motion.div
 						initial={{ y: 250, opacity: 0 }}
-						animate={{ y: 0, opacity: 1 }}
-						transition={{ duration: 1.5, type: 'circInOut' }}
+						whileInView={{ y: 0, opacity: 1 }}
+						transition={{ duration: 1.5, type: 'spring' }}
+						exit={{ opacity: 0 }}
 						className="flex flex-col p-2 text-gray-400 justify-between h-full"
 					>
 						<p className="md:text-md text-base">
