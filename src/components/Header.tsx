@@ -41,7 +41,7 @@ export default function Header({}: Props) {
 								</button>
 							</Link>
 						</li>
-						<li>
+						{/*<li>
 							<Link href="#projects">
 								<button className="header-btn" onClick={() => setIsOpen(false)}>
 									Projects
@@ -49,12 +49,12 @@ export default function Header({}: Props) {
 							</Link>
 						</li>
 						<li>
-							<Link href="#contant">
+							<Link href="#contact">
 								<button className="header-btn" onClick={() => setIsOpen(false)}>
-									Contant
+									Contact
 								</button>
 							</Link>
-						</li>
+				</li>*/}
 					</ul>
 				</nav>
 			</div>

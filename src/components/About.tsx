@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 type Props = {};
 
@@ -11,14 +12,35 @@ export default function About({}: Props) {
 				About
 			</h1>
 			<div className="relative flex md:flex-row flex-col gap-4 justify-center md:items-start items-center pt-6">
-				<div className="md:h-80 md:w-80 h-52 w-52">
+				<motion.div
+					initial={{ x: -250, opacity: 0 }}
+					animate={{ x: 0, opacity: 1 }}
+					transition={{ duration: 1.5, type: 'circInOut' }}
+					className="md:h-80 md:w-80 h-52 w-52"
+				>
 					<Image src="/images/AIArt.png" alt={''} height={500} width={500} />
-				</div>
+				</motion.div>
 				<div className="flex flex-col w-80 h-full">
-					<h2 className="font-medium text-3xl border-b-[1px] border-gray-600 pb-1 md:text-start text-center">
+					<motion.h2
+						initial={{ x: 250, opacity: 0 }}
+						animate={{ x: 0, opacity: 1 }}
+						transition={{ duration: 1.5, type: 'circInOut' }}
+						className="font-medium text-3xl pb-2 md:text-start text-center"
+					>
 						👋 Hello there
-					</h2>
-					<div className="flex flex-col p-2 text-gray-400 justify-between h-full">
+					</motion.h2>
+					<motion.div
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						transition={{ duration: 1.5 }}
+						className="bg-transparent border-b-[1px] border-gray-600"
+					/>
+					<motion.div
+						initial={{ y: 250, opacity: 0 }}
+						animate={{ y: 0, opacity: 1 }}
+						transition={{ duration: 1.5, type: 'circInOut' }}
+						className="flex flex-col p-2 text-gray-400 justify-between h-full"
+					>
 						<p className="md:text-md text-base">
 							我的名字叫 LIFeng87 ，18歲。住在台灣，未婚。職業是學生。常常都要上課到下午5點才能回家。
 							我不抽煙，偶爾喝酒。晚上很晚睡，每天睡不足8個小時。睡前，我一定喝一杯水，然後在床上滑20分鐘的手機，
@@ -32,7 +54,7 @@ export default function About({}: Props) {
 								</Link>
 							</span>
 						</div>
-					</div>
+					</motion.div>
 				</div>
 			</div>
 		</div>
