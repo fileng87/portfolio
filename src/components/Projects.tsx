@@ -10,11 +10,7 @@ export default function Projects({}: Props) {
 				Projects
 			</h1>
 
-			<div className="flex flex-row mt-20 w-full gap-10 overflow-x-scroll overflow-y-hidden snap-x snap-mandatory">
-				{[1, 2, 3, 4, 5].map((item) => (
-					<ProjectCard name="lifeng87" description="test" />
-				))}
-			</div>
+			<div className="flex flex-row mt-20 w-full gap-10 overflow-x-scroll overflow-y-hidden snap-x snap-mandatory"></div>
 		</div>
 	);
 }
