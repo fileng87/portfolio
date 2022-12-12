@@ -10,9 +10,11 @@ export default function Header({}: Props) {
 		<header
 			className={`relative text-white flex justify-center items-center z-50 md:h-auto ${
 				isOpen ? 'h-screen' : 'h-0'
-			} duration-200`}
+			} duration-100`}
 		>
-			<div className="absolute top-0 flex flex-row md:flex-nowrap flex-wrap justify-between items-stretch w-screen max-w-7xl py-6 px-10">
+			<div
+				className={`absolute top-0 flex flex-row md:flex-nowrap flex-wrap justify-between items-center w-screen max-w-7xl py-6 px-10 overflow-hidden`}
+			>
 				<div>
 					<button
 						onClick={() => (location.href = '/')}
@@ -21,15 +23,15 @@ export default function Header({}: Props) {
 						LIFeng87
 					</button>
 				</div>
-				<button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
+				<button className="md:hidden z-50" onClick={() => setIsOpen(!isOpen)}>
 					{isOpen ? <MdOutlineClear size={28} /> : <MdOutlineMenu size={28} />}
 				</button>
 				<nav
-					className={`relative md:block md:w-auto w-screen md:top-0 ${
-						isOpen ? 'top-0' : '-top-[50rem]'
+					className={`relative md:block md:w-auto w-screen md:right-0 ${
+						isOpen ? 'right-0' : '-right-[50rem]'
 					} duration-200`}
 				>
-					<ul className="flex flex-col md:flex-row gap-6 items-center md:pt-0 pt-6">
+					<ul className="flex flex-col md:flex-row gap-6 items-start md:pt-0 pt-6">
 						<li>
 							<Link href="#home">
 								<button className="header-btn" onClick={() => setIsOpen(false)}>

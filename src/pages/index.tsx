@@ -1,7 +1,10 @@
 import Head from 'next/head';
 import React from 'react';
+import About from '../components/About';
+import Contant from '../components/Contant';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
+import Projects from '../components/Projects';
 
 export default function Home() {
 	return (
@@ -15,7 +18,13 @@ export default function Home() {
 					<Hero />
 				</section>
 				<section id="about" className="snap-center">
-					<div className="h-screen"></div>
+					<About />
+				</section>
+				<section id="projects" className="snap-center">
+					<Projects />
+				</section>
+				<section id="contant" className="snap-center">
+					<Contant />
 				</section>
 			</main>
 		</>

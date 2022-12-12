@@ -107,7 +107,7 @@ export default function Hero({}: Props) {
 					</SocialButton>
 				</IconContext.Provider>
 			</motion.div>
-			<div className="absolute text-gray-500 bottom-10 animate-bounce hover:text-gray-300 duration-200">
+			<div className="absolute text-gray-500 bottom-10 animate-bounce hover:text-gray-300 duration-200 z-10">
 				<a href="#about">
 					<MdOutlineKeyboardArrowDown size={25} />
 				</a>
