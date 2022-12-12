@@ -10,16 +10,13 @@ export default function Header({}: Props) {
 		<header
 			className={`relative text-white flex justify-center items-center z-50 md:h-auto ${
 				isOpen ? 'h-screen' : 'h-0'
-			} duration-100`}
+			} duration-200 select-none`}
 		>
 			<div
 				className={`absolute top-0 flex flex-row md:flex-nowrap flex-wrap justify-between items-center w-screen max-w-7xl py-6 px-10 overflow-hidden`}
 			>
 				<div>
-					<button
-						onClick={() => (location.href = '/')}
-						className="uppercase font-semibold text-2xl"
-					>
+					<button onClick={() => (location.href = '/')} className="uppercase font-semibold text-2xl">
 						LIFeng87
 					</button>
 				</div>
@@ -46,7 +43,7 @@ export default function Header({}: Props) {
 								</button>
 							</Link>
 						</li>
-						<li>
+						{/*<li>
 							<Link href="#projects">
 								<button className="header-btn" onClick={() => setIsOpen(false)}>
 									Projects
@@ -54,12 +51,12 @@ export default function Header({}: Props) {
 							</Link>
 						</li>
 						<li>
-							<Link href="#contant">
+							<Link href="#contact">
 								<button className="header-btn" onClick={() => setIsOpen(false)}>
-									Contant
+									Contact
 								</button>
 							</Link>
-						</li>
+				</li>*/}
 					</ul>
 				</nav>
 			</div>
