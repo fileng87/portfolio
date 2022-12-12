@@ -24,7 +24,14 @@ export default function Hero({}: Props) {
 				}}
 				className="relative bg-gray-400 w-28 h-28 mx-auto space-y-8 flex justify-center items-center text-center p-2 rounded-full object-cover"
 			>
-				<Image width={500} height={500} src="/images/logo.png" alt="" priority />
+				<Image
+					width={500}
+					height={500}
+					src="/images/logo.png"
+					alt=""
+					className="rounded-full"
+					priority
+				/>
 			</motion.div>
 
 			<motion.h2
