@@ -9,7 +9,7 @@ type Props = {};
 
 const Header = (props: Props) => {
   return (
-    <header className="absolute flex w-screen justify-between text-neutral-400">
+    <header className="absolute flex w-screen justify-between text-neutral-400 z-30">
       <div className="flex flex-col h-screen px-14 py-20 items-center justify-between">
         <div className="flex flex-col items-center justify-center font-bold">
           <Link href={'/'} className="mb-6">
