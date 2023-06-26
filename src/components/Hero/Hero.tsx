@@ -16,7 +16,7 @@ const Hero = (props: Props) => {
         </div>
 
         <h1 className="md:text-8xl text-4xl font-extrabold drop-shadow-2xl">
-          Still code for fun.
+          Still <span className='text-yellow-400'>code</span> for fun.
         </h1>
 
         <a
