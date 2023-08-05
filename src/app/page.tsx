@@ -1,9 +1,12 @@
 import Hero from '@/components/Hero/Hero';
+import PageWapper from '@/components/Layout/PageWapper';
 
 export default function Home() {
   return (
-    <div className="w-screen h-screen">
-      <Hero />
-    </div>
+    <>
+      <PageWapper>
+        <Hero />
+      </PageWapper>
+    </>
   );
 }

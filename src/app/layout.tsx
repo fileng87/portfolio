@@ -18,7 +18,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Header />
-        <main className="flex w-screen h-screen justify-center bg-neutral-900 overflow-hidden">
+        <main className="w-screen h-screen bg-neutral-900 overflow-hidden">
           {children}
         </main>
       </body>
