@@ -12,7 +12,7 @@
   }
 
   body {
-    @apply overflow-hidden;
+    @apply overflow-x-hidden overflow-y-auto;
     @apply relative h-full w-full flex flex-col md:flex-row;
     @apply dark:bg-zinc-900 bg-slate-100 dark:text-white text-black;
     @apply bg-switch;
@@ -21,7 +21,7 @@
 
 @layer components {
   .page-layout-center {
-    @apply absolute inset-0 flex justify-center items-center md:mx-auto mx-4 md:max-w-page;
+    @apply absolute inset-0 flex justify-center items-center mx-auto md:max-w-page;
   }
   .nohead-layout {
     @apply md:pt-20 pb-4 px-4;

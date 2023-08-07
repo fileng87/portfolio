@@ -6,7 +6,7 @@ type Props = {};
 const Blog = (props: Props) => {
   return (
     <div className="w-full h-full">
-      <div className="md:absolute inset-0 w-full h-full flex flex-col gap-7 items-center justify-center md:mt-8 px-4">
+      <div className="md:absolute inset-0 w-full h-full flex flex-col gap-7 items-center justify-center md:pt-8 px-4">
         <Searchbar />
 
         <div className="overflow-y-auto w-full h-full flex justify-center">
