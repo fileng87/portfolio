@@ -9,18 +9,33 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@types/node": "20.3.1",
-    "@types/react": "18.2.14",
-    "@types/react-dom": "18.2.6",
+    "@giscus/react": "^2.3.0",
+    "@radix-ui/react-aspect-ratio": "^1.0.3",
+    "@radix-ui/react-hover-card": "^1.0.6",
+    "@radix-ui/react-popover": "^1.0.6",
+    "@types/react-embed-gist": "^1.0.1",
     "autoprefixer": "10.4.14",
-    "eslint": "8.43.0",
-    "eslint-config-next": "13.4.7",
     "framer-motion": "^10.12.17",
+    "gray-matter": "^4.0.3",
+    "hamburger-react": "^2.5.0",
+    "markdown-to-jsx": "^7.3.2",
     "next": "13.4.7",
+    "next-themes": "^0.2.1",
     "postcss": "8.4.24",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.10.1",
+    "react-tsparticles": "^2.12.1",
+    "tsparticles-slim": "^2.12.0",
+    "typewriter-effect": "^2.20.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.9",
+    "@types/node": "20.3.1",
+    "@types/react": "18.2.14",
+    "@types/react-dom": "18.2.6",
+    "eslint": "8.43.0",
+    "eslint-config-next": "13.4.7",
     "tailwindcss": "3.3.2",
     "typescript": "5.1.3"
   }

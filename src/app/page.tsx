@@ -1,12 +1,11 @@
-import Hero from '@/components/Hero/Hero';
-import PageWapper from '@/components/Layout/PageWapper';
+import Hero from '@/components/Home/Hero';
 
 export default function Home() {
   return (
     <>
-      <PageWapper>
+      <div className="h-full w-full inset-y-0 z-0 select-none page-layout-center">
         <Hero />
-      </PageWapper>
+      </div>
     </>
   );
 }

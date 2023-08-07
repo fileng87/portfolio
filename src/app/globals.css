@@ -6,31 +6,29 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    @apply h-full;
+  }
+
+  body {
+    @apply overflow-hidden;
+    @apply relative h-full w-full flex flex-col md:flex-row;
+    @apply dark:bg-zinc-900 bg-slate-100 dark:text-white text-black;
+    @apply bg-switch;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@layer components {
+  .page-layout-center {
+    @apply absolute inset-0 flex justify-center items-center md:mx-auto mx-4 md:max-w-page;
+  }
+  .nohead-layout {
+    @apply md:pt-20 pb-4 px-4;
+  }
 }
 
-@layer components {
+@layer utilities {
   .writing-vertical-rl {
     writing-mode: vertical-rl;
   }
@@ -39,5 +37,17 @@ body {
   }
   .writing-horizontal-tb {
     writing-mode: horizontal-tb;
+  }
+  .bg-dark {
+    @apply bg-zinc-900;
+  }
+  .bg-light {
+    @apply bg-white;
+  }
+  .bg-switch {
+    @apply transition-colors duration-500;
+  }
+  .max-w-page {
+    max-width: 80%;
   }
 }
