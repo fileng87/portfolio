@@ -9,7 +9,7 @@ date: '2023-8-8'
 # 👋 Hello there
 
 <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" title="something special" target="_blank">
-  <img width="100%" src="/images/logo.svg">
+  <img width="100%" src="/images/blog/about/logo.svg">
 </a>
 
 <div align="center" width="95%">
@@ -29,7 +29,7 @@ date: '2023-8-8'
 
 ## ✒️ About Me
 [<img height="100em" align="right" src="https://c.tenor.com/lNkVGL4mLDAAAAAC/elaina-nod.gif /">](https://github.com/lifeng-87)
-<pre>不知道在幹嘛的大學生</pre>
+<p>不知道在幹嘛的大學生</p>
 <div align="right">
 
 2022/10 by [@lifeng-87](https://github.com/lifeng-87)
