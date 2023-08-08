@@ -20,7 +20,7 @@ export default function Comment({}: Props) {
       reactionsEnabled="1"
       emitMetadata="0"
       inputPosition="top"
-      theme={theme === 'dark' ? 'transparent_dark' : 'transparent_dark'}
+      theme={theme === 'dark' ? 'transparent_dark' : 'light'}
       loading="lazy"
     />
   );
