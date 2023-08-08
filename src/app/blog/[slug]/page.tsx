@@ -27,7 +27,7 @@ const BlogPost = (props: Props) => {
     <>
       <div className="flex md:pt-10 md:page-layout-center">
         <div className="w-full h-full flex justify-center overflow-y-auto">
-          <div className="md:max-w-page w-full px-4">
+          <div className="w-full px-4">
             <div className="flex items-center gap-2">
               <BackArrow />
               <h1 className="text-4xl font-semibold">{post.title}</h1>
@@ -35,18 +35,20 @@ const BlogPost = (props: Props) => {
 
             <hr className="my-4" />
 
-            <article className="prose lg:prose-xl dark:prose-invert">
-              <div className="w-full md:h-40 h-20 flex justify-center relative overflow-hidden items-center mb-6">
-                <Image
-                  className="absolute"
-                  src={post.avatar}
-                  alt={post.title}
-                  width={1024}
-                  height={1024}
-                />
-              </div>
-              <Markdown>{post.content}</Markdown>
-            </article>
+            <div className="flex justify-center w-full">
+              <article className="prose lg:prose-xl w-full dark:prose-invert">
+                <div className="w-full md:h-40 h-20 flex justify-center relative overflow-hidden items-center mb-6">
+                  <Image
+                    className="absolute"
+                    src={post.avatar}
+                    alt={post.title}
+                    width={1024}
+                    height={1024}
+                  />
+                </div>
+                <Markdown>{post.content}</Markdown>
+              </article>
+            </div>
           </div>
         </div>
       </div>
