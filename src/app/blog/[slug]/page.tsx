@@ -1,9 +1,9 @@
 import React from 'react';
 import Markdown from 'markdown-to-jsx';
 import { getPost, getPostMetadata } from '@/utils/posts';
-import Image from 'next/image';
 import BackArrow from '@/components/Blog/Slug/BackArrow';
 import { notFound } from 'next/navigation';
+import ImageLayout from '@/components/Layout/ImageLayout';
 
 type Props = {
   params: { slug: string };
@@ -38,12 +38,10 @@ const BlogPost = (props: Props) => {
           <div className="md:max-w-page w-full px-4 flex justify-center">
             <article className="prose lg:prose-xl dark:prose-invert w-full">
               <div className="w-full md:h-40 h-20 flex justify-center relative overflow-hidden items-center mb-6">
-                <Image
+                <ImageLayout
                   className="absolute"
                   src={post.avatar}
                   alt={post.title}
-                  width={1024}
-                  height={1024}
                 />
               </div>
               <Markdown>{post.content}</Markdown>

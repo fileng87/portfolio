@@ -3,8 +3,8 @@
 import type { PostMetadata } from '@/types/PostMetadata';
 import * as AspectRatio from '@radix-ui/react-aspect-ratio';
 import React from 'react';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
+import ImageLayout from '../Layout/ImageLayout';
 
 interface Props extends PostMetadata {}
 
@@ -27,7 +27,7 @@ export default function PostCard({
       <div className="lg:w-72 md:w-52 w-36 flex overflow-hidden">
         <AspectRatio.Root ratio={16 / 9} asChild className="flex">
           <div className="flex justify-center items-center bg-black">
-            <Image src={avatar} alt={title} width={400} height={400} />
+            <ImageLayout src={avatar} alt={title} />
           </div>
         </AspectRatio.Root>
       </div>
