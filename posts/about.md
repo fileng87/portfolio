@@ -1,8 +1,8 @@
 ---
 author: 'LIFeng87'
-avatar: 'images/blog/about/logo.svg'
+avatar: '/images/lifeng87_sq.png'
 title: 'About me'
-subtitle: '從Github上偷來的東東'
+subtitle: '從Github上偷來的東東，而且有點炸開'
 date: '2023-8-8'
 ---
 
@@ -30,6 +30,7 @@ date: '2023-8-8'
 ## ✒️ About Me
 [<img height="100em" align="right" src="https://c.tenor.com/lNkVGL4mLDAAAAAC/elaina-nod.gif /">](https://github.com/lifeng-87)
 <p>不知道在幹嘛的大學生</p>
+
 <div align="right">
 
 2022/10 by [@lifeng-87](https://github.com/lifeng-87)

@@ -1,9 +1,8 @@
 import React from 'react';
-import Markdown from 'markdown-to-jsx';
 import { getPost, getPostMetadata } from '@/utils/posts';
 import BackArrow from '@/components/Blog/Slug/BackArrow';
 import { notFound } from 'next/navigation';
-import ImageLayout from '@/components/Layout/ImageLayout';
+import MarkdownViewer from '@/components/Blog/Slug/MarkdownViewer';
 
 type Props = {
   params: { slug: string };
@@ -25,7 +24,7 @@ const BlogPost = (props: Props) => {
 
   return (
     <>
-      <div className="w-full h-full flex flex-col items-center gap-4 md:mt-8">
+      <div className="w-full h-full flex flex-col items-center gap-4 md:pt-8">
         <div className="w-full md:max-w-page flex flex-col px-4">
           <div className="w-full flex gap-2">
             <BackArrow />
@@ -36,15 +35,8 @@ const BlogPost = (props: Props) => {
 
         <div className="w-full flex justify-center overflow-y-auto">
           <div className="md:max-w-page w-full px-4 flex justify-center">
-            <article className="prose lg:prose-xl dark:prose-invert w-full">
-              <div className="w-full md:h-40 h-20 flex justify-center relative overflow-hidden items-center mb-6">
-                <ImageLayout
-                  className="absolute"
-                  src={post.avatar}
-                  alt={post.title}
-                />
-              </div>
-              <Markdown>{post.content}</Markdown>
+            <article className="prose lg:prose-xl dark:prose-invert w-full py-4">
+              <MarkdownViewer source={post.content} />
             </article>
           </div>
         </div>

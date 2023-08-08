@@ -11,7 +11,7 @@ export default function PostList({}: Props) {
     <>
       {post && (
         <Link key={post?.slug} href={`/blog/${post?.slug}`}>
-          <PostCard {...post} />
+          <PostCard key={post?.slug} {...post} />
         </Link>
       )}
     </>
