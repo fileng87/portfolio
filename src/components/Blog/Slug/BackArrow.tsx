@@ -10,7 +10,7 @@ type Props = {};
 export default function BackArrow({}: Props) {
   return (
     <div className="flex">
-      <motion.div whileHover={{ x: -5 }} whileTap={{ x: -10 }} className="p-4">
+      <motion.div whileHover={{ x: -5 }} whileTap={{ x: -10 }} className="p-2">
         <Link href={'/blog'}>
           <IoIosArrowBack size={'1.4rem'} />
         </Link>

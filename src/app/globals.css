@@ -12,7 +12,6 @@
   }
 
   body {
-    @apply overflow-x-hidden overflow-y-auto;
     @apply relative h-full w-full flex flex-col md:flex-row;
     @apply dark:bg-zinc-900 bg-slate-100 dark:text-white text-black;
     @apply bg-switch;

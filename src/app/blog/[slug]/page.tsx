@@ -25,14 +25,14 @@ const BlogPost = (props: Props) => {
 
   return (
     <>
-      <div className="w-full h-full flex flex-col items-center gap-4 md:mt-8">
-        <div className="w-full md:max-w-page">
-          <BackArrow />
-        </div>
-
-        <div className="w-full flex justify-center overflow-y-auto">
+      <div className="flex md:pt-10 md:page-layout-center">
+        <div className="w-full h-full flex justify-center overflow-y-auto">
           <div className="md:max-w-page w-full px-4">
-            <h1 className="text-4xl font-semibold">{post.title}</h1>
+            <div className="flex items-center gap-2">
+              <BackArrow />
+              <h1 className="text-4xl font-semibold">{post.title}</h1>
+            </div>
+
             <hr className="my-4" />
 
             <article className="prose lg:prose-xl dark:prose-invert">
