@@ -23,9 +23,9 @@ const BlogPost = (props: Props) => {
   if (!post) notFound();
 
   return (
-    <>
-      <div className="w-full h-full flex flex-col items-center gap-4 md:pt-8">
-        <div className="w-full md:max-w-page flex flex-col px-4">
+    <div className="page">
+      <div className="w-full flex flex-col items-center gap-4 md:pt-4 overflow-hidden">
+        <div className="page-noheader w-full flex flex-col">
           <div className="w-full flex gap-2">
             <BackArrow />
             <h1 className="text-4xl font-semibold">{post.title}</h1>
@@ -34,14 +34,14 @@ const BlogPost = (props: Props) => {
         </div>
 
         <div className="w-full flex justify-center overflow-y-auto">
-          <div className="md:max-w-page w-full px-4 flex justify-center">
+          <div className="page-noheader-center w-full flex justify-center">
             <article className="prose lg:prose-xl dark:prose-invert w-full py-4">
               <MarkdownViewer source={post.content} />
             </article>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

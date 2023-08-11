@@ -5,9 +5,13 @@ type Props = {};
 
 const GuestBook = (props: Props) => {
   return (
-    <div className="md:absolute inset-0 w-full h-full flex flex-col gap-7 items-center justify-center md:pt-24 px-4 overflow-y-auto">
-      <div className="w-full h-full flex justify-center md:max-w-[60%]">
-        <Comment />
+    <div className="page overflow-hidde">
+      <div className="w-full overflow-y-auto flex flex-col items-center md:pt-24">
+        <div className="page-noheader flex justify-center">
+          <div className="md:w-[60%] w-full">
+            <Comment />
+          </div>
+        </div>
       </div>
     </div>
   );

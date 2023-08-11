@@ -5,7 +5,7 @@ type Props = {};
 
 export default function Searchbar({}: Props) {
   return (
-    <div className="relative w-[50%] h-12 md:flex items-center hidden">
+    <div className="relative w-[50%] h-12 flex items-center">
       <div className="absolute p-4 z-40 pointer-events-none">
         <MdSearch size={'1.4rem'} />
       </div>

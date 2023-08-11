@@ -11,8 +11,8 @@ type Props = {};
 const Hero = (props: Props) => {
   return (
     <>
-      <div className="h-full w-full flex max-w-[100rem] items-center justify-between">
-        <div className="relative h-full flex items-start justify-center flex-col px-8">
+      <div className="h-full w-full flex items-center justify-between gap-6">
+        <div className="relative h-full flex items-start justify-center flex-col">
           <Author />
 
           <Title />

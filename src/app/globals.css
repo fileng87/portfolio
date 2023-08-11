@@ -19,11 +19,18 @@
 }
 
 @layer components {
-  .page-layout-center {
-    @apply absolute inset-0 flex justify-center items-center mx-auto md:max-w-page;
+  .page {
+    @apply absolute w-full h-full inset-0 flex flex-col items-center;
   }
-  .nohead-layout {
-    @apply md:pt-20 pb-4 px-4;
+  .page-center {
+    @apply page;
+    @apply justify-center;
+  }
+  .page-noheader {
+    @apply md:max-w-[80%] w-full md:px-0 px-6 md:pt-0 pt-24;
+  }
+  .page-noheader-center {
+    @apply md:max-w-[80%] w-full md:px-0 px-6;
   }
 }
 
@@ -45,8 +52,5 @@
   }
   .bg-switch {
     @apply transition-colors duration-500;
-  }
-  .max-w-page {
-    max-width: 80%;
   }
 }

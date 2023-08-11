@@ -29,7 +29,7 @@ export default function Header({}: Props) {
 
       <Popover.Root defaultOpen={false} open={isOpen} onOpenChange={setOpen}>
         <Popover.Anchor />
-        <header className="md:fixed flex justify-center items-center md:h-full md:w-[10%] w-full font-semibold z-50 select-none">
+        <header className="fixed flex justify-center items-center md:h-full md:w-[10%] w-full h-24 font-semibold z-50 select-none">
           <IconContext.Provider value={{ size: '1.4rem' }}>
             <div className="md:h-full w-full md:w-auto flex md:flex-col justify-between items-center md:py-16 p-6 top-0 dark:text-zinc-200">
               <div className="flex md:flex-col gap-6">
