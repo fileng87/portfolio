@@ -13,7 +13,6 @@
   "dependencies": {
     "@giscus/react": "^2.3.0",
     "@plaiceholder/next": "^3.0.0",
-    "@radix-ui/react-aspect-ratio": "^1.0.3",
     "@radix-ui/react-hover-card": "^1.0.6",
     "@radix-ui/react-popover": "^1.0.6",
     "autoprefixer": "10.4.14",

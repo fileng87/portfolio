@@ -1,21 +1,28 @@
-import PostList from '@/components/Blog/PostList';
+import Description from '@/components/Blog/Description';
+import PostsList from '@/components/Blog/PostsList';
 import Searchbar from '@/components/Blog/SearchBar';
-import React, { useRef } from 'react';
+
+import React from 'react';
 type Props = {};
 
-const Blog = (props: Props) => {
+const Blog = ({}: Props) => {
   return (
-    <div className="page">
-      <div className="w-full flex flex-col items-center gap-4 md:pt-4 overflow-hidden">
-        <div className="page-noheader">
-          <div className="hidden md:flex justify-center">
+    <div className="page flex min-h-full flex-col">
+      <div className="page-root flex h-full w-full flex-col items-center gap-10">
+        <div className="page-content hidden md:block">
+          <div className="flex justify-center">
             <Searchbar />
           </div>
         </div>
 
-        <div className="overflow-y-auto w-full h-full flex justify-center">
-          <div className="page-noheader-center flex flex-col gap-4">
-            <PostList />
+        <div className="flex w-full flex-col gap-20 overflow-y-auto">
+          <div className="page-content">
+            <Description />
+          </div>
+
+          <div className="page-content my-4 flex flex-col gap-4">
+            <h2 className="text-4xl font-semibold">Newest</h2>
+            <PostsList />
           </div>
         </div>
       </div>

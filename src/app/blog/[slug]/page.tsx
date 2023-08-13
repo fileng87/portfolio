@@ -1,42 +1,41 @@
 import React from 'react';
-import { getPost, getPostMetadata } from '@/utils/posts';
 import BackArrow from '@/components/Blog/Slug/BackArrow';
 import { notFound } from 'next/navigation';
-import MarkdownViewer from '@/components/Blog/Slug/MarkdownViewer';
+import { allPosts } from '@/lib/utils/contentLayerAdapter';
+import { useMDXComponent } from 'next-contentlayer/hooks';
 
 type Props = {
   params: { slug: string };
 };
 
 export const generateStaticParams = async () => {
-  const posts = getPostMetadata();
-  return posts.map((posts) => ({
-    slug: posts?.slug,
-  }));
+  return allPosts.map((post) => post.slug);
 };
 
-const BlogPost = (props: Props) => {
-  const slug = props.params.slug;
+const BlogPost = ({ params }: Props) => {
+  const post = allPosts.find((post) => {
+    return post.slug === params.slug;
+  });
 
-  const post = getPost(`${slug}.md`);
+  if (!post || !post.published) notFound();
 
-  if (!post) notFound();
+  const MDXContent = useMDXComponent(post.body.code);
 
   return (
-    <div className="page">
-      <div className="w-full flex flex-col items-center gap-4 md:pt-4 overflow-hidden">
-        <div className="page-noheader w-full flex flex-col">
-          <div className="w-full flex gap-2">
+    <div className="page min-h-screen">
+      <div className="page-root flex h-full w-full flex-col items-center gap-4">
+        <div className="page-content flex w-full flex-col">
+          <div className="flex w-full gap-2">
             <BackArrow />
             <h1 className="text-4xl font-semibold">{post.title}</h1>
           </div>
           <hr className="mt-4" />
         </div>
 
-        <div className="w-full flex justify-center overflow-y-auto">
-          <div className="page-noheader-center w-full flex justify-center">
-            <article className="prose lg:prose-xl dark:prose-invert w-full py-4">
-              <MarkdownViewer source={post.content} />
+        <div className="page-content flex w-full overflow-hidden">
+          <div className="w-full overflow-y-auto rounded-md bg-slate-50/20 p-4 dark:bg-black/20 md:w-[70%]">
+            <article className="prose dark:prose-invert lg:prose-xl ">
+              <MDXContent />
             </article>
           </div>
         </div>

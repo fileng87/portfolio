@@ -9,12 +9,6 @@ type Props = {
 
 export default async function ImageLayout({ src, alt, className }: Props) {
   return (
-    <Image
-      src={src}
-      alt={alt}
-      className={className}
-      width={1024}
-      height={1024}
-    />
+    <Image src={src} alt={alt} className={className} width={500} height={500} />
   );
 }

@@ -13,14 +13,18 @@ module.exports = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
     },
-    fontFamily:{
-      hina:['Hina Mincho', 'sans-serif'],
-      open:['Open Sans', 'sans-serif'],
-      oswald:['Oswald', 'sans-serif']
-    }
+    fontFamily: {
+      hina: ['Hina Mincho', 'sans-serif'],
+      open: ['Open Sans', 'sans-serif'],
+      oswald: ['Oswald', 'sans-serif'],
+    },
   },
   darkMode: 'class',
+  corePlugins: {
+    aspectRatio: false,
+  },
   plugins: [
-    require('@tailwindcss/typography')
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/aspect-ratio'),
   ],
-}
+};

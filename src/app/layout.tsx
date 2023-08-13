@@ -23,7 +23,7 @@ export default function RootLayout({
         <Provider>
           <Backgrand />
           <Header />
-          <main className="h-full w-full overflow-hidden">
+          <main className="h-full w-full">
             <PageWapper>{children}</PageWapper>
           </main>
         </Provider>

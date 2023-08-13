@@ -12,25 +12,22 @@
   }
 
   body {
-    @apply relative h-full w-full flex flex-col md:flex-row;
-    @apply dark:bg-zinc-900 bg-slate-100 dark:text-white text-black;
+    @apply relative flex h-full min-h-screen w-full min-w-full flex-col overflow-hidden md:flex-row;
+    @apply bg-slate-100 text-black dark:bg-zinc-900 dark:text-white;
     @apply bg-switch;
   }
 }
 
 @layer components {
   .page {
-    @apply absolute w-full h-full inset-0 flex flex-col items-center;
+    @apply absolute inset-0 scroll-smooth;
   }
-  .page-center {
-    @apply page;
-    @apply justify-center;
+
+  .page-root {
+    @apply pt-24 md:pt-6;
   }
-  .page-noheader {
-    @apply md:max-w-[80%] w-full md:px-0 px-6 md:pt-0 pt-24;
-  }
-  .page-noheader-center {
-    @apply md:max-w-[80%] w-full md:px-0 px-6;
+  .page-content {
+    @apply container relative mx-auto w-full px-6 md:max-w-[60%] md:px-0;
   }
 }
 

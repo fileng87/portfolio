@@ -18,7 +18,7 @@ const PageWapper = (props: Props) => {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -5 }}
         key={path}
-        className="w-full h-full"
+        className="h-full w-full"
       >
         {props.children}
       </motion.div>
