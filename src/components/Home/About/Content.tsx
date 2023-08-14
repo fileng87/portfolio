@@ -13,7 +13,7 @@ export default function Content({}: Props) {
 
       <p
         className={clsx(
-          'grow',
+          'h-40 grow',
           'overflow-y-auto',
           'text-base leading-loose md:text-lg'
         )}
