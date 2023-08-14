@@ -17,6 +17,7 @@ module.exports = {
       hina: ['Hina Mincho', 'sans-serif'],
       open: ['Open Sans', 'sans-serif'],
       oswald: ['Oswald', 'sans-serif'],
+      hack: ['Hack', 'sans-serif'],
     },
   },
   darkMode: 'class',

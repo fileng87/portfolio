@@ -1,10 +1,13 @@
 // contentlayer.config.ts
 import { defineDocumentType, makeSource } from 'contentlayer/source-files';
 import gfm from 'remark-gfm';
+import ins from 'remark-ins';
+import markers from 'remark-flexible-markers';
 import slug from 'rehype-slug';
 import headings from 'rehype-autolink-headings';
 import rehypePrism from 'rehype-prism-plus';
 import rehypeRewrite from 'rehype-rewrite';
+import rehypeCodeTitles from 'rehype-code-titles';
 
 export const Post = defineDocumentType(() => ({
   name: 'Post',
@@ -38,7 +41,13 @@ export default makeSource({
   contentDirPath: 'content',
   documentTypes: [Post],
   mdx: {
-    remarkPlugins: [gfm],
-    rehypePlugins: [slug, headings, rehypePrism, rehypeRewrite],
+    remarkPlugins: [gfm, ins, markers],
+    rehypePlugins: [
+      slug,
+      headings,
+      rehypeCodeTitles,
+      [rehypePrism, { ignoreMissing: true }],
+      rehypeRewrite,
+    ],
   },
 });

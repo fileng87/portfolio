@@ -1,8 +1,9 @@
 import React from 'react';
-import BackArrow from '@/components/Blog/Slug/BackArrow';
+import BackArrow from '@/components/Blog/Post/BackArrow';
 import { notFound } from 'next/navigation';
 import { allPosts } from '@/lib/utils/contentLayerAdapter';
 import { useMDXComponent } from 'next-contentlayer/hooks';
+import PostBody from '@/components/Blog/Post/PostBody';
 
 type Props = {
   params: { slug: string };
@@ -33,10 +34,10 @@ const BlogPost = ({ params }: Props) => {
         </div>
 
         <div className="page-content flex w-full overflow-hidden">
-          <div className="w-full overflow-y-auto rounded-md bg-slate-50/20 p-4 dark:bg-black/20 md:w-[70%]">
-            <article className="prose dark:prose-invert lg:prose-xl ">
+          <div className="w-full overflow-y-auto rounded-md p-4 ">
+            <PostBody>
               <MDXContent />
-            </article>
+            </PostBody>
           </div>
         </div>
       </div>

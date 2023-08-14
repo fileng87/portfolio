@@ -1,5 +1,7 @@
 import Header from '@/components/Header/Header';
-import './globals.css';
+import '@/styles/globals.css';
+import '@/styles/prism-one-dark.css';
+import '@/styles/prism-plus.css';
 import { Inter } from 'next/font/google';
 import Provider from './provider';
 import PageWapper from '@/components/Layout/PageWapper';
