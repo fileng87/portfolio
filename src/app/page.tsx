@@ -20,7 +20,6 @@ export default function Home() {
             <About />
           </div>
         </section>
-        <div className=""></div>
       </div>
     </>
   );
