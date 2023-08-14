@@ -42,7 +42,7 @@
     writing-mode: horizontal-tb;
   }
   .bg-dark {
-    @apply bg-zinc-900;
+    @apply bg-[#111111];
   }
   .bg-light {
     @apply bg-white;
