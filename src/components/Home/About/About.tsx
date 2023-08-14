@@ -6,14 +6,13 @@ type Props = {};
 
 export default function About({}: Props) {
   return (
-    <div className="flex min-h-full flex-col items-center md:justify-center">
-      <div className="page-anchor"></div>
-      <div className="mt-4 flex flex-col items-center gap-4 md:mt-0 md:w-full md:flex-row md:justify-between">
-        <div className="max-w-[90%] md:w-[30rem]">
+    <div className="flex min-h-full w-full items-center justify-center">
+      <div className="flex w-full flex-wrap justify-center gap-6 md:w-full">
+        <div className="w-full max-w-[20rem]">
           <Cover />
         </div>
 
-        <div className="h-full md:w-[50%]">
+        <div className="h-full w-[40rem] grow">
           <Content />
         </div>
       </div>

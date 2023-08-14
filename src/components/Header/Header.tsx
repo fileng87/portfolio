@@ -79,7 +79,7 @@ export default function Header({}: Props) {
               <AnimatePresence>
                 {isOpen && (
                   <Popover.Portal forceMount>
-                    <Popover.Content className="dark:bg-dark bg-light bg-switch h-screen w-screen">
+                    <Popover.Content className="dark:bg-dark bg-light bg-transition h-screen w-screen">
                       <motion.div
                         initial={{ opacity: 0, y: -3 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -94,6 +94,7 @@ export default function Header({}: Props) {
                               }}
                               href={link.url}
                               key={link.url}
+                              scroll={false}
                               className="relative flex"
                             >
                               <motion.span whileHover={{ y: -3 }}>

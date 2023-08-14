@@ -13,14 +13,14 @@
 
   body {
     @apply relative flex h-full min-h-screen w-full min-w-full flex-col overflow-hidden md:flex-row;
-    @apply bg-slate-100 text-black dark:bg-zinc-900 dark:text-white;
-    @apply bg-switch;
+    @apply text-black dark:text-white;
+    @apply bg-transition bg-color;
   }
 }
 
 @layer components {
   .page {
-    @apply absolute inset-0 scroll-smooth;
+    @apply absolute inset-0;
   }
 
   .page-root {
@@ -47,7 +47,10 @@
   .bg-light {
     @apply bg-white;
   }
-  .bg-switch {
+  .bg-color {
+    @apply dark:bg-dark bg-light;
+  }
+  .bg-transition {
     @apply transition-colors duration-500;
   }
 }
