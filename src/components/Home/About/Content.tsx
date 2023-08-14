@@ -5,14 +5,15 @@ type Props = {};
 
 export default function Content({}: Props) {
   return (
-    <div className={clsx('h-80', 'flex flex-col gap-4')}>
+    <div className={clsx('h-80', 'flex flex-col', 'gap-4')}>
       <h2
         className={clsx('text-2xl font-bold md:text-4xl')}
       >{`👋 Hi I'm LIFeng87`}</h2>
-      <hr />
+      <hr className="bg-transition border-black dark:border-white" />
 
       <p
         className={clsx(
+          'grow',
           'overflow-y-auto',
           'text-base leading-loose md:text-lg'
         )}

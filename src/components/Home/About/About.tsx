@@ -1,18 +1,31 @@
 import React from 'react';
-import Cover from './Cover';
+import Avatar from './Avatar';
 import Content from './Content';
+import clsx from 'clsx';
 
 type Props = {};
 
 export default function About({}: Props) {
   return (
-    <div className="flex min-h-full w-full items-center justify-center">
-      <div className="flex w-full flex-wrap justify-center gap-6 md:w-full">
-        <div className="w-full max-w-[20rem]">
-          <Cover />
+    <div
+      className={clsx(
+        'min-h-full w-full',
+        'flex',
+        'items-center justify-center'
+      )}
+    >
+      <div
+        className={clsx(
+          'w-full md:w-full',
+          'flex flex-wrap',
+          'justify-center gap-6'
+        )}
+      >
+        <div className={clsx('w-full max-w-[20rem]')}>
+          <Avatar />
         </div>
 
-        <div className="h-full w-[40rem] grow">
+        <div className={clsx('h-full w-[40rem]', 'grow')}>
           <Content />
         </div>
       </div>

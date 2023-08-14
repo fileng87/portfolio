@@ -1,5 +1,6 @@
 'use client';
 
+import clsx from 'clsx';
 import React from 'react';
 import Typewriter from 'typewriter-effect';
 
@@ -7,9 +8,18 @@ type Props = {};
 
 function SubTitle({}: Props) {
   return (
-    <div className="mt-4 flex items-center gap-4">
-      <span className="hidden h-[2px] w-28 bg-neutral-400 md:block" />
-      <h2 className="flex items-center font-oswald text-4xl font-semibold tracking-wider text-neutral-400">
+    <div className={clsx('mt-4 gap-4', 'flex', 'items-center ')}>
+      <span
+        className={clsx('grow md:grow-0', 'h-[2px] w-28', 'bg-neutral-400')}
+      />
+      <h2
+        className={clsx(
+          'flex shrink-0',
+          'items-center',
+          'font-oswald font-semibold tracking-wider text-neutral-400',
+          'text-2xl md:text-4xl'
+        )}
+      >
         <Typewriter
           options={{
             delay: 300,
