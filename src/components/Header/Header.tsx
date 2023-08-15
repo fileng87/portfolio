@@ -28,7 +28,7 @@ export default function Header({}: Props) {
     <>
       <Popover.Root defaultOpen={false} open={isOpen} onOpenChange={setOpen}>
         <Popover.Anchor />
-        <header className={clsx('h-24 w-full', 'fixed', 'z-50')}>
+        <header className={clsx('h-24 w-full', 'fixed', 'z-50', 'select-none')}>
           <IconContext.Provider value={{ size: '1.4rem' }}>
             {/**Left */}
             <div className={clsx('sr-only md:not-sr-only')}>
