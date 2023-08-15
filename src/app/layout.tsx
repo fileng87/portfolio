@@ -5,6 +5,7 @@ import '@/styles/prism-plus.css';
 import { Inter } from 'next/font/google';
 import Provider from './provider';
 import PageWapper from '@/components/Layout/PageWapper';
+import Backgrand from '@/components/Layout/Backgrand';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -22,6 +23,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <Provider>
+          <Backgrand />
           <Header />
           <main className="h-full w-full">
             <PageWapper>{children}</PageWapper>

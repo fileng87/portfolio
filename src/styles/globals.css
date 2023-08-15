@@ -15,7 +15,7 @@
   body {
     @apply relative flex h-full min-h-screen w-full min-w-full flex-col overflow-hidden md:flex-row;
     @apply text-black dark:text-white;
-    @apply bg-transition bg-color;
+    @apply bg-color bg-transition;
   }
 }
 
