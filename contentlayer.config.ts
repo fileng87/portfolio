@@ -6,7 +6,6 @@ import markers from 'remark-flexible-markers';
 import slug from 'rehype-slug';
 import headings from 'rehype-autolink-headings';
 import rehypePrism from 'rehype-prism-plus';
-import rehypeRewrite from 'rehype-rewrite';
 import rehypeCodeTitles from 'rehype-code-titles';
 
 export const Post = defineDocumentType(() => ({
@@ -47,7 +46,6 @@ export default makeSource({
       headings,
       rehypeCodeTitles,
       [rehypePrism, { ignoreMissing: true }],
-      rehypeRewrite,
     ],
   },
 });
