@@ -7,9 +7,9 @@ type Props = {};
 
 const Blog = ({}: Props) => {
   return (
-    <div className="page flex min-h-full flex-col">
+    <div className="page flex min-h-full flex-col overflow-y-auto scroll-smooth">
       <div className="page-root flex h-full w-full flex-col items-center gap-10 md:pt-24">
-        <div className="flex w-full flex-col gap-20 overflow-y-auto">
+        <div className="flex w-full flex-col gap-20">
           <div className="page-content">
             <Description />
           </div>
