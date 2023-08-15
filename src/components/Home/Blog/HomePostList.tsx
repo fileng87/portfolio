@@ -5,18 +5,15 @@ import HomePostCard from './HomePostCard';
 type Props = {};
 
 export default function HomePostList({}: Props) {
-  const posts = allPostsNewToOld.slice(0, 3);
+  const posts = allPostsNewToOld.filter((post) => post.published).slice(0, 3);
 
   return (
     <ul className="divide-y divide-neutral-500 overflow-y-auto">
-      {posts.map(
-        (post) =>
-          post.published && (
-            <li key={post.slug} className="py-8">
-              <HomePostCard {...post} />
-            </li>
-          )
-      )}
+      {posts.map((post) => (
+        <li key={post.slug} className="py-8">
+          <HomePostCard {...post} />
+        </li>
+      ))}
     </ul>
   );
 }

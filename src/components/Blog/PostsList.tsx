@@ -6,7 +6,7 @@ import PostCard from './PostCard';
 type Props = {};
 
 export default function PostsList({}: Props) {
-  const posts = allPostsNewToOld;
+  const posts = allPostsNewToOld.filter((post) => post.published);
 
   return (
     <>
