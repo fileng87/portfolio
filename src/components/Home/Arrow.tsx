@@ -12,7 +12,7 @@ export default function Arrow({}: Props) {
     <motion.div
       initial={{ rotate: 0 }}
       whileTap={{ rotate: 90 }}
-      className="absolute bottom-10 flex animate-bounce justify-center text-zinc-400 duration-200 hover:text-zinc-100"
+      className="flex animate-bounce justify-center text-zinc-400 duration-200 hover:text-zinc-100"
     >
       <Link href="#about">
         <MdOutlineKeyboardArrowDown size={25} />

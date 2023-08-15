@@ -25,7 +25,7 @@
   }
 
   .page-root {
-    @apply pt-24 md:pt-6;
+    @apply pt-24 md:pt-12;
   }
   .page-content {
     @apply container relative mx-auto w-full px-6 md:max-w-[60%] md:px-0;
