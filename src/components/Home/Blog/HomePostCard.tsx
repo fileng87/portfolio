@@ -31,7 +31,7 @@ export default function HomePostCard(props: Props) {
 
           <div className="text-base font-medium leading-6">
             <Link className="text-cyan-500" href={`/blog/${props.slug}`}>
-              Read more
+              Read more →
             </Link>
           </div>
         </div>
