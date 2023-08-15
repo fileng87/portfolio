@@ -104,7 +104,7 @@ export default function Header({}: Props) {
             <AnimatePresence>
               {isOpen && (
                 <Popover.Portal forceMount>
-                  <Popover.Content className="bg-color bg-transition h-screen w-screen">
+                  <Popover.Content className="bg-color h-screen w-screen">
                     <motion.div
                       initial={{ opacity: 0, y: -3 }}
                       animate={{ opacity: 1, y: 0 }}

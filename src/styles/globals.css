@@ -15,7 +15,7 @@
   body {
     @apply relative flex h-full min-h-screen w-full min-w-full flex-col overflow-hidden md:flex-row;
     @apply text-black dark:text-white;
-    @apply bg-color bg-transition;
+    @apply bg-color;
   }
 }
 
@@ -50,8 +50,5 @@
   }
   .bg-color {
     @apply dark:bg-dark bg-light;
-  }
-  .bg-transition {
-    @apply transition-colors duration-500;
   }
 }
