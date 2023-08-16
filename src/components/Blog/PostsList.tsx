@@ -1,27 +1,19 @@
-import { allPostsNewToOld } from '@/lib/utils/contentLayerAdapter';
-import Link from 'next/link';
 import React from 'react';
 import PostCard from './PostCard';
+import { Post } from 'contentlayer/generated';
 
-type Props = {};
+type Props = {
+  posts: Post[];
+};
 
-export default function PostsList({}: Props) {
-  const posts = allPostsNewToOld.filter((post) => post.published);
-
+export default function PostsList({ posts }: Props) {
   return (
-    <>
-      {posts.map(
-        (post) =>
-          post.published && (
-            <Link
-              className="w-full"
-              key={post.slug}
-              href={`/blog/${post.slug}`}
-            >
-              <PostCard {...post} />
-            </Link>
-          )
-      )}
-    </>
+    <ul className="divide-y divide-neutral-500 overflow-y-auto">
+      {posts.map((post) => (
+        <li key={post.slug} className="py-8">
+          <PostCard {...post} />
+        </li>
+      ))}
+    </ul>
   );
 }
