@@ -15,7 +15,7 @@ export default function Backgrand({}: Props) {
   return (
     <>
       <Particles
-        className="absolute -z-50 h-full w-full blur-sm"
+        className="fixed -z-50 h-full w-full blur-sm"
         id="tsparticles"
         init={particlesInit}
         options={{
