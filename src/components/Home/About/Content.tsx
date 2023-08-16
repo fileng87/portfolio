@@ -5,17 +5,18 @@ type Props = {};
 
 export default function Content({}: Props) {
   return (
-    <div className={clsx('h-80', 'flex flex-col', 'gap-4')}>
+    <div className={clsx('h-80', 'flex flex-col gap-4')}>
       <h2
         className={clsx('text-2xl font-bold md:text-4xl')}
       >{`👋 Hi I'm LIFeng87`}</h2>
-      <hr className="bg-transition border-black dark:border-white" />
 
       <p
         className={clsx(
           'h-40 grow',
           'overflow-y-auto',
-          'text-base leading-loose md:text-lg'
+          'text-base leading-loose md:text-lg',
+          'py-4',
+          'border-t-[1px] border-t-neutral-500'
         )}
       >{`我的名字叫LIFeng87，19歲。\
       住在台灣，未婚。職業是學生。\
