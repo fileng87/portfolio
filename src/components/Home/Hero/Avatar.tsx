@@ -18,7 +18,7 @@ const Avatar = (props: Props) => {
             'absolute',
             'bottom-10 end-10',
             'h-[30rem] w-[30rem]',
-            'bg-cyan-400 drop-shadow-md'
+            'bg-theme-main drop-shadow-md'
           )}
         >
           <div className="relative">

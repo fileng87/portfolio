@@ -8,7 +8,8 @@
   "plugins": ["prettier", "tailwindcss"],
   "rules": {
     "prettier/prettier": ["warn"],
-    "tailwindcss/no-custom-classname": 0
+    "tailwindcss/no-custom-classname": 0,
+    "tailwindcss/classnames-order": 0
   },
   "settings": {
     "import/resolver": {

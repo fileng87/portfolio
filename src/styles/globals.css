@@ -42,13 +42,8 @@
   .writing-horizontal-tb {
     writing-mode: horizontal-tb;
   }
-  .bg-dark {
-    @apply bg-[#111111];
-  }
-  .bg-light {
-    @apply bg-white;
-  }
+
   .bg-color {
-    @apply dark:bg-dark bg-light;
+    @apply dark:bg-theme-dark bg-theme-light;
   }
 }

@@ -12,6 +12,11 @@ module.exports = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      colors: {
+        'theme-main': '#22d3ee',
+        'theme-dark': '#111111',
+        'theme-light': '#ffffff',
+      },
     },
     fontFamily: {
       hina: ['Hina Mincho', 'sans-serif'],

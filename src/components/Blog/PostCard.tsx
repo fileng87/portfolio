@@ -26,14 +26,14 @@ export default function PostCard(props: Props) {
               <h2 className="text-2xl font-semibold">
                 <Link href={`/blog/${props.slug}`}>{props.title}</Link>
               </h2>
-              <p className="text-sm text-cyan-500">By {props.author}</p>
+              <p className="text-theme-main text-sm">By {props.author}</p>
             </div>
 
             <p className="line-clamp-2 text-neutral-500">{props.description}</p>
           </div>
 
           <div className="text-base font-medium leading-6">
-            <Link className="text-cyan-500" href={`/blog/${props.slug}`}>
+            <Link className="text-theme-main" href={`/blog/${props.slug}`}>
               Read more →
             </Link>
           </div>

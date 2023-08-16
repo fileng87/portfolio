@@ -20,7 +20,7 @@ export default function HomeBlogPage({}: Props) {
       </div>
 
       <div className="flex justify-end font-medium leading-6">
-        <Link className="text-cyan-500" href="/blog">
+        <Link className="text-theme-main" href="/blog">
           All posts →
         </Link>
       </div>

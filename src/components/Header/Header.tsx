@@ -55,7 +55,12 @@ export default function Header({}: Props) {
                         {pathName === link.url && (
                           <motion.span
                             layoutId="nav_underline"
-                            className="absolute end-0 h-full w-[2px] rounded-full bg-cyan-400"
+                            className={clsx(
+                              'h-full w-[2px]',
+                              'rounded-full',
+                              'absolute end-0 ',
+                              'bg-theme-main'
+                            )}
                           />
                         )}
                         <motion.span
@@ -134,7 +139,14 @@ export default function Header({}: Props) {
                               {link.title}
                             </motion.span>
                             {pathName === link.url && (
-                              <span className="absolute bottom-0 h-[2px] w-full rounded-full bg-cyan-400" />
+                              <span
+                                className={clsx(
+                                  'h-[2px] w-full',
+                                  'rounded-full',
+                                  'absolute bottom-0 ',
+                                  'bg-theme-main'
+                                )}
+                              />
                             )}
                           </Link>
                         ))}
