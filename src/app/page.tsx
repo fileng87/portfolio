@@ -9,8 +9,8 @@ export default function Home() {
     <>
       <div className="page snap-y snap-mandatory overflow-y-auto scroll-smooth">
         <section id="home" className="relative min-h-screen snap-center">
+          <Backgrand />
           <section className="page-content fixed inset-0 -z-40 flex min-h-screen justify-center md:max-w-[80%]">
-            <Backgrand />
             <Hero />
           </section>
           <div className="absolute inset-x-0 bottom-10">
