@@ -97,6 +97,7 @@ export default function Header({}: Props) {
                 'items-center justify-between',
                 'px-6',
                 'font-bold',
+                'from-theme-light dark:from-theme-dark bg-gradient-to-b from-65%',
                 'not-sr-only md:sr-only'
               )}
             >
