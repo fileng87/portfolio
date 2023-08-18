@@ -1,4 +1,4 @@
-import GuestbookLayout from '@/components/Gusetbook/GuestbookLayout';
+import GuestbookLayout from '@/components/Guestbook/GuestbookLayout';
 import React from 'react';
 
 type Props = {};

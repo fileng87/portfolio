@@ -44,6 +44,6 @@
   }
 
   .bg-color {
-    @apply dark:bg-theme-dark bg-theme-light;
+    @apply bg-theme-light dark:bg-theme-dark;
   }
 }
