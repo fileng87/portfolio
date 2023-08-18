@@ -5,7 +5,7 @@ import PostsList from '@/components/Blog/PostsList';
 
 type Props = {};
 
-export default function HomeBlogPage({}: Props) {
+export default function HomeBlogLayout({}: Props) {
   const posts = allPostsNewToOld.filter((post) => post.published).slice(0, 3);
 
   return (

@@ -9,7 +9,7 @@ import clsx from 'clsx';
 
 type Props = {};
 
-const Hero = (props: Props) => {
+export default function HeroLayout({}: Props) {
   return (
     <>
       <div
@@ -42,6 +42,4 @@ const Hero = (props: Props) => {
       </div>
     </>
   );
-};
-
-export default Hero;
+}

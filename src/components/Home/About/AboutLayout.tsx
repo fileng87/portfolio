@@ -5,7 +5,7 @@ import clsx from 'clsx';
 
 type Props = {};
 
-export default function About({}: Props) {
+export default function AboutLayout({}: Props) {
   return (
     <div
       className={clsx(
