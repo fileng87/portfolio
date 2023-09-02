@@ -26,8 +26,6 @@ export default function Header({}: Props) {
 
   return (
     <>
-      <Popover.Root defaultOpen={false} open={isOpen} onOpenChange={setOpen}>
-        <Popover.Anchor />
         <header className={clsx('h-24 w-full', 'fixed', 'z-50', 'select-none')}>
           <IconContext.Provider value={{ size: '1.4rem' }}>
             {/**Left */}
@@ -91,26 +89,27 @@ export default function Header({}: Props) {
             {/** Moblie */}
             <div
               className={clsx(
+                'absolute',
                 'container',
                 'flex',
                 'h-full w-full',
                 'items-center justify-between',
                 'px-6',
                 'font-bold',
-                'from-theme-light dark:from-theme-dark bg-gradient-to-b from-65%',
-                'not-sr-only md:sr-only'
+                'bg-gradient-to-b from-theme-light from-65% dark:from-theme-dark',
+                'not-sr-only md:sr-only',
+                'z-50'
               )}
             >
               <HeaderTitle />
-              <Popover.Trigger className="md:hidden">
-                <Hamburger toggled={isOpen} size={20} />
-              </Popover.Trigger>
+              <div className="md:hidden">
+                <Hamburger toggled={isOpen} onToggle={()=>setOpen(!isOpen)} size={20} />
+              </div>
             </div>
 
             <AnimatePresence>
               {isOpen && (
-                <Popover.Portal forceMount>
-                  <Popover.Content className="bg-color h-screen w-screen">
+                  <div className="bg-color h-screen w-screen absolute top-0">
                     <motion.div
                       initial={{ opacity: 0, y: -3 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -162,13 +161,12 @@ export default function Header({}: Props) {
                         </div>
                       </IconContext.Provider>
                     </motion.div>
-                  </Popover.Content>
-                </Popover.Portal>
+                  </div>
+                
               )}
             </AnimatePresence>
           </IconContext.Provider>
         </header>
-      </Popover.Root>
     </>
   );
 }

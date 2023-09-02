@@ -1,7 +1,5 @@
 'use client';
 
-import Backgrand from '@/components/Layout/Backgrand';
-import { AnimatePresence } from 'framer-motion';
 import { ThemeProvider } from 'next-themes';
 import React from 'react';
 

@@ -1,53 +1,16 @@
-import React from 'react';
-import clsx from 'clsx';
+import React from 'react'
 
-type Props = {};
+type Props = {}
 
-const Avatar = (props: Props) => {
+export default function Avatar({}: Props) {
   return (
-    <>
+    <div className='hidden md:flex relative'>
+      <div className=' bg-theme-main relative -bottom-4 -end-4 rounded-sm'>
       <div
-        className={clsx(
-          'relative',
-          'hidden md:flex',
-          'items-center justify-center'
-        )}
-      >
-        <div
-          className={clsx(
-            'absolute',
-            'bottom-10 end-10',
-            'h-[30rem] w-[30rem]',
-            'bg-theme-main drop-shadow-md'
-          )}
-        >
-          <div className="relative">
-            <div
-              className={clsx(
-                'absolute',
-                'z-0',
-                'origin-center translate-x-[-50%] translate-y-[-25%]'
-              )}
-            >
-              <h2
-                className={clsx(
-                  'writing-vertical-rl',
-                  'font-hina text-7xl font-extrabold'
-                )}
-              >
-                ハローワールド
-              </h2>
-            </div>
-          </div>
-        </div>
-
-        <div
-          className="aspect-h-5 aspect-w-4 relative w-[35rem] bg-contain bg-right-bottom bg-no-repeat"
-          style={{ backgroundImage: `url(/images/lifeng87_nbsd.png)` }}
-        ></div>
+          className="aspect-h-1 aspect-w-1 w-[33rem] bg-contain bg-right-bottom bg-no-repeat relative -start-4 -top-4 drop-shadow-md rounded-sm"
+          style={{ backgroundImage: `url(/images/lifeng87-avatar.png)` }}
+        />
       </div>
-    </>
-  );
-};
-
-export default Avatar;
+    </div>
+  )
+}

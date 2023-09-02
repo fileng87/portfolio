@@ -8,12 +8,8 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    @apply h-full;
-  }
-
   body {
-    @apply relative flex h-full min-h-screen w-full min-w-full flex-col overflow-hidden md:flex-row;
+    @apply min-h-screen;
     @apply text-black dark:text-white;
     @apply bg-color;
   }
@@ -28,7 +24,7 @@
     @apply pt-24 md:pt-12;
   }
   .page-content {
-    @apply container relative mx-auto w-full px-6 md:max-w-[60%] md:px-0;
+    @apply container relative mx-auto w-full px-6 md:max-w-[70%] md:px-0;
   }
 }
 

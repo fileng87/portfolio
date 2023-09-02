@@ -3,8 +3,10 @@ import '@/styles/globals.css';
 import '@/styles/prism-one-dark.css';
 import '@/styles/prism-plus.css';
 import { Inter } from 'next/font/google';
-import Provider from './provider';
+import Provider from '../components/Layout/Provider';
 import PageWapper from '@/components/Layout/PageWapper';
+import NextTopLoader from 'nextjs-toploader';
+import { Provider as ReactWrapBalancerProvider } from 'react-wrap-balancer';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -21,12 +23,20 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <Provider>
-          <Header />
-          <main className="h-full w-full">
-            <PageWapper>{children}</PageWapper>
-          </main>
-        </Provider>
+        <ReactWrapBalancerProvider>
+          <Provider>
+            <NextTopLoader
+              showSpinner={false}
+              color="#22d3ee"
+              shadow="0 0 10px #22d3ee,0 0 5px #22d3ee"
+              height={2}
+            />
+            <Header />
+            <main className="h-full w-full">
+              <PageWapper>{children}</PageWapper>
+            </main>
+          </Provider>
+        </ReactWrapBalancerProvider>
       </body>
     </html>
   );

@@ -6,15 +6,10 @@ type Props = { children: React.ReactNode };
 
 export default function PostBody({ children }: Props) {
   return (
-    <article
-      className={clsx(
-        'p-4',
-        'prose dark:prose-invert lg:prose-xl',
-        'bg-slate-50/20 dark:bg-neutral-800',
-        styles.postBody
-      )}
-    >
-      {children}
-    </article>
+    <div>
+      <div className={clsx('py-6', 'prose dark:prose-invert lg:prose-lg', styles.postBody)}>
+        {children}
+      </div>
+    </div>
   );
 }

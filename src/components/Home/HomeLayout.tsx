@@ -9,10 +9,10 @@ type Props = {};
 
 export default function HomeLayout({}: Props) {
   return (
-    <div className="page snap-y snap-mandatory overflow-y-auto scroll-smooth">
+    <div className="absolute inset-0 snap-y snap-mandatory overflow-y-auto scroll-smooth">
       <section id="home" className="relative min-h-screen snap-center">
         <Backgrand />
-        <div className="page-content fixed inset-0 -z-40 flex min-h-screen justify-center md:max-w-[80%]">
+        <div className="page-content fixed inset-0 -z-40 flex min-h-screen justify-center">
           <HeroLayout />
         </div>
         <div className="absolute inset-x-0 bottom-10">
@@ -27,11 +27,11 @@ export default function HomeLayout({}: Props) {
           </div>
         </section>
 
-        <section id="blog" className="page-content">
+        {/*<section id="blog" className="page-content">
           <div className="page-root min-h-screen snap-start">
             <HomeBlogLayout />
           </div>
-        </section>
+  </section>*/}
       </div>
     </div>
   );

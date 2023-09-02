@@ -1,5 +1,5 @@
 // contentlayer.config.ts
-import { defineDocumentType, makeSource } from 'contentlayer/source-files';
+import { defineDocumentType, defineNestedType, makeSource } from 'contentlayer/source-files';
 import gfm from 'remark-gfm';
 import ins from 'remark-ins';
 import markers from 'remark-flexible-markers';
@@ -17,7 +17,18 @@ export const Post = defineDocumentType(() => ({
       type: 'boolean',
       default: true,
     },
-    author: { type: 'string', required: true },
+    authors: { 
+      type: 'list', 
+      of: defineNestedType(()=>({
+        name: 'AuthorType',
+        fields: {
+          name: { type: 'string', required: true },
+          avatar: { type: 'string' },
+          twitter_id: { type: 'string'}
+        }
+      })),
+      required: true
+    },
     title: { type: 'string', required: true },
     description: { type: 'string', required: true },
     cover: { type: 'string', default: '/images/blog-none.jpg' },
@@ -26,7 +37,7 @@ export const Post = defineDocumentType(() => ({
   computedFields: {
     path: {
       type: 'string',
-      resolve: (post) => `posts/${post._raw.flattenedPath}`,
+      resolve: (post) => `/blog/${post._raw.flattenedPath}`,
     },
     slug: {
       type: 'string',
