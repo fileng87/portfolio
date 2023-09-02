@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import * as Popover from '@radix-ui/react-popover';
 import { usePathname } from 'next/navigation';
 import clsx from 'clsx';
 import { IconContext } from 'react-icons';
