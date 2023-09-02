@@ -24,8 +24,8 @@ export default function PostLayout({ post, prevPost, nextPost }: Props) {
   return (
     <>
       <div className="overflow-y-auto scroll-smooth">
-        <ScrollToTopBtn/>
-        
+        <ScrollToTopBtn />
+
         <article>
           <div
             className={clsx(

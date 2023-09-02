@@ -28,11 +28,13 @@ export default function PostCard(props: Props) {
                 </Link>
               </h2>
               <p className="text-sm text-theme-main">
-                By {props.authors.map((author)=>author.name).join(', ')}
+                By {props.authors.map((author) => author.name).join(', ')}
               </p>
             </div>
 
-            <p className="line-clamp-2 text-gray-600 dark:text-gray-400">{props.description}</p>
+            <p className="line-clamp-2 text-gray-600 dark:text-gray-400">
+              {props.description}
+            </p>
           </div>
 
           <div className="text-base font-medium leading-6">

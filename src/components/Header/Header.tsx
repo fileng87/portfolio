@@ -25,147 +25,150 @@ export default function Header({}: Props) {
 
   return (
     <>
-        <header className={clsx('h-24 w-full', 'fixed', 'z-50', 'select-none')}>
-          <IconContext.Provider value={{ size: '1.4rem' }}>
-            {/**Left */}
-            <div className={clsx('sr-only md:not-sr-only')}>
-              <div
-                className={clsx(
-                  'fixed inset-y-0',
-                  'flex flex-col',
-                  'w-[10%]',
-                  'items-center justify-between',
-                  'py-16'
-                )}
-              >
-                <div className="flex flex-col gap-6 font-bold">
-                  <HeaderTitle />
+      <header className={clsx('h-24 w-full', 'fixed', 'z-50', 'select-none')}>
+        <IconContext.Provider value={{ size: '1.4rem' }}>
+          {/**Left */}
+          <div className={clsx('sr-only md:not-sr-only')}>
+            <div
+              className={clsx(
+                'fixed inset-y-0',
+                'flex flex-col',
+                'w-[10%]',
+                'items-center justify-between',
+                'py-16'
+              )}
+            >
+              <div className="flex flex-col gap-6 font-bold">
+                <HeaderTitle />
 
-                  <nav className="flex flex-col gap-6">
+                <nav className="flex flex-col gap-6">
+                  {links.map((link) => (
+                    <Link
+                      className="relative flex"
+                      href={link.url}
+                      key={link.url}
+                      scroll={false}
+                    >
+                      {pathName === link.url && (
+                        <motion.span
+                          layoutId="nav_underline"
+                          className={clsx(
+                            'h-full w-[2px]',
+                            'rounded-full',
+                            'absolute end-0 ',
+                            'bg-theme-main'
+                          )}
+                        />
+                      )}
+                      <motion.span
+                        initial={{ rotate: 180 }}
+                        animate={{ rotate: 180 }}
+                        whileHover={{ x: -3 }}
+                        className="writing-vertical-rl rotate-180"
+                      >
+                        {link.title}
+                      </motion.span>
+                    </Link>
+                  ))}
+                </nav>
+              </div>
+
+              <div className="flex flex-col gap-6">
+                <SocialIcons />
+              </div>
+            </div>
+
+            <div className="flex h-24 items-center justify-end px-8">
+              <div className="p-4">
+                <ThemeToggle />
+              </div>
+            </div>
+          </div>
+
+          {/** Moblie */}
+          <div
+            className={clsx(
+              'absolute',
+              'container',
+              'flex',
+              'h-full w-full',
+              'items-center justify-between',
+              'px-6',
+              'font-bold',
+              'bg-gradient-to-b from-theme-light from-65% dark:from-theme-dark',
+              'not-sr-only md:sr-only',
+              'z-50'
+            )}
+          >
+            <HeaderTitle />
+            <div className="md:hidden">
+              <Hamburger
+                toggled={isOpen}
+                onToggle={() => setOpen(!isOpen)}
+                size={20}
+              />
+            </div>
+          </div>
+
+          <AnimatePresence>
+            {isOpen && (
+              <div className="bg-color absolute top-0 h-screen w-screen">
+                <motion.div
+                  initial={{ opacity: 0, y: -3 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -3 }}
+                  className={clsx(
+                    'flex flex-col',
+                    'h-[90%] w-full',
+                    'items-center justify-between',
+                    'overflow-y-auto',
+                    'mx-auto pb-16 pt-24',
+                    'text-xl font-semibold',
+                    'shadow-md'
+                  )}
+                >
+                  <nav className="flex flex-col items-center gap-6">
                     {links.map((link) => (
                       <Link
-                        className="relative flex"
+                        onClick={() => {
+                          setOpen(false);
+                        }}
                         href={link.url}
                         key={link.url}
                         scroll={false}
+                        className="relative flex"
                       >
+                        <motion.span whileHover={{ y: -3 }}>
+                          {link.title}
+                        </motion.span>
                         {pathName === link.url && (
-                          <motion.span
-                            layoutId="nav_underline"
+                          <span
                             className={clsx(
-                              'h-full w-[2px]',
+                              'h-[2px] w-full',
                               'rounded-full',
-                              'absolute end-0 ',
+                              'absolute bottom-0 ',
                               'bg-theme-main'
                             )}
                           />
                         )}
-                        <motion.span
-                          initial={{ rotate: 180 }}
-                          animate={{ rotate: 180 }}
-                          whileHover={{ x: -3 }}
-                          className="writing-vertical-rl rotate-180"
-                        >
-                          {link.title}
-                        </motion.span>
                       </Link>
                     ))}
                   </nav>
-                </div>
+                  <IconContext.Provider value={{ size: '1.6rem' }}>
+                    <div className="flex w-full justify-between px-12 md:hidden">
+                      <div className="flex gap-6">
+                        <SocialIcons />
+                      </div>
 
-                <div className="flex flex-col gap-6">
-                  <SocialIcons />
-                </div>
+                      <ThemeToggle />
+                    </div>
+                  </IconContext.Provider>
+                </motion.div>
               </div>
-
-              <div className="flex h-24 items-center justify-end px-8">
-                <div className="p-4">
-                  <ThemeToggle />
-                </div>
-              </div>
-            </div>
-
-            {/** Moblie */}
-            <div
-              className={clsx(
-                'absolute',
-                'container',
-                'flex',
-                'h-full w-full',
-                'items-center justify-between',
-                'px-6',
-                'font-bold',
-                'bg-gradient-to-b from-theme-light from-65% dark:from-theme-dark',
-                'not-sr-only md:sr-only',
-                'z-50'
-              )}
-            >
-              <HeaderTitle />
-              <div className="md:hidden">
-                <Hamburger toggled={isOpen} onToggle={()=>setOpen(!isOpen)} size={20} />
-              </div>
-            </div>
-
-            <AnimatePresence>
-              {isOpen && (
-                  <div className="bg-color h-screen w-screen absolute top-0">
-                    <motion.div
-                      initial={{ opacity: 0, y: -3 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -3 }}
-                      className={clsx(
-                        'flex flex-col',
-                        'h-[90%] w-full',
-                        'items-center justify-between',
-                        'overflow-y-auto',
-                        'mx-auto pb-16 pt-24',
-                        'text-xl font-semibold',
-                        'shadow-md'
-                      )}
-                    >
-                      <nav className="flex flex-col items-center gap-6">
-                        {links.map((link) => (
-                          <Link
-                            onClick={() => {
-                              setOpen(false);
-                            }}
-                            href={link.url}
-                            key={link.url}
-                            scroll={false}
-                            className="relative flex"
-                          >
-                            <motion.span whileHover={{ y: -3 }}>
-                              {link.title}
-                            </motion.span>
-                            {pathName === link.url && (
-                              <span
-                                className={clsx(
-                                  'h-[2px] w-full',
-                                  'rounded-full',
-                                  'absolute bottom-0 ',
-                                  'bg-theme-main'
-                                )}
-                              />
-                            )}
-                          </Link>
-                        ))}
-                      </nav>
-                      <IconContext.Provider value={{ size: '1.6rem' }}>
-                        <div className="flex w-full justify-between px-12 md:hidden">
-                          <div className="flex gap-6">
-                            <SocialIcons />
-                          </div>
-
-                          <ThemeToggle />
-                        </div>
-                      </IconContext.Provider>
-                    </motion.div>
-                  </div>
-                
-              )}
-            </AnimatePresence>
-          </IconContext.Provider>
-        </header>
+            )}
+          </AnimatePresence>
+        </IconContext.Provider>
+      </header>
     </>
   );
 }
