@@ -57,11 +57,15 @@ export default function Projects() {
   const skeletons = useMemo(
     () => (
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {Array.from({ length: 3 }).map((_, index) => (
-          <div key={`skeleton-${index}`} className="pl-4">
-            <ProjectSkeleton />
-          </div>
-        ))}
+        <div className="pl-4">
+          <ProjectSkeleton />
+        </div>
+        <div className="hidden pl-4 md:block">
+          <ProjectSkeleton />
+        </div>
+        <div className="hidden pl-4 lg:block">
+          <ProjectSkeleton />
+        </div>
       </div>
     ),
     []
