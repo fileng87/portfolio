@@ -53,7 +53,7 @@ export default function About() {
             <Terminal className="size-8 text-pink-500 dark:text-cyan-500" />
             <TextScramble
               segments={[{ text: '$ whoami', duration: 1000 }]}
-              className="font-mono text-4xl font-bold after:ml-2 after:animate-cursor after:content-['\\|']"
+              className="font-mono text-4xl font-bold after:ml-2 after:animate-cursor after:content-['|']"
               animate="animate"
             />
           </motion.div>
