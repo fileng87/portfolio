@@ -9,5 +9,5 @@ services:
       - GITHUB_TOKEN=${GITHUB_TOKEN}
       - NEXT_PUBLIC_BASE_URL=${NEXT_PUBLIC_BASE_URL}
     env_file:
-      - .env.local
+      - .env
     restart: unless-stopped
