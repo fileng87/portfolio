@@ -1,5 +1,3 @@
-'use client';
-
 import { JSX } from 'react';
 import { FaGithub, FaYoutube } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
