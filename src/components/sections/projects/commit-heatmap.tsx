@@ -59,7 +59,7 @@ export const CommitHeatmap = ({ activity }: CommitHeatmapProps) => {
                 day.count > 0
                   ? 'fill-pink-500/40 dark:fill-cyan-500/50'
                   : 'fill-gray-300/20 dark:fill-gray-700/20',
-                isWeekend ? '!fill-gray-900/20' : ''
+                isWeekend ? '!fill-gray-900/20 dark:!fill-gray-100/20' : ''
               )}
               style={{
                 fillOpacity: day.count > 0 ? 0.2 + intensity * 0.8 : 0.2,
