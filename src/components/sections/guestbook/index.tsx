@@ -25,10 +25,7 @@ export default function Guestbook() {
           <div className="flex items-center gap-4">
             <MessageSquare className="size-8 text-pink-500 dark:text-cyan-500" />
             <TextScramble
-              segments={[
-                { text: '$ cat', duration: 500 },
-                { text: ' ~/guestbook/welcome.txt', duration: 1000 },
-              ]}
+              segments={[{ text: '$ cat ./guestbook.txt', duration: 1000 }]}
               className="font-mono text-4xl font-bold after:ml-2 after:animate-cursor after:content-['|']"
               animate="animate"
             />
