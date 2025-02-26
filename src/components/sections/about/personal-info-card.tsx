@@ -1,9 +1,6 @@
 import { Avatar } from '@/components/avatar';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
-import { motion } from 'framer-motion';
-
-import { containerVariants } from './variants';
 
 interface PersonalInfoCardProps {
   cardClassName: string;
@@ -11,12 +8,7 @@ interface PersonalInfoCardProps {
 
 export function PersonalInfoCards({ cardClassName }: PersonalInfoCardProps) {
   return (
-    <motion.div
-      initial="hidden"
-      animate="visible"
-      variants={containerVariants}
-      className="grid grid-cols-1 gap-4 md:grid-cols-12"
-    >
+    <div className="grid grid-cols-1 gap-4 transition-all duration-300 ease-out md:grid-cols-12">
       {/* Avatar Card */}
       <div className="transition-all duration-300 ease-out md:col-span-3 lg:col-span-2">
         <Card className={cn(cardClassName, 'h-full')}>
@@ -51,6 +43,6 @@ export function PersonalInfoCards({ cardClassName }: PersonalInfoCardProps) {
           </CardContent>
         </Card>
       </div>
-    </motion.div>
+    </div>
   );
 }
