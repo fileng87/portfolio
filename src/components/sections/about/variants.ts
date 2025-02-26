@@ -4,13 +4,12 @@ export const containerVariants = {
     opacity: 1,
     transition: {
       staggerChildren: 0.1,
-      when: 'beforeChildren',
       duration: 0.3,
     },
   },
 };
 
-export const cardVariants = {
+export const commonVariants = {
   hidden: {
     opacity: 0,
     y: 20,
@@ -20,19 +19,8 @@ export const cardVariants = {
     y: 0,
     transition: {
       type: 'spring',
-      duration: 0.5,
+      duration: 0.4,
       bounce: 0.1,
-      when: 'beforeChildren',
-    },
-  },
-};
-
-export const itemVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      duration: 0.3,
     },
   },
 };

@@ -4,7 +4,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { cn, formatWakaTime } from '@/lib/utils';
 import { AnimatePresence, motion } from 'framer-motion';
 
-import { cardVariants, containerVariants, itemVariants } from './variants';
+import { commonVariants } from './variants';
 
 interface GithubStatsData {
   totalStars: number;
@@ -34,71 +34,51 @@ export function StatsCards({
   wakaError,
 }: StatsCardsProps) {
   return (
-    <motion.div
-      initial="hidden"
-      animate="visible"
-      variants={containerVariants}
-      className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3"
-    >
+    <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
       {/* Skills Card */}
-      <motion.div variants={cardVariants}>
+      <div className="transition-all duration-300 ease-out">
         <Card className={cn(cardClassName, 'h-full')}>
           <CardHeader>
             <CardTitle>./skills.json</CardTitle>
           </CardHeader>
           <CardContent>
-            <AnimatePresence mode="wait">
-              <motion.div
-                key="content"
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-                transition={{
-                  opacity: { duration: 0.2 },
-                  height: { duration: 0.3 },
-                }}
-                className="overflow-hidden"
-              >
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <h4 className="mb-2 font-mono text-sm">Frontend:</h4>
-                    <ul className="list-inside list-disc text-sm text-gray-700 dark:text-gray-300">
-                      <li>React</li>
-                      <li>Next.js</li>
-                      <li>TypeScript</li>
-                      <li>Tailwind CSS</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <h4 className="mb-2 font-mono text-sm">Backend:</h4>
-                    <ul className="list-inside list-disc text-sm text-gray-700 dark:text-gray-300">
-                      <li>Express</li>
-                      <li>NestJS</li>
-                      <li>FastAPI</li>
-                      <li>PostgreSQL</li>
-                      <li>MongoDB</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <h4 className="mb-2 font-mono text-sm">Tools:</h4>
-                    <ul className="list-inside list-disc text-sm text-gray-700 dark:text-gray-300">
-                      <li>Git</li>
-                      <li>VS Code</li>
-                      <li>Docker</li>
-                    </ul>
-                  </div>
+            <div className="overflow-hidden transition-all duration-300">
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <h4 className="mb-2 font-mono text-sm">Frontend:</h4>
+                  <ul className="list-inside list-disc text-sm text-gray-700 dark:text-gray-300">
+                    <li>React</li>
+                    <li>Next.js</li>
+                    <li>TypeScript</li>
+                    <li>Tailwind CSS</li>
+                  </ul>
                 </div>
-              </motion.div>
-            </AnimatePresence>
+                <div>
+                  <h4 className="mb-2 font-mono text-sm">Backend:</h4>
+                  <ul className="list-inside list-disc text-sm text-gray-700 dark:text-gray-300">
+                    <li>Express</li>
+                    <li>NestJS</li>
+                    <li>FastAPI</li>
+                    <li>PostgreSQL</li>
+                    <li>MongoDB</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="mb-2 font-mono text-sm">Tools:</h4>
+                  <ul className="list-inside list-disc text-sm text-gray-700 dark:text-gray-300">
+                    <li>Git</li>
+                    <li>VS Code</li>
+                    <li>Docker</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </CardContent>
         </Card>
-      </motion.div>
+      </div>
 
       {/* GitHub Statistics Card */}
-      <motion.div
-        variants={cardVariants}
-        initial={false} // 防止重新動畫
-      >
+      <div className="transition-all duration-300 ease-out">
         <Card className={cn(cardClassName, 'h-full')}>
           <CardHeader>
             <CardTitle>./github_stats.json</CardTitle>
@@ -134,7 +114,7 @@ export function StatsCards({
                 </motion.div>
               ) : (
                 <motion.div
-                  variants={itemVariants}
+                  variants={commonVariants}
                   initial="hidden"
                   animate="visible"
                   className="space-y-2"
@@ -176,7 +156,7 @@ export function StatsCards({
                         ].map((stat, index) => (
                           <motion.div
                             key={stat.label + index}
-                            variants={itemVariants}
+                            variants={commonVariants}
                             className="flex items-center justify-between"
                           >
                             <span className="w-32 font-mono text-sm text-gray-600 dark:text-gray-400">
@@ -195,12 +175,8 @@ export function StatsCards({
             </AnimatePresence>
           </CardContent>
         </Card>
-      </motion.div>
-      <motion.div
-        variants={cardVariants}
-        initial={false} // 防止重新動畫
-        className="md:col-span-2 lg:col-span-1"
-      >
+      </div>
+      <div className="transition-all duration-300 ease-out md:col-span-2 lg:col-span-1">
         {/* WakaTime Card */}
         <Card className={cn(cardClassName, 'h-full')}>
           <CardHeader className="pb-2">
@@ -237,7 +213,7 @@ export function StatsCards({
                 </motion.div>
               ) : (
                 <motion.div
-                  variants={itemVariants}
+                  variants={commonVariants}
                   initial="hidden"
                   animate="visible"
                   className="space-y-2"
@@ -256,7 +232,7 @@ export function StatsCards({
                     wakaStats && (
                       <>
                         <motion.div
-                          variants={itemVariants}
+                          variants={commonVariants}
                           className="flex items-center justify-between"
                         >
                           <span className="w-32 font-mono text-sm text-gray-600 dark:text-gray-400">
@@ -267,7 +243,7 @@ export function StatsCards({
                           </span>
                         </motion.div>
                         <motion.div
-                          variants={itemVariants}
+                          variants={commonVariants}
                           className="flex items-center justify-between"
                         >
                           <span className="w-32 font-mono text-sm text-gray-600 dark:text-gray-400">
@@ -280,7 +256,7 @@ export function StatsCards({
                           </span>
                         </motion.div>
                         <motion.div
-                          variants={itemVariants}
+                          variants={commonVariants}
                           className="flex items-center justify-between"
                         >
                           <span className="w-32 font-mono text-sm text-gray-600 dark:text-gray-400">
@@ -293,7 +269,7 @@ export function StatsCards({
                         {wakaStats.languages.slice(0, 3).map((lang, index) => (
                           <motion.div
                             key={lang.name + index}
-                            variants={itemVariants}
+                            variants={commonVariants}
                             className="flex items-center justify-between"
                           >
                             <span className="w-32 font-mono text-sm text-gray-600 dark:text-gray-400">
@@ -312,7 +288,7 @@ export function StatsCards({
             </AnimatePresence>
           </CardContent>
         </Card>
-      </motion.div>
-    </motion.div>
+      </div>
+    </div>
   );
 }

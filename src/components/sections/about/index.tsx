@@ -8,7 +8,7 @@ import { Terminal } from 'lucide-react';
 import { fetchGitHubStats, fetchWakaTimeStats } from './api';
 import { PersonalInfoCards } from './personal-info-card';
 import { StatsCards } from './stats-cards';
-import { cardVariants, containerVariants, itemVariants } from './variants';
+import { commonVariants, containerVariants } from './variants';
 
 export default function About() {
   const {
@@ -43,12 +43,12 @@ export default function About() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: '-100px' }}
           className="mx-auto max-w-5xl space-y-12"
         >
           {/* Title */}
           <motion.div
-            variants={itemVariants}
+            variants={commonVariants}
             className="flex items-center gap-4"
           >
             <Terminal className="size-8 text-pink-500 dark:text-cyan-500" />
@@ -60,22 +60,17 @@ export default function About() {
           </motion.div>
 
           {/* Content */}
-          <motion.div variants={itemVariants} className="space-y-4">
-            <motion.div variants={cardVariants}>
-              <PersonalInfoCards cardClassName={cardClassName} />
-            </motion.div>
-
-            <motion.div variants={cardVariants}>
-              <StatsCards
-                cardClassName={cardClassName}
-                githubStats={githubStats}
-                wakaStats={wakaStats}
-                githubLoading={githubLoading}
-                wakaLoading={wakaLoading}
-                githubError={githubError}
-                wakaError={wakaError}
-              />
-            </motion.div>
+          <motion.div variants={commonVariants} className="space-y-4">
+            <PersonalInfoCards cardClassName={cardClassName} />
+            <StatsCards
+              cardClassName={cardClassName}
+              githubStats={githubStats}
+              wakaStats={wakaStats}
+              githubLoading={githubLoading}
+              wakaLoading={wakaLoading}
+              githubError={githubError}
+              wakaError={wakaError}
+            />
           </motion.div>
         </motion.div>
       </div>
