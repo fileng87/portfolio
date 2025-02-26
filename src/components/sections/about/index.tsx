@@ -1,13 +1,14 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { Terminal } from 'lucide-react';
 import { TextScramble } from '@/components/textScramble';
 import { useQuery } from '@tanstack/react-query';
-import { containerVariants, itemVariants, cardVariants } from './variants';
+import { motion } from 'framer-motion';
+import { Terminal } from 'lucide-react';
+
 import { fetchGitHubStats, fetchWakaTimeStats } from './api';
 import { PersonalInfoCards } from './personal-info-card';
 import { StatsCards } from './stats-cards';
+import { cardVariants, containerVariants, itemVariants } from './variants';
 
 export default function About() {
   const {

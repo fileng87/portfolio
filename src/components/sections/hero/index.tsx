@@ -1,10 +1,12 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { useState } from 'react';
+
+import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { RotatingEmoji } from './rotatingEmoji';
+
 import { TextScramble } from '../../textScramble';
+import { RotatingEmoji } from './rotatingEmoji';
 
 export default function Hero() {
   const [isAnimating, setAnimating] = useState(true);

@@ -1,7 +1,4 @@
-import { motion } from 'framer-motion';
-import Image from 'next/image';
-import { Star, Globe, GitFork, Clock, AlertCircle } from 'lucide-react';
-import { formatDistanceToNow } from 'date-fns';
+import { Badge } from '@/components/ui/badge';
 import {
   Card,
   CardContent,
@@ -9,8 +6,12 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
+import { formatDistanceToNow } from 'date-fns';
+import { motion } from 'framer-motion';
+import { AlertCircle, Clock, GitFork, Globe, Star } from 'lucide-react';
+import Image from 'next/image';
+
 import { CommitHeatmap } from './commit-heatmap';
 import { GitHubRepo } from './types';
 

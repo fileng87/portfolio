@@ -1,5 +1,16 @@
 'use client';
 
+import { JSX } from 'react';
+import { FaGithub, FaYoutube } from 'react-icons/fa';
+import { FaXTwitter } from 'react-icons/fa6';
+
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
+import { Button } from '@/components/ui/button';
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -12,19 +23,9 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover';
-import { Button } from '@/components/ui/button';
-import Link from 'next/link';
-import { Mail, ChevronDown } from 'lucide-react';
-import { FaGithub, FaYoutube } from 'react-icons/fa';
-import { FaXTwitter } from 'react-icons/fa6';
-import { JSX } from 'react';
 import { cn } from '@/lib/utils';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '@/components/ui/accordion';
+import { ChevronDown, Mail } from 'lucide-react';
+import Link from 'next/link';
 
 const navLinks: { title: string; url: string }[] = [
   { title: 'Home', url: '#hero' },

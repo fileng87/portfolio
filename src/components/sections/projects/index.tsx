@@ -1,8 +1,8 @@
 'use client';
 
 import { useMemo } from 'react';
-import { motion } from 'framer-motion';
-import { Code2, ChevronLeft, ChevronRight } from 'lucide-react';
+
+import { TextScramble } from '@/components/textScramble';
 import {
   Carousel,
   CarouselContent,
@@ -10,12 +10,14 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
-import { TextScramble } from '@/components/textScramble';
 import { useQuery } from '@tanstack/react-query';
+import { motion } from 'framer-motion';
+import { ChevronLeft, ChevronRight, Code2 } from 'lucide-react';
+
+import { fetchRepos } from './api';
 import { ProjectCard } from './project-card';
 import { ProjectSkeleton } from './project-skeleton';
-import { containerVariants, itemVariants, cardVariants } from './variants';
-import { fetchRepos } from './api';
+import { cardVariants, containerVariants, itemVariants } from './variants';
 
 export default function Projects() {
   const { data: repos, isLoading } = useQuery({
