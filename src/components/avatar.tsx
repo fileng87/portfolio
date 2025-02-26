@@ -1,6 +1,6 @@
+import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import md5 from 'md5';
-import { cn } from '@/lib/utils';
 
 interface AvatarProps {
   className?: string;

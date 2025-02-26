@@ -1,7 +1,8 @@
-import { motion, AnimatePresence } from 'framer-motion';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar } from '@/components/avatar';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
+import { AnimatePresence, motion } from 'framer-motion';
+
 import { cardVariants, containerVariants } from './variants';
 
 interface PersonalInfoCardProps {

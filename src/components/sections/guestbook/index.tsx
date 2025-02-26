@@ -1,10 +1,11 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { containerVariants } from './variants';
 import { Card, CardContent } from '@/components/ui/card';
 import Giscus from '@giscus/react';
+import { motion } from 'framer-motion';
 import { useTheme } from 'next-themes';
+
+import { containerVariants } from './variants';
 
 export default function Guestbook() {
   const { theme } = useTheme();

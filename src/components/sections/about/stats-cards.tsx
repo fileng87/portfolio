@@ -1,9 +1,10 @@
-import { motion, AnimatePresence } from 'framer-motion';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { cn, formatWakaTime } from '@/lib/utils';
-import { cardVariants, itemVariants, containerVariants } from './variants';
 import type { WakaTimeData } from '@/app/api/wakatime/stats/route';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
+import { cn, formatWakaTime } from '@/lib/utils';
+import { AnimatePresence, motion } from 'framer-motion';
+
+import { cardVariants, containerVariants, itemVariants } from './variants';
 
 interface GithubStatsData {
   totalStars: number;

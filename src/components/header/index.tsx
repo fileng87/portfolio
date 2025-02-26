@@ -1,13 +1,17 @@
 'use client';
 
-import { motion, AnimatePresence } from 'framer-motion';
-import Link from 'next/link';
-import Navbar from './navbar';
-import { ModeToggle } from '../modeToggle';
 import { useState } from 'react';
+
+import { cn } from '@/lib/utils';
+import { AnimatePresence, motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import Link from 'next/link';
+
+import { ModeToggle } from '../modeToggle';
 import { Button } from '../ui/button';
-import { cn } from '@/lib/utils'; // 确保导入cn函数
+import Navbar from './navbar';
+
+// 确保导入cn函数
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);

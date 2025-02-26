@@ -1,11 +1,11 @@
 import BackgroundEffects from '@/components/backgrounds/backgroundEffects';
+import Footer from '@/components/footer';
 import Header from '@/components/header';
 import { Marquee } from '@/components/marquee';
 import About from '@/components/sections/about';
 import Guestbook from '@/components/sections/guestbook';
 import Hero from '@/components/sections/hero';
 import Projects from '@/components/sections/projects';
-import Footer from '@/components/footer';
 
 export default function Home() {
   return (

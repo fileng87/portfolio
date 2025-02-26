@@ -1,5 +1,6 @@
-import { useState, useEffect, useRef } from 'react';
-import { motion, type Variants } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
+
+import { type Variants, motion } from 'framer-motion';
 
 const CHARACTERS =
   'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン' +

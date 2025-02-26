@@ -1,5 +1,6 @@
-import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
+
+import { AnimatePresence, motion } from 'framer-motion';
 
 interface RotatingEmojiProps {
   emojis: string[];

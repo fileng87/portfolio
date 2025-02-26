@@ -1,8 +1,9 @@
-import Link from 'next/link';
-import { Mail } from 'lucide-react';
 import { FaGithub, FaYoutube } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
+
 import { cn } from '@/lib/utils';
+import { Mail } from 'lucide-react';
+import Link from 'next/link';
 
 // 复用 Navbar 中的社交链接数据
 const socialLinks = [
