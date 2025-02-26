@@ -49,24 +49,17 @@ const GRAPHQL_QUERY = `
           defaultBranchRef {
             target {
               ... on Commit {
-                history(first: 1) {
+                # 獲取每日提交歷史
+                history(
+                  since: "${ninetyDaysAgoISO}",
+                  until: "${todayISO}"
+                ) {
                   totalCount
+                  nodes {
+                    committedDate
+                  }
                 }
               }
-            }
-          }
-          # 删除了仓库级别的 contributionsCollection 查询
-        }
-      }
-      # 添加用户级别的 contributionsCollection 查询
-      contributionsCollection(from: "${ninetyDaysAgoISO}", to: "${todayISO}") {
-        commitContributionsByRepository {
-          repository {
-            name
-          }
-          contributions(first: 100) {
-            nodes {
-              occurredAt
             }
           }
         }
@@ -120,20 +113,11 @@ export async function GET() {
               target: {
                 history: {
                   totalCount: number;
+                  nodes: Array<{
+                    committedDate: string;
+                  }>;
                 };
               };
-            };
-          }>;
-        };
-        contributionsCollection: {
-          commitContributionsByRepository: Array<{
-            repository: {
-              name: string;
-            };
-            contributions: {
-              nodes: Array<{
-                occurredAt: string;
-              }>;
             };
           }>;
         };
@@ -147,52 +131,44 @@ export async function GET() {
       return date.toISOString().split('T')[0]; // YYYY-MM-DD
     });
 
-    // 创建仓库名称到提交活动的映射
-    const repoCommitMap: Record<string, { date: string; count: number }[]> = {};
-
-    // 处理用户级别的贡献数据
-    user.contributionsCollection.commitContributionsByRepository.forEach(
-      (contribution) => {
-        const repoName = contribution.repository.name;
-
-        // 为每个仓库初始化90天的空数据
-        repoCommitMap[repoName] = last90Days.map((date) => ({
-          date,
-          count: 0,
-        }));
-
-        // 填充提交数据
-        contribution.contributions.nodes.forEach((node) => {
-          const dateString = node.occurredAt.split('T')[0]; // YYYY-MM-DD
-          const commit = repoCommitMap[repoName].find(
-            (commit) => commit.date === dateString
-          );
-          if (commit) {
-            commit.count += 1;
-          }
-        });
-      }
-    );
-
-    // 更新数据处理函数
+    // 移除 repoCommitMap 相关代码，直接处理仓库数据
     const repos = user.repositories.nodes.map((repo) => {
+      // 生成過去90天的日期活動數據
+      const commitDates =
+        repo.defaultBranchRef?.target.history.nodes.map(
+          (node: { committedDate: string }) => node.committedDate.split('T')[0]
+        ) || [];
+
+      // 計算每天的提交次數
+      const commitActivity = last90Days.map((date) => ({
+        date,
+        count: commitDates.filter((commitDate) => commitDate === date).length,
+      }));
+
+      // 計算最近30天的提交總數
+      const last30DaysCommits = commitActivity
+        .slice(-30)
+        .reduce((sum, day) => sum + day.count, 0);
+
+      // 計算更新時間得分（越近期分數越高）
+      const updatedDate = new Date(repo.updatedAt);
+      const now = new Date();
+      const daysSinceUpdate =
+        (now.getTime() - updatedDate.getTime()) / (1000 * 60 * 60 * 24);
+      const updateScore = Math.max(0, 100 - daysSinceUpdate); // 最近更新得高分，最多100分
+
       return {
         name: repo.name,
         description: repo.description,
         url: repo.url,
         homepage: repo.homepageUrl,
-        stars: repo.stargazerCount,
-        forks: repo.forkCount,
+        stargazerCount: repo.stargazerCount,
+        forkCount: repo.forkCount,
         isArchived: repo.isArchived,
         updatedAt: repo.updatedAt,
         openIssues: repo.openIssues.totalCount,
         totalCommits: repo.defaultBranchRef?.target.history.totalCount || 0,
-        commitActivity:
-          repoCommitMap[repo.name] ||
-          last90Days.map((date) => ({
-            date,
-            count: 0,
-          })),
+        commitActivity,
         languages: repo.languages.edges.map((edge) => ({
           name: edge.node.name,
           color: edge.node.color,
@@ -200,10 +176,21 @@ export async function GET() {
         })),
         topics: repo.repositoryTopics.nodes.map((node) => node.topic.name),
         ownerAvatar: user.avatarUrl,
+        activityScore: last30DaysCommits * 2 + updateScore, // 活躍度分數
       };
     });
 
-    return NextResponse.json({ repos });
+    // 根據活躍度分數排序
+    const sortedRepos = repos.sort((a, b) => {
+      // 已封存的專案排在最後
+      if (a.isArchived !== b.isArchived) {
+        return a.isArchived ? 1 : -1;
+      }
+      // 根據活躍度分數排序
+      return b.activityScore - a.activityScore;
+    });
+
+    return NextResponse.json({ repos: sortedRepos });
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     console.error('Error fetching repos:', error);

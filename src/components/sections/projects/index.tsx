@@ -1,8 +1,9 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import { TextScramble } from '@/components/textScramble';
+import { type CarouselApi } from '@/components/ui/carousel';
 import {
   Carousel,
   CarouselContent,
@@ -20,6 +21,8 @@ import { ProjectSkeleton } from './project-skeleton';
 import { cardVariants, containerVariants, itemVariants } from './variants';
 
 export default function Projects() {
+  const [api, setApi] = useState<CarouselApi>();
+  const [autoPlay, setAutoPlay] = useState(true);
   const { data: repos, isLoading } = useQuery({
     queryKey: ['repos'],
     queryFn: fetchRepos,
@@ -27,6 +30,42 @@ export default function Projects() {
     staleTime: 1000 * 60 * 5, // 5 minutes
     gcTime: 1000 * 60 * 30, // 30 minutes
   });
+
+  // Handle auto-play
+  useEffect(() => {
+    if (!api || !repos || !autoPlay) return;
+
+    const intervalId = setInterval(() => {
+      api.scrollNext();
+    }, 3000);
+
+    return () => clearInterval(intervalId);
+  }, [api, repos, autoPlay]);
+
+  // Handle user interaction
+  useEffect(() => {
+    if (!api) return;
+
+    const onMouseEnter = () => setAutoPlay(false);
+    const onMouseLeave = () => setAutoPlay(true);
+    const onTouchStart = () => setAutoPlay(false);
+    const onTouchEnd = () => {
+      setTimeout(() => setAutoPlay(true), 5); // Resume after 2 seconds
+    };
+
+    const element = api.rootNode();
+    element.addEventListener('mouseenter', onMouseEnter);
+    element.addEventListener('mouseleave', onMouseLeave);
+    element.addEventListener('touchstart', onTouchStart);
+    element.addEventListener('touchend', onTouchEnd);
+
+    return () => {
+      element.removeEventListener('mouseenter', onMouseEnter);
+      element.removeEventListener('mouseleave', onMouseLeave);
+      element.removeEventListener('touchstart', onTouchStart);
+      element.removeEventListener('touchend', onTouchEnd);
+    };
+  }, [api]);
 
   const projectItems = useMemo(() => {
     if (!repos) return null;
@@ -44,8 +83,9 @@ export default function Projects() {
           }}
           custom={index}
           transition={{
-            delay: Math.min(index * 0.03, 0.2), // 減少延遲時間
-            duration: 0.5, // 添加動畫持續時間
+            delay: Math.min(index * 0.3, 1.2), // 延遲時間加倍
+            duration: 1.2, // 動畫持續時間加長
+            ease: [0.16, 1, 0.3, 1], // 使用自定義的緩動曲線，讓動畫更平滑
           }}
           className="h-full"
         >
@@ -54,24 +94,6 @@ export default function Projects() {
       </CarouselItem>
     ));
   }, [repos]);
-
-  // 優化 skeleton 渲染
-  const skeletons = useMemo(
-    () => (
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-        <div className="pl-4">
-          <ProjectSkeleton />
-        </div>
-        <div className="hidden pl-4 md:block">
-          <ProjectSkeleton />
-        </div>
-        <div className="hidden pl-4 lg:block">
-          <ProjectSkeleton />
-        </div>
-      </div>
-    ),
-    []
-  );
 
   return (
     <div className="relative mb-20 flex items-center justify-center overflow-hidden pt-header">
@@ -103,14 +125,26 @@ export default function Projects() {
             transition={{ duration: 0.3 }} // 添加過渡時間
           >
             {isLoading ? (
-              skeletons
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+                <div className="pl-4">
+                  <ProjectSkeleton />
+                </div>
+                <div className="hidden pl-4 md:block">
+                  <ProjectSkeleton />
+                </div>
+                <div className="hidden pl-4 lg:block">
+                  <ProjectSkeleton />
+                </div>
+              </div>
             ) : (
               <Carousel
+                setApi={setApi}
                 className="w-full"
                 opts={{
                   dragFree: true,
                   skipSnaps: true,
-                  containScroll: 'trimSnaps', // 改善滾動行為
+                  containScroll: 'trimSnaps',
+                  loop: true, // Enable infinite loop
                 }}
               >
                 <CarouselContent className="-ml-4 flex h-full px-2 py-4">
