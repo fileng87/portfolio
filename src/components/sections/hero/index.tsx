@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 
+import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
@@ -128,11 +129,16 @@ export default function Hero() {
         />
       </motion.h1>
 
-      {!isAnimating && (
-        <div className="translate-y-8 font-mono text-base text-gray-600 opacity-0 transition-all duration-500 dark:text-gray-400 [.visible>&]:translate-y-0 [.visible>&]:opacity-100">
-          Ctrl+C Ctrl+V Developer
-        </div>
-      )}
+      {/* Subtitle */}
+      <div
+        className={cn(
+          'font-mono text-base text-gray-600 dark:text-gray-400',
+          'transform transition-all duration-500 ease-out',
+          !isAnimating ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+        )}
+      >
+        Ctrl+C Ctrl+V Developer
+      </div>
 
       {/* 滾動指示器改用 Tailwind */}
       <div className="absolute bottom-14">
