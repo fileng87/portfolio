@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: 'WenNya',
-  description: 'LeNg87 的個人網站',
+  description: "LeNg87's personal website",
 };
 
 export default function RootLayout({
