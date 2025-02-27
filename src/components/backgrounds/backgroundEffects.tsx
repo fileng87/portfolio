@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 
 import { cn } from '@/lib/utils';
-import { motion } from 'framer-motion';
 import { useTheme } from 'next-themes';
 
 interface RainDrop {
@@ -26,11 +25,8 @@ interface LightBubble {
 }
 
 const generateRainDrop = (id: number): RainDrop => {
-  // 根據 id 決定是在左邊還是右邊
   const isLeft = id % 2 === 0;
-  const baseX = isLeft
-    ? -25 + Math.random() * 75 // 左半邊 (-25% 到 50%)
-    : 50 + Math.random() * 75; // 右半邊 (50% 到 125%)
+  const baseX = isLeft ? -25 + Math.random() * 75 : 50 + Math.random() * 75;
 
   return {
     id,
@@ -42,13 +38,9 @@ const generateRainDrop = (id: number): RainDrop => {
   };
 };
 
-// 修改生成泡泡的函數
 const generateBubble = (id: number): LightBubble => {
-  // 根據 id 決定是在左邊還是右邊
   const isLeft = id % 2 === 0;
-  const baseX = isLeft
-    ? -25 + Math.random() * 75 // 左半邊 (-25% 到 50%)
-    : 50 + Math.random() * 75; // 右半邊 (50% 到 125%)
+  const baseX = isLeft ? -25 + Math.random() * 75 : 50 + Math.random() * 75;
 
   return {
     id,
@@ -61,29 +53,13 @@ const generateBubble = (id: number): LightBubble => {
   };
 };
 
-const gradientVariants = {
-  initial: {
-    scale: 1,
-    opacity: 0.7,
-  },
-  animate: {
-    scale: [1, 1.2, 1],
-    opacity: [0.7, 0.9, 0.7],
-    transition: {
-      duration: 10,
-      repeat: Infinity,
-      ease: 'easeInOut',
-    },
-  },
-};
-
 export default function BackgroundEffects() {
-  const { theme } = useTheme();
+  const { resolvedTheme } = useTheme();
 
   const [rainDrops, setRainDrops] = useState<RainDrop[]>([]);
   const [bubbles, setBubbles] = useState<LightBubble[]>([]);
-  const totalDrops = 25; // Reduced from 50 to 30 drops
-  const totalBubbles = 25; // 從12改為20
+  const totalDrops = 25;
+  const totalBubbles = 25;
 
   useEffect(() => {
     setRainDrops(
@@ -96,75 +72,57 @@ export default function BackgroundEffects() {
 
   return (
     <div className="pointer-events-none fixed inset-0 -z-10 flex h-screen w-screen justify-center overflow-hidden">
-      <motion.div
+      {/* 底部漸變光暈 - 使用CSS動畫替代motion.div */}
+      <div
         className={cn(
-          // Position and size - using percentage based sizing and centering
           'absolute bottom-[-20%] h-[60%] w-[150%]',
-          // Light mode gradient
           'bg-[radial-gradient(50%_100%_at_50%_100%,theme(colors.white/0.8)_0%,theme(colors.white/0.6)_30%,theme(colors.white/0.4)_50%,theme(colors.white/0.2)_70%,transparent_100%)]',
-          // Dark mode gradient
           'dark:bg-[radial-gradient(50%_100%_at_50%_100%,theme(colors.blue.500/0.8)_0%,theme(colors.blue.500/0.6)_30%,theme(colors.blue.500/0.4)_50%,theme(colors.blue.500/0.2)_70%,transparent_100%)]',
-          // Effects
-          'blur-[140px]'
+          'blur-[140px]',
+          'animate-pulse-slow' // 自定義動畫類
         )}
-        variants={gradientVariants}
-        initial="initial"
-        animate="animate"
       />
 
+      {/* 背景漸變 */}
       <div className="absolute inset-0 bg-gradient-to-t from-transparent via-pink-200/50 to-pink-200 opacity-80 transition-colors duration-300 dark:via-black/50 dark:to-black" />
 
+      {/* 動態元素 - 雨滴和泡泡需要使用SVG動畫 */}
       <svg className="absolute inset-0 size-full">
-        {theme === 'dark'
+        {resolvedTheme === 'dark' // 使用 resolvedTheme 替代 theme
           ? // Dark mode rain drops
             rainDrops.map((drop) => (
-              <motion.line
+              <line
                 key={drop.id}
                 x1={`${drop.x}%`}
                 y1="-10%"
                 x2={`${drop.x}%`}
                 y2={`${drop.length}%`}
                 stroke="currentColor"
-                className="text-cyan-400/20"
+                className={cn('text-cyan-400/20', `animate-rain`)}
                 strokeWidth="1"
-                initial={{ y: '-100%' }}
-                animate={{ y: '200%' }}
-                transition={{
-                  duration: drop.duration,
-                  delay: drop.delay,
-                  repeat: Infinity,
-                  ease: 'linear',
+                style={{
+                  opacity: drop.opacity,
+                  animationDelay: `${drop.delay}s`,
+                  animationDuration: `${drop.duration}s`,
                 }}
-                style={{ opacity: drop.opacity }}
               />
             ))
           : // Light mode floating bubbles
-            // 修改泡泡的渲染部分
             bubbles.map((bubble) => (
-              <motion.circle
+              <circle
                 key={bubble.id}
                 cx={`${bubble.x}%`}
-                cy="120%" // 保持您的起始位置設定
+                cy="120%"
                 r={bubble.size}
-                fill="none" // 改為空心
-                stroke="currentColor" // 添加邊框
-                strokeWidth="0.5" // 細邊框
-                className="text-pink-400/80" // 改為白色並調整透明度
-                initial={{
-                  y: 0, // 保持您的設定
-                }}
-                animate={{
-                  y: '-140%', // 保持您的設定
-                }}
-                transition={{
-                  duration: bubble.duration,
-                  delay: bubble.delay,
-                  repeat: Infinity,
-                  ease: 'linear',
-                }}
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="0.5"
+                className={cn('text-pink-400/80', 'animate-float')}
                 style={{
                   opacity: bubble.opacity,
-                  filter: 'blur(0.5px)', // 添加輕微模糊效果
+                  filter: 'blur(0.5px)',
+                  animationDelay: `${bubble.delay}s`,
+                  animationDuration: `${bubble.duration}s`,
                 }}
               />
             ))}
