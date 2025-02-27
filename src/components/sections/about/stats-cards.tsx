@@ -36,150 +36,145 @@ export function StatsCards({
   return (
     <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
       {/* Skills Card */}
-      <div className="transition-all duration-300 ease-out">
-        <Card className={cn(cardClassName, 'h-full')}>
-          <CardHeader>
-            <CardTitle>./skills.json</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="overflow-hidden transition-all duration-300">
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <h4 className="mb-2 font-mono text-sm">Frontend:</h4>
-                  <ul className="list-inside list-disc text-sm text-gray-700 dark:text-gray-300">
-                    <li>React</li>
-                    <li>Next.js</li>
-                    <li>TypeScript</li>
-                    <li>Tailwind CSS</li>
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="mb-2 font-mono text-sm">Backend:</h4>
-                  <ul className="list-inside list-disc text-sm text-gray-700 dark:text-gray-300">
-                    <li>Express</li>
-                    <li>NestJS</li>
-                    <li>FastAPI</li>
-                    <li>PostgreSQL</li>
-                    <li>MongoDB</li>
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="mb-2 font-mono text-sm">Tools:</h4>
-                  <ul className="list-inside list-disc text-sm text-gray-700 dark:text-gray-300">
-                    <li>Git</li>
-                    <li>VS Code</li>
-                    <li>Docker</li>
-                  </ul>
-                </div>
-              </div>
+      <Card className={cn(cardClassName, 'h-full')}>
+        <CardHeader>
+          <CardTitle>./skills.json</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-2 gap-4 overflow-hidden">
+            <div>
+              <h4 className="mb-2 font-mono text-sm">Frontend:</h4>
+              <ul className="list-inside list-disc text-sm text-gray-700 dark:text-gray-300">
+                <li>React</li>
+                <li>Next.js</li>
+                <li>TypeScript</li>
+                <li>Tailwind CSS</li>
+              </ul>
             </div>
-          </CardContent>
-        </Card>
-      </div>
+            <div>
+              <h4 className="mb-2 font-mono text-sm">Backend:</h4>
+              <ul className="list-inside list-disc text-sm text-gray-700 dark:text-gray-300">
+                <li>Express</li>
+                <li>NestJS</li>
+                <li>FastAPI</li>
+                <li>PostgreSQL</li>
+                <li>MongoDB</li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="mb-2 font-mono text-sm">Tools:</h4>
+              <ul className="list-inside list-disc text-sm text-gray-700 dark:text-gray-300">
+                <li>Git</li>
+                <li>VS Code</li>
+                <li>Docker</li>
+              </ul>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
 
       {/* GitHub Statistics Card */}
-      <div className="transition-all duration-300 ease-out">
-        <Card className={cn(cardClassName, 'h-full')}>
-          <CardHeader>
-            <CardTitle>./github_stats.json</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <AnimatePresence mode="wait">
-              {githubLoading ? (
-                <motion.div
-                  key="loading"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  className="space-y-6"
-                >
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <div key={i} className="flex justify-between">
-                      <Skeleton className="h-4 w-32" />
-                      <Skeleton className="h-4 w-16" />
-                    </div>
-                  ))}
-                </motion.div>
-              ) : githubError ? (
-                <motion.div
-                  key="error"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  className="flex justify-center py-4"
-                >
-                  <span className="text-red-500">
-                    Failed to load GitHub stats
-                  </span>
-                </motion.div>
-              ) : (
-                <motion.div
-                  variants={commonVariants}
-                  initial="hidden"
-                  animate="visible"
-                  className="space-y-2"
-                >
-                  {githubError ? (
-                    <div className="flex justify-center py-4">
-                      <span className="text-red-500">
-                        Failed to load GitHub stats
-                      </span>
-                    </div>
-                  ) : !githubStats ? (
-                    <div className="flex justify-center py-4">
-                      <span className="text-gray-400">No data available</span>
-                    </div>
-                  ) : (
-                    githubStats && (
-                      <>
-                        {[
-                          {
-                            label: 'Total Stars',
-                            value: githubStats.totalStars,
-                          },
-                          {
-                            label: 'Total Commits',
-                            value: githubStats.totalCommits,
-                          },
-                          {
-                            label: 'Total PRs',
-                            value: githubStats.totalPRs,
-                          },
-                          {
-                            label: 'Total Issues',
-                            value: githubStats.totalIssues,
-                          },
-                          {
-                            label: 'Contributed to (last year)',
-                            value: `${githubStats.contributedTo}`,
-                          },
-                        ].map((stat, index) => (
-                          <motion.div
-                            key={stat.label + index}
-                            variants={commonVariants}
-                            className="flex items-center justify-between"
-                          >
-                            <span className="w-32 font-mono text-sm text-gray-600 dark:text-gray-400">
-                              {stat.label}
-                            </span>
-                            <span className="font-mono text-xl text-pink-500 dark:text-cyan-500">
-                              {stat.value}
-                            </span>
-                          </motion.div>
-                        ))}
-                      </>
-                    )
-                  )}
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </CardContent>
-        </Card>
-      </div>
-      <div className="transition-all duration-300 ease-out md:col-span-2 lg:col-span-1">
+      <Card className={cn(cardClassName, 'h-full')}>
+        <CardHeader>
+          <CardTitle>./github_stats.json</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <AnimatePresence mode="wait">
+            {githubLoading ? (
+              <motion.div
+                key="loading"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="space-y-6"
+              >
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <div key={i} className="flex justify-between">
+                    <Skeleton className="h-4 w-32" />
+                    <Skeleton className="h-4 w-16" />
+                  </div>
+                ))}
+              </motion.div>
+            ) : githubError ? (
+              <motion.div
+                key="error"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="flex justify-center py-4"
+              >
+                <span className="text-red-500">
+                  Failed to load GitHub stats
+                </span>
+              </motion.div>
+            ) : (
+              <motion.div
+                variants={commonVariants}
+                initial="hidden"
+                animate="visible"
+                className="space-y-2"
+              >
+                {githubError ? (
+                  <div className="flex justify-center py-4">
+                    <span className="text-red-500">
+                      Failed to load GitHub stats
+                    </span>
+                  </div>
+                ) : !githubStats ? (
+                  <div className="flex justify-center py-4">
+                    <span className="text-gray-400">No data available</span>
+                  </div>
+                ) : (
+                  githubStats && (
+                    <>
+                      {[
+                        {
+                          label: 'Total Stars',
+                          value: githubStats.totalStars,
+                        },
+                        {
+                          label: 'Total Commits',
+                          value: githubStats.totalCommits,
+                        },
+                        {
+                          label: 'Total PRs',
+                          value: githubStats.totalPRs,
+                        },
+                        {
+                          label: 'Total Issues',
+                          value: githubStats.totalIssues,
+                        },
+                        {
+                          label: 'Contributed to (last year)',
+                          value: `${githubStats.contributedTo}`,
+                        },
+                      ].map((stat, index) => (
+                        <motion.div
+                          key={stat.label + index}
+                          variants={commonVariants}
+                          className="flex items-center justify-between"
+                        >
+                          <span className="w-32 font-mono text-sm text-gray-600 dark:text-gray-400">
+                            {stat.label}
+                          </span>
+                          <span className="font-mono text-xl text-pink-500 dark:text-cyan-500">
+                            {stat.value}
+                          </span>
+                        </motion.div>
+                      ))}
+                    </>
+                  )
+                )}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </CardContent>
+      </Card>
+
+      <div className="md:col-span-2 lg:col-span-1">
         {/* WakaTime Card */}
         <Card className={cn(cardClassName, 'h-full')}>
-          <CardHeader className="pb-2">
+          <CardHeader>
             <CardTitle>./coding_time.json</CardTitle>
           </CardHeader>
           <CardContent className="flex-1 pt-0">

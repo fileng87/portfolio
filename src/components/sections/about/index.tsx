@@ -8,30 +8,38 @@ import { Terminal } from 'lucide-react';
 import { fetchGitHubStats, fetchWakaTimeStats } from './api';
 import { PersonalInfoCards } from './personal-info-card';
 import { StatsCards } from './stats-cards';
-import { commonVariants, containerVariants } from './variants';
+import { commonVariants } from './variants';
+
+const useGitHubStats = (username: string) => {
+  return useQuery({
+    queryKey: ['githubStats', username],
+    queryFn: () => fetchGitHubStats(username),
+    staleTime: 1000 * 60 * 5,
+    retry: 3,
+  });
+};
+
+const useWakaTimeStats = (username: string) => {
+  return useQuery({
+    queryKey: ['wakaTime', username],
+    queryFn: () => fetchWakaTimeStats(username),
+    staleTime: 1000 * 60 * 5,
+    retry: 3,
+  });
+};
 
 export default function About() {
   const {
     data: githubStats,
     isLoading: githubLoading,
     error: githubError,
-  } = useQuery({
-    queryKey: ['githubStats', 'fileng87'],
-    queryFn: () => fetchGitHubStats('fileng87'),
-    staleTime: 1000 * 60 * 5,
-    retry: 3,
-  });
+  } = useGitHubStats('fileng87');
 
   const {
     data: wakaStats,
     isLoading: wakaLoading,
     error: wakaError,
-  } = useQuery({
-    queryKey: ['wakaTime', 'fileng87'],
-    queryFn: () => fetchWakaTimeStats('fileng87'),
-    staleTime: 1000 * 60 * 5,
-    retry: 3,
-  });
+  } = useWakaTimeStats('fileng87');
 
   const cardClassName =
     'relative border-pink-300/50 dark:border-cyan-900/50 bg-white/10 dark:bg-gray-800/10 backdrop-blur-sm shadow-[0_0_15px_rgba(0,0,0,0.1)] dark:shadow-[0_0_15px_rgba(0,0,0,0.3)]';
@@ -40,10 +48,19 @@ export default function About() {
     <div className="relative flex items-center justify-center overflow-hidden pt-header">
       <div className="container relative mx-auto px-4 py-16">
         <motion.div
-          variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
+          viewport={{
+            margin: '-10%',
+            amount: 0.1,
+          }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: { staggerChildren: 0.1 },
+            },
+          }}
           className="mx-auto max-w-5xl space-y-12"
         >
           {/* Title */}
