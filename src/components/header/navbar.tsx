@@ -57,9 +57,10 @@ const socialLinks: { title: string; url: string; icon: JSX.Element }[] = [
 
 interface NavbarProps {
   mobile?: boolean;
+  onLinkClick?: () => void; // 添加這個屬性
 }
 
-export default function Navbar({ mobile }: NavbarProps) {
+export default function Navbar({ mobile, onLinkClick }: NavbarProps) {
   return (
     <NavigationMenu
       className={cn(
@@ -76,7 +77,11 @@ export default function Navbar({ mobile }: NavbarProps) {
         )}
       >
         {navLinks.map(({ title, url }) => (
-          <NavigationMenuItem key={title} className={cn(mobile && 'w-full')}>
+          <NavigationMenuItem
+            key={title}
+            className={cn(mobile && 'w-full')}
+            onClick={mobile ? onLinkClick : undefined}
+          >
             <Link href={url} legacyBehavior passHref>
               <NavigationMenuLink
                 className={cn(
@@ -113,6 +118,7 @@ export default function Navbar({ mobile }: NavbarProps) {
                           href={url}
                           target="_blank"
                           rel="noopener noreferrer"
+                          onClick={onLinkClick} // 添加點擊事件處理
                           className={`flex w-full items-center gap-2 !rounded-lg !bg-transparent px-3 py-2 transition-colors hover:!bg-pink-300/10 focus:!bg-transparent active:!bg-pink-300/20 dark:hover:!bg-cyan-900/30 dark:active:!bg-cyan-900/50`}
                         >
                           {icon}
