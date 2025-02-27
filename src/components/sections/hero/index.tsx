@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 
+import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
@@ -11,24 +12,7 @@ import { RotatingEmoji } from './rotatingEmoji';
 export default function Hero() {
   const [isAnimating, setAnimating] = useState(true);
 
-  const mouseVariants = {
-    hover: {
-      scale: 1.05,
-    },
-    tap: { scale: 0.95 },
-  };
-
-  const wheelVariants = {
-    hover: {
-      y: 0,
-      transition: { duration: 0.3 },
-    },
-    tap: {
-      y: 2,
-      transition: { duration: 0.3 },
-    },
-  };
-
+  // 保留文字排版相關的動畫配置
   const lineVariants = {
     initial: { width: 0, opacity: 0 },
     animate: {
@@ -58,6 +42,14 @@ export default function Hero() {
     },
   };
 
+  const springTransition = {
+    type: 'spring',
+    stiffness: 70,
+    damping: 15,
+    mass: 1.8,
+    velocity: 0.3,
+  };
+
   return (
     <div className="relative flex h-screen flex-col items-center justify-center space-y-4 pt-header">
       <motion.h1
@@ -71,39 +63,22 @@ export default function Hero() {
           initial="initial"
           animate={isAnimating ? 'initial' : 'animate'}
           variants={lineVariants}
-          style={{ transformOrigin: 'left' }} // 改為從左邊開始
+          style={{ transformOrigin: 'left' }}
           className="shadow-glow absolute -left-20 -top-8 hidden h-[2px] bg-pink-300 dark:bg-cyan-500 lg:block"
         />
+
+        {/* 保留文字排版動畫 */}
         <motion.div
           className="flex flex-wrap items-center justify-center gap-4 font-mono lg:gap-8"
           layout
-          transition={{
-            type: 'spring',
-            stiffness: 70, // 降低彈性強度，讓動作更慢
-            damping: 15, // 降低阻尼，增加柔順度
-            mass: 1.8, // 增加質量，使移動更慢更平滑
-            velocity: 0.3, // 降低初始速度
-          }}
+          transition={springTransition}
         >
-          <motion.div
-            layout
-            transition={{
-              type: 'spring',
-              stiffness: 70,
-              damping: 15,
-              mass: 1.8,
-              velocity: 0.3,
-            }}
-          >
+          <motion.div layout transition={springTransition}>
             <TextScramble
               segments={[{ text: 'JUST CODE FOR FUN', duration: 2000 }]}
               className="relative whitespace-nowrap"
-              onAnimationStart={() => {
-                setAnimating(true);
-              }}
-              onAnimationEnd={() => {
-                setAnimating(false);
-              }}
+              onAnimationStart={() => setAnimating(true)}
+              onAnimationEnd={() => setAnimating(false)}
               variants={glitchAnimation}
               animate="animate"
               renderText={(text) =>
@@ -134,65 +109,43 @@ export default function Hero() {
               initial={{ opacity: 0, x: 40 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{
-                opacity: { duration: 1.2 }, // 延長透明度過渡時間
-                x: { duration: 0.8, ease: 'easeOut' }, // 延長位移時間
-                layout: {
-                  type: 'spring',
-                  stiffness: 70,
-                  damping: 15,
-                  mass: 1.8,
-                  velocity: 0.3,
-                },
+                opacity: { duration: 1.2 },
+                x: { duration: 0.8, ease: 'easeOut' },
+                layout: springTransition,
               }}
             >
               <RotatingEmoji emojis={['🍍', '😀', '💀']} interval={3000} />
             </motion.div>
           )}
         </motion.div>
+
         {/* 右下角線條 */}
         <motion.div
           initial="initial"
           animate={isAnimating ? 'initial' : 'animate'}
           variants={lineVariants}
-          style={{ transformOrigin: 'right' }} // 改為從右邊開始
+          style={{ transformOrigin: 'right' }}
           className="shadow-glow absolute -bottom-8 -right-20 hidden h-[2px] bg-pink-300 dark:bg-cyan-500 lg:block"
         />
       </motion.h1>
 
-      {!isAnimating && (
-        <motion.span
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="translate-y-8 font-mono text-base text-gray-600 dark:text-gray-400"
-        >
-          Ctrl+C Ctrl+V Developer
-        </motion.span>
-      )}
+      {/* Subtitle */}
+      <div
+        className={cn(
+          'font-mono text-base text-gray-600 dark:text-gray-400',
+          'transform transition-all duration-500 ease-out',
+          !isAnimating ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+        )}
+      >
+        Ctrl+C Ctrl+V Developer
+      </div>
 
+      {/* 滾動指示器改用 Tailwind */}
       <div className="absolute bottom-14">
         <Link href="#about">
-          <motion.div
-            className="flex h-10 w-7 cursor-pointer justify-center rounded-full border-2 border-black p-[0.3rem] dark:border-gray-300"
-            whileHover="hover"
-            whileTap="tap"
-            variants={mouseVariants}
-          >
-            <motion.div
-              className="h-[0.4rem] w-1 rounded-full bg-black dark:bg-gray-300"
-              animate={{
-                y: [0, 4, 0],
-              }}
-              transition={{
-                duration: 1.5,
-                times: [0, 0.3, 1],
-                ease: ['easeIn', 'easeOut'],
-                repeat: Infinity,
-                repeatDelay: 0.2,
-              }}
-              variants={wheelVariants}
-            />
-          </motion.div>
+          <div className="group flex h-10 w-7 cursor-pointer justify-center rounded-full border-2 border-black p-[0.3rem] transition-transform duration-200 hover:scale-105 active:scale-95 dark:border-gray-300">
+            <div className="h-[0.4rem] w-1 animate-bounce rounded-full bg-black transition-transform duration-200 group-hover:translate-y-0 group-active:translate-y-0.5 dark:bg-gray-300" />
+          </div>
         </Link>
       </div>
     </div>

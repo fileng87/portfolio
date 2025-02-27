@@ -92,12 +92,33 @@ export default {
             height: '0',
           },
         },
+        'pulse-slow': {
+          '0%, 100%': {
+            transform: 'scale(1)',
+            opacity: '0.7',
+          },
+          '50%': {
+            transform: 'scale(1.2)',
+            opacity: '0.9',
+          },
+        },
+        rain: {
+          '0%': { transform: 'translateY(-100%)' },
+          '100%': { transform: 'translateY(200%)' },
+        },
+        float: {
+          '0%': { transform: 'translateY(0)' },
+          '100%': { transform: 'translateY(-140%)' }, // Increase this value to ensure bubbles move up enough to be visible
+        },
       },
       animation: {
         cursor: 'cursor 1s linear infinite',
         marquee: 'marquee 20s linear infinite',
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        'pulse-slow': 'pulse-slow 10s ease-in-out infinite',
+        rain: 'rain 5s linear infinite',
+        float: 'float 6s linear infinite',
       },
       gridTemplateColumns: {
         '14': 'repeat(14, minmax(0, 1fr))',

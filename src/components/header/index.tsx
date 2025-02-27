@@ -3,15 +3,12 @@
 import { useState } from 'react';
 
 import { cn } from '@/lib/utils';
-import { AnimatePresence, motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
 
 import { ModeToggle } from '../modeToggle';
 import { Button } from '../ui/button';
 import Navbar from './navbar';
-
-// 确保导入cn函数
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -52,13 +49,14 @@ export default function Header() {
             )}
             onClick={() => setIsOpen(!isOpen)}
           >
-            <motion.div
-              initial={false}
-              animate={{ rotate: isOpen ? 90 : 0 }}
-              transition={{ duration: 0.2 }}
+            <div
+              className={cn(
+                'transition-transform duration-200',
+                isOpen ? 'rotate-90' : 'rotate-0'
+              )}
             >
               {isOpen ? <X className="size-6" /> : <Menu className="size-6" />}
-            </motion.div>
+            </div>
           </Button>
         </div>
 
@@ -69,32 +67,26 @@ export default function Header() {
       </div>
 
       {/* Mobile Menu */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.2, ease: 'easeInOut' }}
-            className={cn(
-              'absolute left-0 right-0 top-[5rem] md:hidden',
-              'backdrop-blur-md',
-              'overflow-hidden',
-              'border-t-[1px] border-pink-300 dark:border-cyan-950'
-            )}
-          >
-            <motion.div
-              initial={{ y: -20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -20, opacity: 0 }}
-              transition={{ delay: 0.1 }}
-              className={cn('px-10 py-8', 'bg-pink-200/80 dark:bg-black/80')}
-            >
-              <Navbar mobile />
-            </motion.div>
-          </motion.div>
+      <div
+        className={cn(
+          'absolute left-0 right-0 top-[5rem] md:hidden',
+          'backdrop-blur-md overflow-hidden',
+          'border-t-[1px] border-pink-300 dark:border-cyan-950',
+          'transition-all duration-200 ease-in-out',
+          isOpen ? 'opacity-100 h-auto' : 'opacity-0 h-0'
         )}
-      </AnimatePresence>
+      >
+        <div
+          className={cn(
+            'px-10 py-8',
+            'bg-pink-200/80 dark:bg-black/80',
+            'transition-all duration-200',
+            isOpen ? 'translate-y-0 opacity-100' : '-translate-y-5 opacity-0'
+          )}
+        >
+          <Navbar mobile />
+        </div>
+      </div>
     </header>
   );
 }

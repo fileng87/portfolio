@@ -3,32 +3,40 @@ export const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.05, // 減少間隔時間
+      staggerChildren: 0.1,
     },
   },
 };
 
 export const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 10 },
   visible: {
     opacity: 1,
     y: 0,
+    transition: {
+      duration: 0.2,
+    },
   },
 };
 
 export const cardVariants = {
   hidden: {
     opacity: 0,
-    y: 20,
-    scale: 0.98, // 減少縮放範圍
+    y: 10,
   },
   visible: {
     opacity: 1,
     y: 0,
-    scale: 1,
     transition: {
-      duration: 0.3, // 減少動畫時間
-      ease: 'easeOut',
+      duration: 0.2,
+      ease: [0.4, 0, 0.2, 1], // 使用更平滑的緩動曲線
+    },
+  },
+  hover: {
+    scale: 1.01,
+    transition: {
+      duration: 0.2,
+      ease: [0.4, 0, 0.2, 1],
     },
   },
 };

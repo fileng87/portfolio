@@ -10,7 +10,7 @@ import { useTheme } from 'next-themes';
 import { containerVariants, itemVariants } from './variants';
 
 export default function Guestbook() {
-  const { theme } = useTheme();
+  const { resolvedTheme } = useTheme();
 
   return (
     <div className="relative flex items-center justify-center overflow-hidden pt-header">
@@ -56,7 +56,7 @@ export default function Guestbook() {
                 lang="zh-TW"
                 loading="lazy"
                 theme={`${process.env.NEXT_PUBLIC_BASE_URL}/giscus/${
-                  theme == 'dark' ? 'dark' : 'light'
+                  resolvedTheme == 'dark' ? 'dark' : 'light'
                 }.css`}
               />
             </CardContent>
