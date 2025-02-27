@@ -131,6 +131,7 @@ export default function Hero() {
                 x: { duration: 0.8, ease: 'easeOut' },
                 layout: springTransition,
               }}
+              className="flex items-center"
             >
               <RotatingEmoji emojis={['🍍', '😀', '💀']} interval={3000} />
             </motion.div>
