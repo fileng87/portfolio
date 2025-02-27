@@ -41,7 +41,7 @@ export default function Footer() {
               WenNya
             </Link>
             <p className="mt-2 text-sm text-muted-foreground">
-              © {currentYear} All rights reserved
+              © {currentYear} LeNg87 - Just don’t sell my stuff...
             </p>
           </div>
 
