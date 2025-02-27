@@ -60,7 +60,7 @@ export default function Guestbook() {
                   reactionsEnabled="1"
                   emitMetadata="0"
                   inputPosition="top"
-                  lang="zh-TW"
+                  lang="en"
                   loading="lazy"
                   theme={`${process.env.NEXT_PUBLIC_BASE_URL}/giscus/${
                     resolvedTheme == 'dark' ? 'dark' : 'light'
