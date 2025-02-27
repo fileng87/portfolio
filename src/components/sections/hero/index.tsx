@@ -50,6 +50,24 @@ export default function Hero() {
     velocity: 0.3,
   };
 
+  const mouseVariants = {
+    hover: {
+      scale: 1.05,
+    },
+    tap: { scale: 0.95 },
+  };
+
+  const wheelVariants = {
+    hover: {
+      y: 0,
+      transition: { duration: 0.3 },
+    },
+    tap: {
+      y: 2,
+      transition: { duration: 0.3 },
+    },
+  };
+
   return (
     <div className="relative flex h-screen flex-col items-center justify-center space-y-4 pt-header">
       <motion.h1
@@ -143,9 +161,27 @@ export default function Hero() {
       {/* 滾動指示器改用 Tailwind */}
       <div className="absolute bottom-14">
         <Link href="#about">
-          <div className="group flex h-10 w-7 cursor-pointer justify-center rounded-full border-2 border-black p-[0.3rem] transition-transform duration-200 hover:scale-105 active:scale-95 dark:border-gray-300">
-            <div className="h-[0.4rem] w-1 animate-bounce rounded-full bg-black transition-transform duration-200 group-hover:translate-y-0 group-active:translate-y-0.5 dark:bg-gray-300" />
-          </div>
+          <motion.div
+            className="flex h-10 w-7 cursor-pointer justify-center rounded-full border-2 border-black p-[0.3rem] dark:border-gray-300"
+            whileHover="hover"
+            whileTap="tap"
+            variants={mouseVariants}
+          >
+            <motion.div
+              className="h-[0.4rem] w-1 rounded-full bg-black dark:bg-gray-300"
+              animate={{
+                y: [0, 4, 0],
+              }}
+              transition={{
+                duration: 1.5,
+                times: [0, 0.3, 1],
+                ease: ['easeIn', 'easeOut'],
+                repeat: Infinity,
+                repeatDelay: 0.2,
+              }}
+              variants={wheelVariants}
+            />
+          </motion.div>
         </Link>
       </div>
     </div>
