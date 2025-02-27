@@ -38,7 +38,7 @@ export function StatsCards({
       {/* Skills Card */}
       <Card className={cn(cardClassName, 'h-full')}>
         <CardHeader>
-          <CardTitle>./skills.json</CardTitle>
+          <CardTitle>./skills.md</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-2 gap-4 overflow-hidden">
@@ -76,7 +76,7 @@ export function StatsCards({
       {/* GitHub Statistics Card */}
       <Card className={cn(cardClassName, 'h-full')}>
         <CardHeader>
-          <CardTitle>./github_stats.json</CardTitle>
+          <CardTitle>./github_stats.md</CardTitle>
         </CardHeader>
         <CardContent>
           <AnimatePresence mode="wait">
@@ -175,7 +175,7 @@ export function StatsCards({
         {/* WakaTime Card */}
         <Card className={cn(cardClassName, 'h-full')}>
           <CardHeader>
-            <CardTitle>./coding_time.json</CardTitle>
+            <CardTitle>./coding_time.md</CardTitle>
           </CardHeader>
           <CardContent className="flex-1 pt-0">
             <AnimatePresence mode="wait">
