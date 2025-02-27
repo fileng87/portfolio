@@ -31,4 +31,11 @@ export const cardVariants = {
       ease: 'easeOut',
     },
   },
+  hover: {
+    scale: 1.02, // 增加縮放比例
+    transition: {
+      duration: 0.3, // 減少動畫時間
+      ease: 'easeOut',
+    },
+  },
 };

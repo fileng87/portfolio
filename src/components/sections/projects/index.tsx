@@ -11,6 +11,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
+import { cn } from '@/lib/utils';
 import { useQuery } from '@tanstack/react-query';
 import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Code2 } from 'lucide-react';
@@ -71,11 +72,15 @@ export default function Projects() {
     if (!repos) return null;
 
     return repos.map((repo, index) => (
-      <CarouselItem key={repo.name} className="pl-4 md:basis-1/2 lg:basis-1/3">
+      <CarouselItem
+        key={repo.name}
+        className={cn('pl-4 md:basis-1/2 lg:basis-1/3')}
+      >
         <motion.div
           variants={cardVariants}
           initial="hidden"
           whileInView="visible"
+          whileHover="hover"
           viewport={{
             once: true,
             margin: '-25px', // 減少margin值
@@ -94,6 +99,14 @@ export default function Projects() {
       </CarouselItem>
     ));
   }, [repos]);
+
+  const carouselButtonClass = cn(
+    'border-pink-300/50 bg-white/10 backdrop-blur-sm',
+    'transition-colors duration-200 ease-out',
+    'hover:bg-white/20 active:bg-white/30',
+    'dark:border-cyan-900/50 dark:bg-gray-800/10',
+    'dark:hover:bg-gray-800/20 dark:active:bg-gray-800/30'
+  );
 
   return (
     <div className="relative mb-20 flex items-center justify-center overflow-hidden pt-header">
@@ -126,15 +139,17 @@ export default function Projects() {
           >
             {isLoading ? (
               <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-                <div className="pl-4">
-                  <ProjectSkeleton />
-                </div>
-                <div className="hidden pl-4 md:block">
-                  <ProjectSkeleton />
-                </div>
-                <div className="hidden pl-4 lg:block">
-                  <ProjectSkeleton />
-                </div>
+                {[...Array(3)].map((_, i) => (
+                  <div
+                    key={i}
+                    className={cn('pl-4 transition-opacity duration-300', {
+                      'hidden md:block': i === 1,
+                      'hidden lg:block': i === 2,
+                    })}
+                  >
+                    <ProjectSkeleton />
+                  </div>
+                ))}
               </div>
             ) : (
               <Carousel
@@ -151,13 +166,13 @@ export default function Projects() {
                   {projectItems}
                 </CarouselContent>
                 <CarouselPrevious
-                  className="left-2 border-pink-300/50 bg-white/10 backdrop-blur-sm transition-colors hover:bg-white/20 dark:border-cyan-900/50 dark:bg-gray-800/10 dark:hover:bg-gray-800/20 lg:-left-12"
+                  className={cn(carouselButtonClass, 'left-2 lg:-left-12')}
                   variant="outline"
                 >
                   <ChevronLeft className="size-4 text-pink-500 dark:text-cyan-500" />
                 </CarouselPrevious>
                 <CarouselNext
-                  className="right-2 border-pink-300/50 bg-white/10 backdrop-blur-sm transition-colors hover:bg-white/20 dark:border-cyan-900/50 dark:bg-gray-800/10 dark:hover:bg-gray-800/20 lg:-right-12"
+                  className={cn(carouselButtonClass, 'right-2 lg:-right-12')}
                   variant="outline"
                 >
                   <ChevronRight className="size-4 text-pink-500 dark:text-cyan-500" />

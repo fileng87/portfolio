@@ -20,37 +20,25 @@ interface ProjectCardProps {
   className?: string;
 }
 
-const cardVariants = {
-  hidden: {
-    opacity: 0,
-    y: 20,
-    scale: 0.95,
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: {
-      duration: 0.5,
-      ease: 'easeOut',
-    },
-  },
-};
-
 export const ProjectCard = ({ repo, className }: ProjectCardProps) => {
   return (
     <motion.div
-      variants={cardVariants}
-      initial="hidden"
-      whileInView="visible"
+      initial={{ opacity: 0, y: 20, scale: 0.98 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: false, margin: '-100px' }}
+      transition={{
+        duration: 0.3,
+        ease: 'easeOut',
+      }}
       className="h-full"
     >
       <Card
         className={cn(
           className,
-          'relative border-pink-300/50 bg-white/10 shadow-[0_0_15px_rgba(0,0,0,0.1)] backdrop-blur-sm dark:border-cyan-900/50 dark:bg-gray-800/10 dark:shadow-[0_0_15px_rgba(0,0,0,0.3)]',
-          'flex h-full max-h-[28rem] min-h-[28rem] flex-col'
+          'relative border-pink-300/50 bg-white/10 backdrop-blur-sm dark:border-cyan-900/50 dark:bg-gray-800/10',
+          'shadow-[0_0_15px_rgba(0,0,0,0.1)] dark:shadow-[0_0_15px_rgba(0,0,0,0.3)]',
+          'flex h-full max-h-[28rem] min-h-[28rem] flex-col',
+          'transition-all duration-200 ease-out'
         )}
       >
         <CardHeader className="flex flex-none flex-row items-start justify-between space-y-0 pb-2">
@@ -185,7 +173,12 @@ export const ProjectCard = ({ repo, className }: ProjectCardProps) => {
             href={repo.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-pink-500 hover:underline dark:text-cyan-500"
+            className={cn(
+              'text-pink-500 dark:text-cyan-500',
+              'transition-all duration-200 ease-out',
+              'hover:text-pink-600 dark:hover:text-cyan-400',
+              'hover:scale-105'
+            )}
           >
             GitHub
           </a>
@@ -194,7 +187,13 @@ export const ProjectCard = ({ repo, className }: ProjectCardProps) => {
               href={repo.homepage}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-pink-500 hover:underline dark:text-cyan-500"
+              className={cn(
+                'flex items-center gap-2',
+                'text-pink-500 dark:text-cyan-500',
+                'transition-all duration-200 ease-out',
+                'hover:text-pink-600 dark:hover:text-cyan-400',
+                'hover:scale-105'
+              )}
             >
               <Globe className="size-4" />
               Live Demo
