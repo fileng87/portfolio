@@ -1,5 +1,3 @@
-'use client';
-
 interface MarqueeProps {
   text: string;
   className?: string;
