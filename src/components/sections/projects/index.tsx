@@ -13,13 +13,11 @@ import {
 } from '@/components/ui/carousel';
 import { cn } from '@/lib/utils';
 import { useQuery } from '@tanstack/react-query';
-import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Code2 } from 'lucide-react';
 
 import { fetchRepos } from './api';
 import { ProjectCard } from './project-card';
 import { ProjectSkeleton } from './project-skeleton';
-import { cardVariants, containerVariants, itemVariants } from './variants';
 
 export default function Projects() {
   const [api, setApi] = useState<CarouselApi>();
@@ -80,31 +78,14 @@ export default function Projects() {
   const projectItems = useMemo(() => {
     if (!repos) return null;
 
-    return repos.map((repo, index) => (
+    return repos.map((repo) => (
       <CarouselItem
         key={repo.name}
         className={cn('pl-4 md:basis-1/2 lg:basis-1/3')}
       >
-        <motion.div
-          variants={cardVariants}
-          initial="hidden"
-          whileInView="visible"
-          whileHover="hover"
-          viewport={{
-            once: true,
-            margin: '-25px', // 減少margin值
-            amount: 0.3, // 只需要顯示30%就觸發動畫
-          }}
-          custom={index}
-          transition={{
-            delay: Math.min(index * 0.3, 1.2), // 延遲時間加倍
-            duration: 1.2, // 動畫持續時間加長
-            ease: [0.16, 1, 0.3, 1], // 使用自定義的緩動曲線，讓動畫更平滑
-          }}
-          className="h-full"
-        >
+        <div className="h-full">
           <ProjectCard repo={repo} />
-        </motion.div>
+        </div>
       </CarouselItem>
     ));
   }, [repos]);
@@ -120,32 +101,17 @@ export default function Projects() {
   return (
     <div className="relative mb-20 flex items-center justify-center overflow-hidden pt-header">
       <div className="container relative mx-auto px-4 py-16">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{
-            once: true,
-            amount: 0.2, // 減少觸發閾值
-          }}
-          className="mx-auto max-w-5xl space-y-12"
-        >
-          <motion.div
-            variants={itemVariants}
-            className="flex items-center gap-4"
-          >
+        <div className="mx-auto max-w-5xl space-y-12">
+          <div className="flex items-center gap-4">
             <Code2 className="size-8 text-pink-500 dark:text-cyan-500" />
             <TextScramble
               segments={[{ text: '$ ls ./projects', duration: 1000 }]}
               className="font-mono text-4xl font-bold after:ml-2 after:animate-cursor after:content-['|']"
               animate="animate"
             />
-          </motion.div>
+          </div>
 
-          <motion.div
-            variants={itemVariants}
-            transition={{ duration: 0.3 }} // 添加過渡時間
-          >
+          <div>
             {isLoading ? (
               <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
                 {[...Array(3)].map((_, i) => (
@@ -190,8 +156,8 @@ export default function Projects() {
                 </CarouselNext>
               </Carousel>
             )}
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </div>
   );
