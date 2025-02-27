@@ -94,7 +94,7 @@ export default function Hero() {
           <motion.div layout transition={springTransition}>
             <TextScramble
               segments={[{ text: 'JUST CODE FOR FUN', duration: 2000 }]}
-              className="relative whitespace-nowrap"
+              className="relative"
               onAnimationStart={() => setAnimating(true)}
               onAnimationEnd={() => setAnimating(false)}
               variants={glitchAnimation}
@@ -150,6 +150,7 @@ export default function Hero() {
       {/* Subtitle */}
       <div
         className={cn(
+          'px-4 lg:px-0',
           'font-mono text-base text-gray-600 dark:text-gray-400',
           'transform transition-all duration-500 ease-out',
           !isAnimating ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
