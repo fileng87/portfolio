@@ -20,7 +20,12 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed z-50 w-screen">
+    <motion.header
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, ease: 'easeOut' }}
+      className="fixed z-50 w-screen"
+    >
       <div
         className={cn(
           'grid h-[5rem] grid-cols-3 items-center',
@@ -106,6 +111,6 @@ export default function Header() {
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </motion.header>
   );
 }

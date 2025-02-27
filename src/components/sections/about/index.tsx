@@ -5,10 +5,10 @@ import { useQuery } from '@tanstack/react-query';
 import { motion } from 'framer-motion';
 import { Terminal } from 'lucide-react';
 
+import { containerVariants, itemVariants } from '../variants';
 import { fetchGitHubStats, fetchWakaTimeStats } from './api';
 import { PersonalInfoCards } from './personal-info-card';
 import { StatsCards } from './stats-cards';
-import { commonVariants } from './variants';
 
 const useGitHubStats = (username: string) => {
   return useQuery({
@@ -54,18 +54,12 @@ export default function About() {
             margin: '-10%',
             amount: 0.1,
           }}
-          variants={{
-            hidden: { opacity: 0 },
-            visible: {
-              opacity: 1,
-              transition: { staggerChildren: 0.1 },
-            },
-          }}
+          variants={containerVariants}
           className="mx-auto max-w-5xl space-y-12"
         >
           {/* Title */}
           <motion.div
-            variants={commonVariants}
+            variants={itemVariants}
             className="flex items-center gap-4"
           >
             <Terminal className="size-8 text-pink-500 dark:text-cyan-500" />
@@ -77,7 +71,7 @@ export default function About() {
           </motion.div>
 
           {/* Content */}
-          <motion.div variants={commonVariants} className="space-y-4">
+          <motion.div variants={itemVariants} className="space-y-4">
             <PersonalInfoCards cardClassName={cardClassName} />
             <StatsCards
               cardClassName={cardClassName}

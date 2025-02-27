@@ -1,7 +1,10 @@
+'use client';
+
 import { FaGithub, FaYoutube } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 
 import { cn } from '@/lib/utils';
+import { motion } from 'framer-motion';
 import { Mail } from 'lucide-react';
 import Link from 'next/link';
 
@@ -33,7 +36,16 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="w-full bg-gradient-to-b from-transparent to-pink-200/50 py-6 backdrop-blur-sm dark:to-black/50 sm:py-8">
+    <motion.footer
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, ease: 'easeOut' }}
+      viewport={{
+        margin: '10%',
+        amount: 0.1,
+      }}
+      className="w-full bg-gradient-to-b from-transparent to-pink-200/50 py-6 backdrop-blur-sm dark:to-black/50 sm:py-8"
+    >
       <div className="container mx-auto px-3 sm:px-4 md:px-8 lg:px-12">
         {' '}
         {/* 修改 padding */}
@@ -69,7 +81,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
-    </footer>
+    </motion.footer>
   );
 }
 

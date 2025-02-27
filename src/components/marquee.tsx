@@ -1,3 +1,7 @@
+'use client';
+
+import { motion } from 'framer-motion';
+
 interface MarqueeProps {
   text: string;
   className?: string;
@@ -5,7 +9,23 @@ interface MarqueeProps {
 
 export function Marquee({ text, className }: MarqueeProps) {
   return (
-    <div className="relative overflow-x-hidden">
+    <motion.div
+      initial={{
+        opacity: 0,
+      }}
+      viewport={{
+        margin: '-15%',
+        amount: 0.1,
+      }}
+      whileInView={{
+        opacity: 1,
+      }}
+      transition={{
+        duration: 0.5,
+        ease: 'easeInOut',
+      }}
+      className="relative overflow-x-hidden"
+    >
       <div className="animate-marquee whitespace-nowrap py-20">
         {Array.from({ length: 4 }).map((_, i) => (
           <span
@@ -16,6 +36,6 @@ export function Marquee({ text, className }: MarqueeProps) {
           </span>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 }

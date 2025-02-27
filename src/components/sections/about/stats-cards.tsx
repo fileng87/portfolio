@@ -4,7 +4,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { cn, formatWakaTime } from '@/lib/utils';
 import { AnimatePresence, motion } from 'framer-motion';
 
-import { commonVariants } from './variants';
+import { itemVariants } from '../variants';
 
 interface GithubStatsData {
   totalStars: number;
@@ -109,7 +109,7 @@ export function StatsCards({
               </motion.div>
             ) : (
               <motion.div
-                variants={commonVariants}
+                variants={itemVariants}
                 initial="hidden"
                 animate="visible"
                 className="space-y-2"
@@ -151,7 +151,7 @@ export function StatsCards({
                       ].map((stat, index) => (
                         <motion.div
                           key={stat.label + index}
-                          variants={commonVariants}
+                          variants={itemVariants}
                           className="flex items-center justify-between"
                         >
                           <span className="w-32 font-mono text-sm text-gray-600 dark:text-gray-400">
@@ -208,7 +208,7 @@ export function StatsCards({
                 </motion.div>
               ) : (
                 <motion.div
-                  variants={commonVariants}
+                  variants={itemVariants}
                   initial="hidden"
                   animate="visible"
                   className="space-y-2"
@@ -227,7 +227,7 @@ export function StatsCards({
                     wakaStats && (
                       <>
                         <motion.div
-                          variants={commonVariants}
+                          variants={itemVariants}
                           className="flex items-center justify-between"
                         >
                           <span className="w-32 font-mono text-sm text-gray-600 dark:text-gray-400">
@@ -238,7 +238,7 @@ export function StatsCards({
                           </span>
                         </motion.div>
                         <motion.div
-                          variants={commonVariants}
+                          variants={itemVariants}
                           className="flex items-center justify-between"
                         >
                           <span className="w-32 font-mono text-sm text-gray-600 dark:text-gray-400">
@@ -251,7 +251,7 @@ export function StatsCards({
                           </span>
                         </motion.div>
                         <motion.div
-                          variants={commonVariants}
+                          variants={itemVariants}
                           className="flex items-center justify-between"
                         >
                           <span className="w-32 font-mono text-sm text-gray-600 dark:text-gray-400">
@@ -264,7 +264,7 @@ export function StatsCards({
                         {wakaStats.languages.slice(0, 3).map((lang, index) => (
                           <motion.div
                             key={lang.name + index}
-                            variants={commonVariants}
+                            variants={itemVariants}
                             className="flex items-center justify-between"
                           >
                             <span className="w-32 font-mono text-sm text-gray-600 dark:text-gray-400">
