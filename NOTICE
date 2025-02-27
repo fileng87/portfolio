@@ -1,0 +1,8 @@
+This project includes software developed by various contributors.
+
+For a complete list of dependencies and their licenses, please run:
+npx license-checker --summary
+
+Notable license requirements:
+1. Apache-2.0 licensed packages require maintaining their copyright notices
+2. CC-BY-4.0 licensed content requires attribution to the original author
