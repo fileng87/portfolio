@@ -32,39 +32,48 @@ export default function Projects() {
     gcTime: 1000 * 60 * 30, // 30 minutes
   });
 
-  // Handle auto-play
+  // 優化自動播放邏輯
   useEffect(() => {
     if (!api || !repos || !autoPlay) return;
 
     const intervalId = setInterval(() => {
-      api.scrollNext();
-    }, 3000);
+      requestAnimationFrame(() => {
+        api.scrollNext();
+      });
+    }, 4000); // 增加間隔時間到4秒
 
     return () => clearInterval(intervalId);
   }, [api, repos, autoPlay]);
 
-  // Handle user interaction
+  // 優化觸摸事件處理
   useEffect(() => {
     if (!api) return;
 
+    const element = api.rootNode();
+    let touchTimeout: NodeJS.Timeout;
+
     const onMouseEnter = () => setAutoPlay(false);
     const onMouseLeave = () => setAutoPlay(true);
-    const onTouchStart = () => setAutoPlay(false);
+    const onTouchStart = () => {
+      setAutoPlay(false);
+      clearTimeout(touchTimeout);
+    };
     const onTouchEnd = () => {
-      setTimeout(() => setAutoPlay(true), 5); // Resume after 2 seconds
+      clearTimeout(touchTimeout);
+      touchTimeout = setTimeout(() => setAutoPlay(true), 2000); // 增加延遲時間
     };
 
-    const element = api.rootNode();
-    element.addEventListener('mouseenter', onMouseEnter);
-    element.addEventListener('mouseleave', onMouseLeave);
-    element.addEventListener('touchstart', onTouchStart);
-    element.addEventListener('touchend', onTouchEnd);
+    element.addEventListener('mouseenter', onMouseEnter, { passive: true });
+    element.addEventListener('mouseleave', onMouseLeave, { passive: true });
+    element.addEventListener('touchstart', onTouchStart, { passive: true });
+    element.addEventListener('touchend', onTouchEnd, { passive: true });
 
     return () => {
       element.removeEventListener('mouseenter', onMouseEnter);
       element.removeEventListener('mouseleave', onMouseLeave);
       element.removeEventListener('touchstart', onTouchStart);
       element.removeEventListener('touchend', onTouchEnd);
+      clearTimeout(touchTimeout);
     };
   }, [api]);
 
@@ -156,10 +165,12 @@ export default function Projects() {
                 setApi={setApi}
                 className="w-full"
                 opts={{
-                  dragFree: true,
-                  skipSnaps: true,
+                  dragFree: false,
+                  skipSnaps: false,
                   containScroll: 'trimSnaps',
-                  loop: true, // Enable infinite loop
+                  loop: true,
+                  inViewThreshold: 0.5, // 添加視圖閾值
+                  dragThreshold: 10, // 增加拖動閾值
                 }}
               >
                 <CarouselContent className="-ml-4 flex h-full px-2 py-4">
