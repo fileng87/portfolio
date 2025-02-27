@@ -103,8 +103,79 @@ main {
   --color-social-reaction-bg-reacted-hover: var(--color-scale-blue-8);
 }
 
-.gsc-comments {
+.gsc-right-header {
+  border-radius: var(--radius, 0.5rem) !important;
+}
+
+.gsc-right-header li[aria-current='true'] {
   border-color: rgba(6, 182, 212, 0.5) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+  border-radius: var(--radius, 0.5rem) !important;
+}
+
+.gsc-comment-box {
+  border: 1px solid rgba(6, 182, 212, 0.3) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+  border-radius: var(--radius, 0.5rem) !important;
+}
+
+.gsc-comment-box-textarea {
+  border: 1px solid rgba(6, 182, 212, 0.3) !important;
+  border-bottom: 1px dashed rgba(6, 182, 212, 0.3) !important;
+  border-radius: var(--radius, 0.5rem) var(--radius, 0.5rem) 0 0 !important;
+}
+
+.gsc-comment-box-textarea-extras {
+  border: 1px solid rgba(6, 182, 212, 0.3) !important;
+  border-top: none !important;
+  border-radius: 0 0 var(--radius, 0.5rem) var(--radius, 0.5rem) !important;
+}
+
+.gsc-reactions-button {
+  border: 1px solid rgba(6, 182, 212, 0.3) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+}
+
+.gsc-direct-reaction-buttons button {
+  border: 1px solid rgba(6, 182, 212, 0.3) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+}
+
+.gsc-comment-box-tabs {
+  border-bottom: 1px solid rgba(6, 182, 212, 0.3) !important;
+  padding-bottom: 0.5rem !important;
+}
+
+.gsc-comment > div {
+  border: 1px solid rgba(6, 182, 212, 0.3) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+  border-radius: var(--radius, 0.5rem) !important;
+}
+
+.gsc-comment-box-tabs button {
+  border: none !important;
+  selected: rgba(6, 182, 212, 0.3) !important;
+  border-radius: var(--radius, 999px) !important;
+}
+
+.gsc-comment-box-tabs button:hover {
+  background-color: rgba(6, 182, 212, 0.1) !important;
+}
+
+.gsc-reactions-popover {
+  backdrop-filter: blur(12px) !important;
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  border: 1px solid rgba(6, 182, 212, 0.3) !important;
+  border-radius: var(--radius, 0.5rem) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+}
+
+.gsc-reactions-popover::before {
+  border-color: rgba(6, 182, 212, 0.3) transparent !important;
+}
+
+.gsc-comment-box-buttons > a {
+  border-radius: var(--radius, 0.5rem) !important;
 }
 
 /* Loading animations */
