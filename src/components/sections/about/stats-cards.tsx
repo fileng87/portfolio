@@ -131,6 +131,7 @@ export function StatsCards({
                 <li>VS Code</li>
                 <li>Postman</li>
                 <li>Discord</li>
+                <li>Cursor</li>
               </ul>
             </div>
           </div>
