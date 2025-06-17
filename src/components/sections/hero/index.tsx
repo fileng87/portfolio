@@ -44,7 +44,7 @@ export default function Hero() {
   };
 
   const springTransition = {
-    type: 'spring',
+    type: 'spring' as const,
     stiffness: 70,
     damping: 15,
     mass: 1.8,
