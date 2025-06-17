@@ -36,7 +36,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="w-full overflow-hidden bg-gradient-to-b from-transparent to-pink-200/50 py-6 backdrop-blur-sm dark:to-black/50 sm:py-8">
+    <footer className="w-full overflow-hidden bg-linear-to-b from-transparent to-pink-200/50 py-6 backdrop-blur-xs dark:to-black/50 sm:py-8">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}

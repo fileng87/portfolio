@@ -43,9 +43,9 @@ export const ProjectCard = ({ repo, className }: ProjectCardProps) => {
       <Card
         className={cn(
           className,
-          'relative border-pink-300/50 bg-white/10 backdrop-blur-sm dark:border-cyan-900/50 dark:bg-gray-800/10',
+          'relative border-pink-300/50 bg-white/10 backdrop-blur-xs dark:border-cyan-900/50 dark:bg-gray-800/10',
           'shadow-[0_0_15px_rgba(0,0,0,0.1)] dark:shadow-[0_0_15px_rgba(0,0,0,0.3)]',
-          'flex h-full max-h-[28rem] min-h-[28rem] flex-col',
+          'flex h-full max-h-112 min-h-112 flex-col',
           'transform-gpu' // 使用 GPU 加速
         )}
       >
@@ -132,7 +132,7 @@ export const ProjectCard = ({ repo, className }: ProjectCardProps) => {
 
               {repo.languages && repo.languages.length > 0 ? (
                 <div className="flex w-full flex-col gap-1">
-                  <div className="flex h-2 w-full overflow-hidden rounded-full bg-gray-200/30 backdrop-blur-sm dark:bg-gray-700/30">
+                  <div className="flex h-2 w-full overflow-hidden rounded-full bg-gray-200/30 backdrop-blur-xs dark:bg-gray-700/30">
                     {repo.languages.map((lang, i) => (
                       <div
                         key={i}

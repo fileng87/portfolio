@@ -42,7 +42,7 @@ export default function About() {
   } = useWakaTimeStats('fileng87');
 
   const cardClassName =
-    'relative border-pink-300/50 dark:border-cyan-900/50 bg-white/10 dark:bg-gray-800/10 backdrop-blur-sm shadow-[0_0_15px_rgba(0,0,0,0.1)] dark:shadow-[0_0_15px_rgba(0,0,0,0.3)]';
+    'relative border-pink-300/50 dark:border-cyan-900/50 bg-white/10 dark:bg-gray-800/10 backdrop-blur-xs shadow-[0_0_15px_rgba(0,0,0,0.1)] dark:shadow-[0_0_15px_rgba(0,0,0,0.3)]';
 
   return (
     <div className="relative flex items-center justify-center overflow-hidden pt-header">

@@ -28,12 +28,12 @@ export default function Header() {
     >
       <div
         className={cn(
-          'grid h-[5rem] grid-cols-3 items-center',
+          'grid h-20 grid-cols-3 items-center',
           'px-10 md:px-20 lg:px-40',
           isOpen
             ? 'bg-pink-200/80 dark:bg-black/80'
-            : 'bg-gradient-to-t from-transparent via-pink-200/60 to-pink-200/80 dark:via-black/60 dark:to-black/80',
-          isOpen ? 'backdrop-blur-md' : 'backdrop-blur-sm',
+            : 'bg-linear-to-t from-transparent via-pink-200/60 to-pink-200/80 dark:via-black/60 dark:to-black/80',
+          isOpen ? 'backdrop-blur-md' : 'backdrop-blur-xs',
           'transition-colors duration-300' // 添加過渡效果
         )}
       >
@@ -56,9 +56,9 @@ export default function Header() {
             variant="ghost"
             size="icon"
             className={cn(
-              '!bg-transparent',
-              'hover:!bg-pink-300/10',
-              'dark:hover:!bg-cyan-900/20'
+              'bg-transparent!',
+              'hover:bg-pink-300/10!',
+              'dark:hover:bg-cyan-900/20!'
             )}
             onClick={() => setIsOpen(!isOpen)}
           >

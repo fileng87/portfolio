@@ -39,6 +39,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4.1.10",
     "@trivago/prettier-plugin-sort-imports": "^5.2.2",
     "@types/eslint-plugin-tailwindcss": "^3.17.0",
     "@types/md5": "^2.3.5",
@@ -53,8 +54,8 @@
     "lint-staged": "^15.4.3",
     "postcss": "^8",
     "prettier": "^3.5.2",
-    "prettier-plugin-tailwindcss": "^0.6.11",
-    "tailwindcss": "^3.4.1",
+    "prettier-plugin-tailwindcss": "^0.6.12",
+    "tailwindcss": "^4.1.10",
     "typescript": "^5"
   }
 }

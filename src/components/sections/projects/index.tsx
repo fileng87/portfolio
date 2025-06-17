@@ -93,7 +93,7 @@ export default function Projects() {
   }, [repos]);
 
   const carouselButtonClass = cn(
-    'border-pink-300/50 bg-white/10 backdrop-blur-sm',
+    'border-pink-300/50 bg-white/10 backdrop-blur-xs',
     'transition-colors duration-200 ease-out',
     'hover:bg-white/20 active:bg-white/30',
     'dark:border-cyan-900/50 dark:bg-gray-800/10',

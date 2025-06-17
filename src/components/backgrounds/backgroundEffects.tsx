@@ -76,15 +76,15 @@ export default function BackgroundEffects() {
       <div
         className={cn(
           'absolute bottom-[-20%] h-[60%] w-[150%]',
-          'bg-[radial-gradient(50%_100%_at_50%_100%,theme(colors.white/0.8)_0%,theme(colors.white/0.6)_30%,theme(colors.white/0.4)_50%,theme(colors.white/0.2)_70%,transparent_100%)]',
-          'dark:bg-[radial-gradient(50%_100%_at_50%_100%,theme(colors.blue.500/0.8)_0%,theme(colors.blue.500/0.6)_30%,theme(colors.blue.500/0.4)_50%,theme(colors.blue.500/0.2)_70%,transparent_100%)]',
+          'bg-[radial-gradient(50%_100%_at_50%_100%,--theme(--color-white/0.8)_0%,--theme(--color-white/0.6)_30%,--theme(--color-white/0.4)_50%,--theme(--color-white/0.2)_70%,transparent_100%)]',
+          'dark:bg-[radial-gradient(50%_100%_at_50%_100%,--theme(--color-blue-500/0.8)_0%,--theme(--color-blue-500/0.6)_30%,--theme(--color-blue-500/0.4)_50%,--theme(--color-blue-500/0.2)_70%,transparent_100%)]',
           'blur-[140px]',
           'animate-pulse-slow' // 自定義動畫類
         )}
       />
 
       {/* 背景漸變 */}
-      <div className="absolute inset-0 bg-gradient-to-t from-transparent via-pink-200/50 to-pink-200 opacity-80 transition-colors duration-300 dark:via-black/50 dark:to-black" />
+      <div className="absolute inset-0 bg-linear-to-t from-transparent via-pink-200/50 to-pink-200 opacity-80 transition-colors duration-300 dark:via-black/50 dark:to-black" />
 
       {/* 動態元素 - 雨滴和泡泡需要使用SVG動畫 */}
       <svg className="absolute inset-0 size-full">

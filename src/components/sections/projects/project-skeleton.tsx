@@ -16,8 +16,8 @@ export const ProjectSkeleton = ({ className }: ProjectSkeletonProps) => {
     <Card
       className={cn(
         className,
-        'relative border-pink-300/50 bg-white/10 shadow-[0_0_15px_rgba(0,0,0,0.1)] backdrop-blur-sm dark:border-cyan-900/50 dark:bg-gray-800/10 dark:shadow-[0_0_15px_rgba(0,0,0,0.3)]',
-        'flex h-full max-h-[28rem] min-h-[28rem] flex-col'
+        'relative border-pink-300/50 bg-white/10 shadow-[0_0_15px_rgba(0,0,0,0.1)] backdrop-blur-xs dark:border-cyan-900/50 dark:bg-gray-800/10 dark:shadow-[0_0_15px_rgba(0,0,0,0.3)]',
+        'flex h-full max-h-112 min-h-112 flex-col'
       )}
     >
       <CardHeader className="flex flex-none flex-row items-start justify-between space-y-0 pb-2">

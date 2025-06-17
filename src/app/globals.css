@@ -1,6 +1,167 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@plugin 'tailwindcss-animate';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --padding-header: 5rem;
+
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --color-chart-1: hsl(var(--chart-1));
+  --color-chart-2: hsl(var(--chart-2));
+  --color-chart-3: hsl(var(--chart-3));
+  --color-chart-4: hsl(var(--chart-4));
+  --color-chart-5: hsl(var(--chart-5));
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --animate-cursor: cursor 1s linear infinite;
+  --animate-marquee: marquee 20s linear infinite;
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-pulse-slow: pulse-slow 10s ease-in-out infinite;
+  --animate-rain: rain 5s linear infinite;
+  --animate-float: float 6s linear infinite;
+
+  --grid-template-columns-14: repeat(14, minmax(0, 1fr));
+
+  @keyframes cursor {
+    0%,
+    100% {
+      opacity: 100%;
+    }
+    50% {
+      opacity: 0%;
+    }
+  }
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-25%);
+    }
+  }
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+  @keyframes pulse-slow {
+    0%,
+    100% {
+      transform: scale(1);
+      opacity: 0.7;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 0.9;
+    }
+  }
+  @keyframes rain {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(200%);
+    }
+  }
+  @keyframes float {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-140%);
+    }
+  }
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@utility shadow-glow {
+  @apply shadow-[0_0_10px_var(--color-pink-200)];
+
+  .dark & {
+    @apply shadow-[0_0_10px_var(--color-cyan-500)];
+  }
+}
+
+@utility dark {
+  & .shadow-glow {
+    @apply shadow-[0_0_10px_var(--color-cyan-500)];
+  }
+}
+
+@utility bg-cyber {
+  background-image:
+    linear-gradient(0deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.7) 100%),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0%,
+      rgba(0, 255, 255, 0.1) 1px,
+      transparent 2px
+    );
+  background-size:
+    100% 100%,
+    100% 4px;
+}
 
 @layer base {
   :root {
@@ -111,29 +272,5 @@
   }
   body {
     @apply bg-background text-foreground;
-  }
-}
-
-@layer utilities {
-  .shadow-glow {
-    @apply shadow-[0_0_10px_theme(colors.pink.200)];
-  }
-
-  .dark .shadow-glow {
-    @apply shadow-[0_0_10px_theme(colors.cyan.500)];
-  }
-
-  .bg-cyber {
-    background-image:
-      linear-gradient(0deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.7) 100%),
-      repeating-linear-gradient(
-        0deg,
-        transparent 0%,
-        rgba(0, 255, 255, 0.1) 1px,
-        transparent 2px
-      );
-    background-size:
-      100% 100%,
-      100% 4px;
   }
 }

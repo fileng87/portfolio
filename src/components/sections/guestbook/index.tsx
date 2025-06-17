@@ -47,7 +47,7 @@ export default function Guestbook() {
           </motion.div>
 
           <motion.div variants={itemVariants}>
-            <Card className="border-pink-300/50 bg-white/10 backdrop-blur-sm dark:border-cyan-900/50 dark:bg-gray-800/10">
+            <Card className="border-pink-300/50 bg-white/10 backdrop-blur-xs dark:border-cyan-900/50 dark:bg-gray-800/10">
               <CardContent className="p-6">
                 <Giscus
                   id="comments"

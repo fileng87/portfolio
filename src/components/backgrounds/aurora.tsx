@@ -18,7 +18,7 @@ export default function AuroraBackground() {
           repeat: Infinity,
           ease: 'easeInOut',
         }}
-        className="absolute -left-40 -top-60 size-[800px] rounded-full bg-gradient-to-br from-pink-300/50 via-rose-300/50 to-purple-300/50 blur-[180px] dark:from-purple-600/50 dark:via-cyan-400/50 dark:to-emerald-400/50"
+        className="absolute -left-40 -top-60 size-[800px] rounded-full bg-linear-to-br from-pink-300/50 via-rose-300/50 to-purple-300/50 blur-[180px] dark:from-purple-600/50 dark:via-cyan-400/50 dark:to-emerald-400/50"
       />
       <motion.div
         initial={{ opacity: 0.5, scale: 0.8 }}
@@ -33,7 +33,7 @@ export default function AuroraBackground() {
           repeat: Infinity,
           ease: 'easeInOut',
         }}
-        className="absolute -left-60 -top-80 size-[1000px] rounded-full bg-gradient-to-r from-rose-300/50 via-fuchsia-400/50 to-violet-300/50 blur-[200px] dark:from-indigo-500/50 dark:via-purple-500/50 dark:to-pink-500/50"
+        className="absolute -left-60 -top-80 size-[1000px] rounded-full bg-linear-to-r from-rose-300/50 via-fuchsia-400/50 to-violet-300/50 blur-[200px] dark:from-indigo-500/50 dark:via-purple-500/50 dark:to-pink-500/50"
       />
       <div className="absolute inset-0 bg-white/15 backdrop-blur-[3px] dark:bg-[#0D0E13]/50" />
     </div>

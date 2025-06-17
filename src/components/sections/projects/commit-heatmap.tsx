@@ -57,8 +57,8 @@ export const CommitHeatmap = ({ activity }: CommitHeatmapProps) => {
               className={cn(
                 'stroke-pink-300/30 dark:stroke-cyan-800/10',
                 day.count > 0
-                  ? `fill-pink-500/40 dark:fill-cyan-500/50 ${isWeekend ? 'dark:!fill-pink-500/40 !fill-cyan-500/50' : ''}`
-                  : `fill-gray-300/20 dark:fill-gray-700/20 ${isWeekend ? '!fill-gray-900/20 dark:!fill-gray-100/20' : ''}`
+                  ? `fill-pink-500/40 dark:fill-cyan-500/50 ${isWeekend ? 'dark:fill-pink-500/40! fill-cyan-500/50!' : ''}`
+                  : `fill-gray-300/20 dark:fill-gray-700/20 ${isWeekend ? 'fill-gray-900/20! dark:fill-gray-100/20!' : ''}`
               )}
               style={{
                 fillOpacity: day.count > 0 ? 0.2 + intensity * 0.8 : 0.2,
