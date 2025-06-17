@@ -169,11 +169,15 @@ export async function GET() {
         openIssues: repo.openIssues.totalCount,
         totalCommits: repo.defaultBranchRef?.target.history.totalCount || 0,
         commitActivity,
-        languages: repo.languages.edges.map((edge) => ({
-          name: edge.node.name,
-          color: edge.node.color,
-          percentage: Math.round((edge.size / repo.languages.totalSize) * 100),
-        })),
+        languages: repo.languages.edges
+          .map((edge) => ({
+            name: edge.node.name,
+            color: edge.node.color,
+            percentage: Math.round(
+              (edge.size / repo.languages.totalSize) * 100
+            ),
+          }))
+          .sort((a, b) => b.percentage - a.percentage),
         topics: repo.repositoryTopics.nodes.map((node) => node.topic.name),
         ownerAvatar: user.avatarUrl,
         activityScore: last30DaysCommits * 2 + updateScore, // 活躍度分數
