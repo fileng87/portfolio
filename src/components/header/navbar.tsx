@@ -82,8 +82,9 @@ export default function Navbar({ mobile, onLinkClick }: NavbarProps) {
             className={cn(mobile && 'w-full')}
             onClick={mobile ? onLinkClick : undefined}
           >
-            <Link href={url} legacyBehavior passHref>
-              <NavigationMenuLink
+            <NavigationMenuLink asChild>
+              <Link
+                href={url}
                 className={cn(
                   navigationMenuTriggerStyle(),
                   'bg-transparent! transition-colors',
@@ -93,8 +94,8 @@ export default function Navbar({ mobile, onLinkClick }: NavbarProps) {
                 )}
               >
                 {title}
-              </NavigationMenuLink>
-            </Link>
+              </Link>
+            </NavigationMenuLink>
           </NavigationMenuItem>
         ))}
 
