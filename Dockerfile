@@ -22,7 +22,6 @@ COPY src ./src
 COPY public ./public
 COPY next.config.ts .
 COPY tsconfig.json .
-COPY tailwind.config.ts .
 COPY postcss.config.mjs .
 
 # Environment variables must be present at build time
