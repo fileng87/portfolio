@@ -51,11 +51,12 @@ export default function Guestbook() {
               <CardContent className="p-6">
                 <Giscus
                   id="comments"
-                  repo="fileng87/fileng87"
-                  repoId="R_kgDOGZvnlw"
+                  repo="fileng87/portfolio"
+                  repoId="R_kgDOITUl7w"
                   category="Announcements"
-                  categoryId="DIC_kwDOGZvnl84CYa4L"
-                  mapping="pathname"
+                  categoryId="DIC_kwDOITUl784CzDhA"
+                  mapping="number"
+                  term="21"
                   strict="0"
                   reactionsEnabled="1"
                   emitMetadata="0"
