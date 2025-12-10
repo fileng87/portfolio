@@ -7,7 +7,7 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
-import { formatDistanceToNow } from 'date-fns';
+import { format, formatDistanceToNow } from 'date-fns';
 import { motion } from 'framer-motion';
 import { AlertCircle, Clock, GitFork, Globe, Star } from 'lucide-react';
 import Image from 'next/image';
@@ -109,7 +109,7 @@ export const ProjectCard = ({ repo, className }: ProjectCardProps) => {
 
                 <div className="ml-auto flex items-center gap-1 text-xs text-gray-500">
                   <Clock className="size-3" />
-                  <span title={new Date(repo.updatedAt).toLocaleDateString()}>
+                  <span title={format(new Date(repo.updatedAt), 'PPpp')}>
                     {formatDistanceToNow(new Date(repo.updatedAt), {
                       addSuffix: true,
                     })}

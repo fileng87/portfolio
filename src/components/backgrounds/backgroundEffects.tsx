@@ -55,6 +55,7 @@ const generateBubble = (id: number): LightBubble => {
 
 export default function BackgroundEffects() {
   const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
   const [rainDrops, setRainDrops] = useState<RainDrop[]>([]);
   const [bubbles, setBubbles] = useState<LightBubble[]>([]);
@@ -62,6 +63,7 @@ export default function BackgroundEffects() {
   const totalBubbles = 25;
 
   useEffect(() => {
+    setMounted(true);
     setRainDrops(
       Array.from({ length: totalDrops }, (_, i) => generateRainDrop(i))
     );
@@ -87,46 +89,48 @@ export default function BackgroundEffects() {
       <div className="absolute inset-0 bg-linear-to-t from-transparent via-pink-200/50 to-pink-200 opacity-80 transition-colors duration-300 dark:via-black/50 dark:to-black" />
 
       {/* 動態元素 - 雨滴和泡泡需要使用SVG動畫 */}
-      <svg className="absolute inset-0 size-full">
-        {resolvedTheme === 'dark' // 使用 resolvedTheme 替代 theme
-          ? // Dark mode rain drops
-            rainDrops.map((drop) => (
-              <line
-                key={drop.id}
-                x1={`${drop.x}%`}
-                y1="-10%"
-                x2={`${drop.x}%`}
-                y2={`${drop.length}%`}
-                stroke="currentColor"
-                className={cn('text-cyan-400/20', `animate-rain`)}
-                strokeWidth="1"
-                style={{
-                  opacity: drop.opacity,
-                  animationDelay: `${drop.delay}s`,
-                  animationDuration: `${drop.duration}s`,
-                }}
-              />
-            ))
-          : // Light mode floating bubbles
-            bubbles.map((bubble) => (
-              <circle
-                key={bubble.id}
-                cx={`${bubble.x}%`}
-                cy="120%"
-                r={bubble.size}
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="0.5"
-                className={cn('text-pink-400/80', 'animate-float')}
-                style={{
-                  opacity: bubble.opacity,
-                  filter: 'blur(0.5px)',
-                  animationDelay: `${bubble.delay}s`,
-                  animationDuration: `${bubble.duration}s`,
-                }}
-              />
-            ))}
-      </svg>
+      {mounted && (
+        <svg className="absolute inset-0 size-full">
+          {resolvedTheme === 'dark' // 使用 resolvedTheme 替代 theme
+            ? // Dark mode rain drops
+              rainDrops.map((drop) => (
+                <line
+                  key={drop.id}
+                  x1={`${drop.x}%`}
+                  y1="-10%"
+                  x2={`${drop.x}%`}
+                  y2={`${drop.length}%`}
+                  stroke="currentColor"
+                  className={cn('text-cyan-400/20', `animate-rain`)}
+                  strokeWidth="1"
+                  style={{
+                    opacity: drop.opacity,
+                    animationDelay: `${drop.delay}s`,
+                    animationDuration: `${drop.duration}s`,
+                  }}
+                />
+              ))
+            : // Light mode floating bubbles
+              bubbles.map((bubble) => (
+                <circle
+                  key={bubble.id}
+                  cx={`${bubble.x}%`}
+                  cy="120%"
+                  r={bubble.size}
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="0.5"
+                  className={cn('text-pink-400/80', 'animate-float')}
+                  style={{
+                    opacity: bubble.opacity,
+                    filter: 'blur(0.5px)',
+                    animationDelay: `${bubble.delay}s`,
+                    animationDuration: `${bubble.duration}s`,
+                  }}
+                />
+              ))}
+        </svg>
+      )}
     </div>
   );
 }
