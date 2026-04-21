@@ -11,6 +11,9 @@ import { containerVariants, itemVariants } from '../variants';
 
 export default function Guestbook() {
   const { resolvedTheme } = useTheme();
+  const giscusTheme = `${process.env.NEXT_PUBLIC_GISCUS_THEME_BASE_URL!}/giscus/${
+    resolvedTheme === 'dark' ? 'dark' : 'light'
+  }.css`;
 
   return (
     <div className="relative flex items-center justify-center overflow-hidden pt-header">
@@ -51,21 +54,22 @@ export default function Guestbook() {
               <CardContent className="p-6">
                 <Giscus
                   id="comments"
-                  repo="fileng87/portfolio"
-                  repoId="R_kgDOITUl7w"
-                  category="Announcements"
-                  categoryId="DIC_kwDOITUl784CzDhA"
+                  repo={
+                    process.env
+                      .NEXT_PUBLIC_GISCUS_REPO! as `${string}/${string}`
+                  }
+                  repoId={process.env.NEXT_PUBLIC_GISCUS_REPO_ID!}
+                  category={process.env.NEXT_PUBLIC_GISCUS_CATEGORY!}
+                  categoryId={process.env.NEXT_PUBLIC_GISCUS_CATEGORY_ID!}
                   mapping="number"
-                  term="21"
+                  term={process.env.NEXT_PUBLIC_GISCUS_TERM!}
                   strict="0"
                   reactionsEnabled="1"
                   emitMetadata="0"
                   inputPosition="top"
                   lang="en"
                   loading="lazy"
-                  theme={`${process.env.NEXT_PUBLIC_BASE_URL}/giscus/${
-                    resolvedTheme == 'dark' ? 'dark' : 'light'
-                  }.css`}
+                  theme={giscusTheme}
                 />
               </CardContent>
             </Card>

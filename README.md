@@ -10,20 +10,30 @@ Create `.env` from `example.env`:
 
 ```env
 GITHUB_TOKEN=
-NEXT_PUBLIC_BASE_URL=
+NEXT_PUBLIC_GISCUS_THEME_BASE_URL=
+NEXT_PUBLIC_GISCUS_REPO=
+NEXT_PUBLIC_GISCUS_REPO_ID=
+NEXT_PUBLIC_GISCUS_CATEGORY=
+NEXT_PUBLIC_GISCUS_CATEGORY_ID=
+NEXT_PUBLIC_GISCUS_TERM=
 ```
 
 Environment variables:
 
 - `GITHUB_TOKEN`: used by the GitHub API routes to fetch profile stats and repository data.
-- `NEXT_PUBLIC_BASE_URL`: public base URL for loading custom Giscus theme assets.
+- `NEXT_PUBLIC_GISCUS_THEME_BASE_URL`: public base URL for loading custom Giscus theme assets.
+- `NEXT_PUBLIC_GISCUS_REPO`: guestbook repository in `owner/repo` format.
+- `NEXT_PUBLIC_GISCUS_REPO_ID`: repository ID from Giscus setup.
+- `NEXT_PUBLIC_GISCUS_CATEGORY`: discussion category name for guestbook messages.
+- `NEXT_PUBLIC_GISCUS_CATEGORY_ID`: discussion category ID from Giscus setup.
+- `NEXT_PUBLIC_GISCUS_TERM`: discussion term used when `mapping="number"`.
 
-Use a public URL for `NEXT_PUBLIC_BASE_URL` because Giscus cannot load custom theme assets from `localhost`.
+Use a public URL for `NEXT_PUBLIC_GISCUS_THEME_BASE_URL` because Giscus cannot load custom theme assets from `localhost`.
 
 Example:
 
 ```env
-NEXT_PUBLIC_BASE_URL=https://your-public-url.ngrok-free.app
+NEXT_PUBLIC_GISCUS_THEME_BASE_URL=https://your-public-url.ngrok-free.app
 ```
 
 Install dependencies and start the development server:
