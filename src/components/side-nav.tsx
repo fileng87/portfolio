@@ -29,42 +29,41 @@ export default function SideNav() {
   ];
 
   return (
-    <div className="min-h-full p-6 my-auto max-h-4/5">
-      <nav>
-        <ul className="space-y-12">
-          {items.map((item) => (
-            <li key={item.href}>
-              <SideNavItem {...item} />
-            </li>
-          ))}
-        </ul>
-      </nav>
-    </div>
+    <nav className="min-h-full px-8 my-auto max-h-4/5">
+      <ul className="flex flex-col gap-12">
+        {items.map((item) => (
+          <li key={item.href}>
+            <SideNavItem {...item} />
+          </li>
+        ))}
+      </ul>
+    </nav>
   );
 }
 
-export function SideNavItem(props: {
+type SideNavItemProps = {
   name: string;
   href: string;
   icon: React.ReactNode;
-}) {
+};
+
+export function SideNavItem({ name, href, icon }: SideNavItemProps) {
   return (
     <Tooltip>
       <TooltipTrigger
         render={
           <Button
-            nativeButton={false}
             size="icon-lg"
             variant="ghost"
             className="rounded-full"
-            render={<Link href={props.href} aria-label={props.name} />}
+            render={<Link href={href} aria-label={name} />}
           >
-            {props.icon}
+            {icon}
           </Button>
         }
       />
       <TooltipContent side="right">
-        <p>{props.name}</p>
+        <p>{name}</p>
       </TooltipContent>
     </Tooltip>
   );
