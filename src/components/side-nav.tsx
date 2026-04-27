@@ -53,6 +53,7 @@ export function SideNavItem({ name, href, icon }: SideNavItemProps) {
       <TooltipTrigger
         render={
           <Button
+            nativeButton={false}
             size="icon-lg"
             variant="ghost"
             className="rounded-full"
