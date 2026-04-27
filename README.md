@@ -60,10 +60,6 @@ pnpm format
 docker compose up --build
 ```
 
-## License
-
-MIT
-
 ## Star History
 
 <a href="https://www.star-history.com/?repos=fileng87%2Fportfolio&type=date&legend=top-left">
