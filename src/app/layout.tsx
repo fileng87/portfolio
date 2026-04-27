@@ -6,6 +6,9 @@ import {
   Playfair_Display,
 } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/components/providers/theme-provider";
+import SideNav from "@/components/side-nav";
+import { TooltipProvider } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 
 const playfairDisplayHeading = Playfair_Display({
@@ -47,8 +50,22 @@ export default function RootLayout({
         notoSans.variable,
         playfairDisplayHeading.variable,
       )}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <head />
+      <body className="min-h-full flex">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <TooltipProvider>
+            <SideNav />
+            {children}
+          </TooltipProvider>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
