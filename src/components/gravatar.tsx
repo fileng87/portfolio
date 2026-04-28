@@ -7,10 +7,11 @@ export default function Gravatar({
   ...props
 }: React.ComponentProps<typeof Avatar>) {
   const email = process.env.NEXT_PUBLIC_GRAVATAR_EMAIL;
+  const fallbackImage =
+    "https://media.tenor.com/x8v1oNUOmg4AAAAM/rickroll-roll.gif";
 
-  const image = email
-    ? `https://www.gravatar.com/avatar/${sha256(email.trim().toLowerCase())}`
-    : "https://media.tenor.com/x8v1oNUOmg4AAAAM/rickroll-roll.gif";
+  const emailHash = sha256(email?.trim().toLowerCase() || "");
+  const image = `https://www.gravatar.com/avatar/${emailHash}?s=512&d=${encodeURI(fallbackImage)}`;
 
   return (
     <Avatar className={cn(className)} {...props}>
