@@ -24,6 +24,7 @@
       "biome check --no-errors-on-unmatched --files-ignore-unknown=true"
     ]
   },
+  "packageManager": "pnpm@10.33.0",
   "dependencies": {
     "@base-ui/react": "^1.4.1",
     "@gsap/react": "^2.1.2",
