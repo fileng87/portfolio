@@ -1,7 +1,8 @@
 import { Code, Home, MessageSquare, User } from "lucide-react";
 import Link from "next/link";
 import type React from "react";
-import { Button } from "./ui/button";
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "./ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 
 export default function SideNav() {
@@ -52,15 +53,19 @@ export function SideNavItem({ name, href, icon }: SideNavItemProps) {
     <Tooltip>
       <TooltipTrigger
         render={
-          <Button
-            nativeButton={false}
-            size="icon-lg"
-            variant="ghost"
-            className="rounded-full"
-            render={<Link href={href} aria-label={name} />}
+          <Link
+            className={cn(
+              buttonVariants({
+                variant: "ghost",
+                size: "icon-lg",
+              }),
+              "rounded-full",
+            )}
+            href={href}
+            aria-label={name}
           >
             {icon}
-          </Button>
+          </Link>
         }
       />
       <TooltipContent side="right">
