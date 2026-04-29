@@ -53,7 +53,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head />
-      <body className="min-h-full flex">
+      <body>
         <ThemeProvider
           attribute="class"
           defaultTheme="light"

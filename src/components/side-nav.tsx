@@ -9,7 +9,7 @@ export default function SideNav() {
   const items = [
     {
       name: "Home",
-      href: "/",
+      href: "/#hero",
       icon: <Home />,
     },
     {
@@ -30,7 +30,7 @@ export default function SideNav() {
   ];
 
   return (
-    <nav className="min-h-full px-8 my-auto max-h-4/5">
+    <nav className="fixed px-8 h-full flex items-center justify-center">
       <ul className="flex flex-col gap-12">
         {items.map((item) => (
           <li key={item.href}>
