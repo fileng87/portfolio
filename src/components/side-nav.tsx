@@ -30,15 +30,17 @@ export default function SideNav() {
   ];
 
   return (
-    <nav className="fixed px-8 h-full flex items-center justify-center">
-      <ul className="flex flex-col gap-12">
-        {items.map((item) => (
-          <li key={item.href}>
-            <SideNavItem {...item} />
-          </li>
-        ))}
-      </ul>
-    </nav>
+    <aside className="relative">
+      <nav className="fixed px-8 h-full flex items-center justify-center">
+        <ul className="flex flex-col gap-12">
+          {items.map((item) => (
+            <li key={item.href}>
+              <SideNavItem {...item} />
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </aside>
   );
 }
 
