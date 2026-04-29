@@ -5,7 +5,15 @@ import { cn } from "@/lib/utils";
 import { buttonVariants } from "./ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 
-export default function SideNav() {
+export function Sidebar() {
+  return (
+    <aside className="relative">
+      <Navigation />
+    </aside>
+  );
+}
+
+export function Navigation() {
   const items = [
     {
       name: "Home",
@@ -30,17 +38,15 @@ export default function SideNav() {
   ];
 
   return (
-    <aside className="relative">
-      <nav className="fixed px-8 h-full flex items-center justify-center">
-        <ul className="flex flex-col gap-12">
-          {items.map((item) => (
-            <li key={item.href}>
-              <SideNavItem {...item} />
-            </li>
-          ))}
-        </ul>
-      </nav>
-    </aside>
+    <nav className="fixed px-8 h-full flex items-center justify-center">
+      <ul className="flex flex-col gap-12">
+        {items.map((item) => (
+          <li key={item.href}>
+            <SideNavItem {...item} />
+          </li>
+        ))}
+      </ul>
+    </nav>
   );
 }
 

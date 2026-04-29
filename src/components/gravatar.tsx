@@ -2,7 +2,7 @@ import sha256 from "crypto-js/sha256";
 import { cn } from "@/lib/utils";
 import { Avatar, AvatarImage } from "./ui/avatar";
 
-export default function Gravatar({
+export function Gravatar({
   className,
   ...props
 }: React.ComponentProps<typeof Avatar>) {

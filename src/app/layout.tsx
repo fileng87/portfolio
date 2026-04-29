@@ -7,7 +7,7 @@ import {
 } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/providers/theme-provider";
-import SideNav from "@/components/side-nav";
+import { Sidebar } from "@/components/sidebar";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 
@@ -61,7 +61,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <TooltipProvider>
-            <SideNav />
+            <Sidebar />
             {children}
           </TooltipProvider>
         </ThemeProvider>

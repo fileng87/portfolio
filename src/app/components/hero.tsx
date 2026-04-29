@@ -1,4 +1,4 @@
-import Gravatar from "@/components/gravatar";
+import { Gravatar } from "@/components/gravatar";
 import { cn } from "@/lib/utils";
 
 export default function Hero() {
