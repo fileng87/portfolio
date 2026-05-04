@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 
 export default function Hero() {
   return (
-    <section className="h-screen w-screen relative" id="hero">
+    <section className="h-screen w-screen relative -z-10" id="hero">
       <div
         className={cn(
           "absolute top-1/2 left-1/2",
