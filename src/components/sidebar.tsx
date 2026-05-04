@@ -73,6 +73,7 @@ export function SideNavItem({ name, href, icon }: SideNavItemProps) {
             aria-label={name}
           >
             {icon}
+            <span className="sr-only">{name}</span>
           </Link>
         }
       />
