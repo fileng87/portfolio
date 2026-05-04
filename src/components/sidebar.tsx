@@ -7,7 +7,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 
 export function Sidebar() {
   return (
-    <aside className="relative">
+    <aside className="relative z-50">
       <Navigation />
     </aside>
   );
