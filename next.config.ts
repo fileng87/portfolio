@@ -8,6 +8,10 @@ const nextConfig: NextConfig = {
   cacheComponents: true,
   partialPrefetching: true,
   reactCompiler: true,
+  images: {
+    // YouTube video thumbnails
+    remotePatterns: [new URL("https://i.ytimg.com/vi/**")],
+  },
   turbopack: {
     rules: {
       "*.css": {

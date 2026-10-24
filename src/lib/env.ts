@@ -15,6 +15,10 @@ const schema = z.object({
     )
     .pipe(z.array(z.string().regex(/^[\w.-]+\/[\w.-]+$/))),
   GITHUB_TOKEN: z.string().min(1).optional(),
+  YOUTUBE_CHANNEL_ID: z
+    .string()
+    .regex(/^UC[\w-]{22}$/)
+    .optional(),
 });
 
 export const env = schema.parse(process.env);

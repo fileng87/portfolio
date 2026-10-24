@@ -17,5 +17,12 @@
     "stars": "{count} 顆星",
     "empty": "作品暫時無法載入"
   },
+  "Videos": {
+    "more": "在 YouTube 看更多",
+    "views": "{views} 次觀看",
+    "openOnYouTube": "在 YouTube 開啟",
+    "close": "關閉",
+    "empty": "影片暫時無法載入"
+  },
   "Placeholder": "建置中"
 }

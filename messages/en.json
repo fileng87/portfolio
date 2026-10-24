@@ -17,5 +17,12 @@
     "stars": "{count, plural, one {# star} other {# stars}}",
     "empty": "Projects couldn't be loaded right now"
   },
+  "Videos": {
+    "more": "More on YouTube",
+    "views": "{views} views",
+    "openOnYouTube": "Open on YouTube",
+    "close": "Close",
+    "empty": "Videos couldn't be loaded right now"
+  },
   "Placeholder": "Under construction"
 }
