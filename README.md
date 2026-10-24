@@ -1,71 +1,36 @@
-# Portfolio
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-Personal portfolio built with Next.js 16.
+## Getting Started
 
-## Setup
-
-This repository uses `pnpm`.
-
-Create `.env` from `example.env`:
-
-```env
-GITHUB_TOKEN=
-NEXT_PUBLIC_GISCUS_THEME_BASE_URL=
-NEXT_PUBLIC_GISCUS_REPO=
-NEXT_PUBLIC_GISCUS_REPO_ID=
-NEXT_PUBLIC_GISCUS_CATEGORY=
-NEXT_PUBLIC_GISCUS_CATEGORY_ID=
-NEXT_PUBLIC_GISCUS_TERM=
-```
-
-Environment variables:
-
-- `GITHUB_TOKEN`: used by the GitHub API routes to fetch profile stats and repository data.
-- `NEXT_PUBLIC_GISCUS_THEME_BASE_URL`: public base URL for loading custom Giscus theme assets.
-- `NEXT_PUBLIC_GISCUS_REPO`: guestbook repository in `owner/repo` format.
-- `NEXT_PUBLIC_GISCUS_REPO_ID`: repository ID from Giscus setup.
-- `NEXT_PUBLIC_GISCUS_CATEGORY`: discussion category name for guestbook messages.
-- `NEXT_PUBLIC_GISCUS_CATEGORY_ID`: discussion category ID from Giscus setup.
-- `NEXT_PUBLIC_GISCUS_TERM`: discussion term used when `mapping="number"`.
-
-Use a public URL for `NEXT_PUBLIC_GISCUS_THEME_BASE_URL` because Giscus cannot load custom theme assets from `localhost`.
-
-Example:
-
-```env
-NEXT_PUBLIC_GISCUS_THEME_BASE_URL=https://your-public-url.ngrok-free.app
-```
-
-Install dependencies and start the development server:
+First, run the development server:
 
 ```bash
-pnpm install
+npm run dev
+# or
+yarn dev
+# or
 pnpm dev
+# or
+bun dev
 ```
 
-Open `http://localhost:3000`.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Scripts
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-```bash
-pnpm dev
-pnpm build
-pnpm start
-pnpm format
-```
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Docker
+## Learn More
 
-```bash
-docker compose up --build
-```
+To learn more about Next.js, take a look at the following resources:
 
-## Star History
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-<a href="https://www.star-history.com/?repos=fileng87%2Fportfolio&type=date&legend=top-left">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=fileng87/portfolio&type=date&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=fileng87/portfolio&type=date&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=fileng87/portfolio&type=date&legend=top-left" />
- </picture>
-</a>
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
