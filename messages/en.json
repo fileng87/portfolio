@@ -1,5 +1,17 @@
 {
-  "HomePage": {
-    "title": "Hello"
-  }
+  "Nav": {
+    "label": "Main navigation",
+    "projects": "Projects",
+    "videos": "Videos",
+    "toolbox": "Toolbox",
+    "guestbook": "Guestbook",
+    "toggleTheme": "Toggle theme",
+    "switchLocale": "Language",
+    "open": "Open menu",
+    "close": "Close menu"
+  },
+  "Hero": {
+    "scroll": "Scroll down"
+  },
+  "Placeholder": "Under construction"
 }

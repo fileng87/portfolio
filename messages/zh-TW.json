@@ -1,5 +1,17 @@
 {
-  "HomePage": {
-    "title": "你好"
-  }
+  "Nav": {
+    "label": "主選單",
+    "projects": "作品",
+    "videos": "影片",
+    "toolbox": "工具箱",
+    "guestbook": "留言",
+    "toggleTheme": "切換主題",
+    "switchLocale": "語言",
+    "open": "開啟選單",
+    "close": "關閉選單"
+  },
+  "Hero": {
+    "scroll": "往下看看"
+  },
+  "Placeholder": "建置中"
 }

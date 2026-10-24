@@ -12,7 +12,12 @@ export function ThemeProvider({
       attribute="class"
       defaultTheme="system"
       enableSystem
-      disableTransitionOnChange
+      // The theme script only needs to run in the server HTML. On client renders
+      // (e.g. switching locale remounts the root layout) mark it non-executable so
+      // React 19 doesn't warn about a <script> tag.
+      scriptProps={
+        typeof window === "undefined" ? undefined : { type: "text/plain" }
+      }
       {...props}
     >
       {children}

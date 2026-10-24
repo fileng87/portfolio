@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Noto_Serif_TC } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
@@ -13,6 +13,13 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+// CJK glyphs are served as unicode-range chunks, so only latin is preloaded
+const notoSerifTC = Noto_Serif_TC({
+  variable: "--font-noto-serif-tc",
+  weight: ["300", "400"],
   subsets: ["latin"],
 });
 
@@ -33,10 +40,11 @@ export default async function RootLayout({
   return (
     <html
       lang={locale}
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${notoSerifTC.variable} h-full antialiased`}
       suppressHydrationWarning
+      data-scroll-behavior="smooth"
     >
-      <body className="min-h-full flex flex-col">
+      <body className="flex min-h-full flex-col">
         <NextIntlClientProvider>
           <ThemeProvider>{children}</ThemeProvider>
         </NextIntlClientProvider>
