@@ -13,5 +13,9 @@
   "Hero": {
     "scroll": "往下看看"
   },
+  "Projects": {
+    "stars": "{count} 顆星",
+    "empty": "作品暫時無法載入"
+  },
   "Placeholder": "建置中"
 }

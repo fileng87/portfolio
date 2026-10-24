@@ -13,5 +13,9 @@
   "Hero": {
     "scroll": "Scroll down"
   },
+  "Projects": {
+    "stars": "{count, plural, one {# star} other {# stars}}",
+    "empty": "Projects couldn't be loaded right now"
+  },
   "Placeholder": "Under construction"
 }
