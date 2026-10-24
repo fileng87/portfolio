@@ -65,17 +65,16 @@
 
   --font-serif: var(--font-noto-serif-tc), serif;
 
-  --animate-leaf-sway: leaf-sway 14s ease-in-out infinite alternate;
+  /* Wind sway about the element's transform-origin; amplitude from --sway.
+     Duration and delay are set per element. */
+  --animate-sway: sway 8s ease-in-out infinite alternate;
 
-  @keyframes leaf-sway {
-    0% {
-      transform: rotate(-1.2deg) translate3d(0, 0, 0);
+  @keyframes sway {
+    from {
+      rotate: calc(var(--sway, 1deg) * -1);
     }
-    50% {
-      transform: rotate(0.6deg) translate3d(-0.5%, 0.4%, 0);
-    }
-    100% {
-      transform: rotate(1.4deg) translate3d(0.3%, -0.3%, 0);
+    to {
+      rotate: var(--sway, 1deg);
     }
   }
 
