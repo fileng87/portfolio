@@ -7,6 +7,7 @@ import { type ReactNode, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { introDelay } from "@/constants/intro";
 import { sections } from "@/constants/sections";
+import { useActiveSection } from "@/hooks/use-active-section";
 import { cn } from "@/utils";
 import { IntroReveal } from "./intro-reveal";
 import { LocaleSwitch } from "./locale-switch";
@@ -21,6 +22,7 @@ export function MobileNav({ children }: { children: ReactNode }) {
   const t = useTranslations("Nav");
   const [open, setOpen] = useState(false);
   const target = useRef<string | null>(null);
+  const active = useActiveSection(sections);
 
   const scrollToTarget = (isOpen: boolean) => {
     if (isOpen || !target.current) return;
@@ -77,13 +79,22 @@ export function MobileNav({ children }: { children: ReactNode }) {
                 <li key={section}>
                   <a
                     href={`#${section}`}
+                    aria-current={active === section ? "location" : undefined}
                     onClick={(event) => {
                       event.preventDefault();
                       target.current = section;
                       setOpen(false);
                     }}
-                    className="font-serif text-3xl font-light tracking-[0.2em] outline-none transition-colors hover:text-muted-foreground focus-visible:text-muted-foreground focus-visible:underline focus-visible:decoration-ctp-yellow focus-visible:underline-offset-8 [&:lang(en)]:tracking-normal"
+                    className={cn(
+                      "relative font-serif text-3xl font-light tracking-[0.2em] outline-none transition-colors hover:text-foreground focus-visible:text-foreground focus-visible:underline focus-visible:decoration-ctp-yellow focus-visible:underline-offset-8 [&:lang(en)]:tracking-normal",
+                      active === section
+                        ? "text-foreground"
+                        : "text-muted-foreground",
+                    )}
                   >
+                    {active === section && (
+                      <span className="absolute top-1/2 -left-6 h-px w-3 bg-ctp-yellow" />
+                    )}
                     {t(section)}
                   </a>
                 </li>
