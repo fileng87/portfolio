@@ -17,6 +17,7 @@
     "cn": "^0.5.0",
     "lucide-react": "^1.61.0",
     "next": "16.4.3",
+    "next-themes": "^0.4.6",
     "react": "19.3.0",
     "react-dom": "19.3.0",
     "shadcn": "^4.22.1",
