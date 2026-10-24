@@ -11,8 +11,10 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 ## Architecture: Feature-based
 
 ```
+messages/               # Translations, one JSON per locale (next-intl)
 src/
-├── app/                # Routing only (layout, page, route handlers)
+├── app/[locale]/       # Routing only (layout, page, route handlers)
+├── i18n/               # next-intl routing, request config, navigation
 ├── features/
 │   └── <feature>/      # e.g. hero, about, projects
 │       ├── components/
@@ -24,7 +26,7 @@ src/
 ├── components/         # Shared components (header, footer, ...)
 │   └── ui/             # shadcn/ui primitives
 ├── hooks/              # Shared hooks
-├── providers/          # App-wide providers, composed in app/layout.tsx
+├── providers/          # App-wide providers, composed in app/[locale]/layout.tsx
 ├── lib/                # Third-party setup (API clients, env, ...)
 └── utils/              # Pure helpers (cn, formatters, ...)
 ```
@@ -39,4 +41,6 @@ src/
 - Keep API request/response types in their `api/` file; move them to `types/` once other files in the feature use them.
 - Keep code inside its feature until a second feature needs it.
 - State used by one feature goes in its `stores/`; app-wide providers (theme, query client, ...) go in `providers/`.
+- All user-facing text goes in `messages/`; `zh-TW.json` is the source of truth for keys and types.
+- Use `Link` / `redirect` / `useRouter` from `@/i18n/navigation`, not `next/link` or `next/navigation`.
 - `lib/` configures third-party libraries; `utils/` holds pure functions with no setup or side effects.
