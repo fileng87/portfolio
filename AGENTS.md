@@ -21,11 +21,15 @@ src/
 │       ├── hooks/
 │       ├── api/        # Data fetching / server actions
 │       ├── types/      # Types shared within the feature
-│       ├── stores/     # Feature state (Context / store)
+│       ├── constants/  # Constants used within the feature
+│       ├── stores/     # Feature state (zustand)
 │       └── index.ts    # Public API
 ├── components/         # Shared components (header, footer, ...)
 │   └── ui/             # shadcn/ui primitives
 ├── hooks/              # Shared hooks
+├── constants/          # Shared constants (nav sections, locale names, ...)
+├── types/              # Shared types
+├── stores/             # Shared zustand stores
 ├── providers/          # App-wide providers, composed in app/[locale]/layout.tsx
 ├── lib/                # Third-party setup (API clients, env, ...)
 └── utils/              # Pure helpers (cn, formatters, ...)
@@ -35,12 +39,13 @@ src/
 
 - `app/` only composes features; no business logic.
 - Import a feature only via its `index.ts` (`@/features/projects`).
-- Features must not import each other; move shared code to `components/`, `hooks/`, or `utils/`.
+- Features must not import each other; move shared code to `components/`, `hooks/`, `constants/`, `types/`, or `utils/`.
+- Data constants (lists, maps, config) always go in `constants/` (the feature's own, or `src/constants/` when shared), even if only one file uses them. Never put them in component files or `components/`. Shared types go in `types/`.
 - Create subfolders only when the feature needs them.
 - Name files in `api/` and `types/` by resource (e.g. `repos.ts`, `stats.ts`).
 - Keep API request/response types in their `api/` file; move them to `types/` once other files in the feature use them.
 - Keep code inside its feature until a second feature needs it.
-- State used by one feature goes in its `stores/`; app-wide providers (theme, query client, ...) go in `providers/`.
+- State uses zustand: a store used by one feature goes in its `stores/`, a shared one in `src/stores/`. App-wide providers (theme, query client, ...) go in `providers/`.
 - All user-facing text goes in `messages/`; `zh-TW.json` is the source of truth for keys and types.
 - Use `Link` / `redirect` / `useRouter` from `@/i18n/navigation`, not `next/link` or `next/navigation`.
 - `lib/` configures third-party libraries; `utils/` holds pure functions with no setup or side effects.
