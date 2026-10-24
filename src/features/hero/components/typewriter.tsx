@@ -44,11 +44,14 @@ function Caret({
 export function Typewriter({
   lines,
   wrap,
+  emphasis,
   skip = false,
   onComplete,
 }: {
   lines: string[];
   wrap: boolean;
+  // Word that gets a highlighter stroke, drawn in once the lines wrap
+  emphasis?: string;
   // Start fully typed, without animating or calling onComplete
   skip?: boolean;
   onComplete?: () => void;
@@ -100,8 +103,16 @@ export function Typewriter({
                 <motion.span
                   layout="position"
                   transition={spring}
-                  className="inline-block"
+                  className="relative isolate inline-block"
                 >
+                  {word === emphasis && (
+                    <span
+                      className={cn(
+                        "absolute inset-x-0 bottom-[0.06em] -z-10 h-[0.3em] origin-left bg-ctp-yellow/40 transition-transform delay-500 duration-700 ease-out motion-reduce:transition-none",
+                        wrap ? "scale-x-100" : "scale-x-0",
+                      )}
+                    />
+                  )}
                   {[...word].map((char) => {
                     const i = index++;
                     const caret = i === caretAt && !wrap;

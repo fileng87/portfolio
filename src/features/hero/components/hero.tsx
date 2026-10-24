@@ -4,7 +4,7 @@ import { IntroReveal } from "@/components/intro-reveal";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { introDelay } from "@/constants/intro";
 import { getGravatarUrl } from "../api/gravatar";
-import { name, tagline } from "../constants/hero";
+import { name, tagline, taglineEmphasis } from "../constants/hero";
 import { HeroIntro } from "./hero-intro";
 
 export function Hero() {
@@ -16,6 +16,7 @@ export function Hero() {
     <>
       <HeroIntro
         tagline={tagline}
+        emphasis={taglineEmphasis}
         name={name}
         avatar={
           <Avatar className="size-40 rounded-none after:rounded-none sm:size-56 lg:size-80">

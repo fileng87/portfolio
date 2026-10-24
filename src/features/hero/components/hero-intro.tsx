@@ -13,10 +13,12 @@ const spring = { type: "spring", bounce: 0, duration: 0.9 } as const;
 // pushes it aside (left on desktop, down on mobile).
 export function HeroIntro({
   tagline,
+  emphasis,
   name,
   avatar,
 }: {
   tagline: string[];
+  emphasis?: string;
   name: string;
   avatar: ReactNode;
 }) {
@@ -47,6 +49,7 @@ export function HeroIntro({
         >
           <Typewriter
             lines={tagline}
+            emphasis={emphasis}
             wrap={revealed}
             skip={skip}
             onComplete={() => setRevealed(true)}
