@@ -3,8 +3,8 @@ import { useTranslations } from "next-intl";
 import { IntroReveal } from "@/components/intro-reveal";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { introDelay } from "@/constants/intro";
+import { name, tagline, taglineEmphasis } from "@/constants/site";
 import { getGravatarUrl } from "../api/gravatar";
-import { name, tagline, taglineEmphasis } from "../constants/hero";
 import { HeroIntro } from "./hero-intro";
 
 export function Hero() {

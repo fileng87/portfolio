@@ -1,4 +1,7 @@
 {
+  "Metadata": {
+    "description": "Coding just for fun. Things {name} has built, videos, and a guestbook."
+  },
   "Nav": {
     "label": "Main navigation",
     "home": "Home",
