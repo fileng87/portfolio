@@ -50,5 +50,10 @@
       "description": "If you'd still like to say something, you can leave it on GitHub Discussions.",
       "action": "Open GitHub Discussions"
     }
+  },
+  "NotFound": {
+    "title": "Page not found",
+    "description": "This page hasn't been written yet, or it's gone.",
+    "back": "Back home"
   }
 }

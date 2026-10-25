@@ -50,5 +50,10 @@
       "description": "還是想說點什麼的話，可以直接到 GitHub Discussions 留言。",
       "action": "前往 GitHub Discussions"
     }
+  },
+  "NotFound": {
+    "title": "找不到這一頁",
+    "description": "這頁還沒被寫出來，或是已經不在了。",
+    "back": "回到首頁"
   }
 }
