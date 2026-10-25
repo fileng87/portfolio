@@ -5,6 +5,7 @@
   "Nav": {
     "label": "Main navigation",
     "logo": "{name}, back to the top",
+    "about": "About",
     "projects": "Work",
     "toolbox": "Toolbox",
     "guestbook": "Guestbook",
@@ -12,6 +13,9 @@
     "switchLocale": "Language",
     "open": "Open menu",
     "close": "Close menu"
+  },
+  "About": {
+    "body": "I usually write code for no grand reason other than that it's fun, which is how things like sorting arrays with AI end up existing. Still, once I've made something, the details have to be right. Now and then I edit videos and draw, too."
   },
   "Work": {
     "code": "Code",

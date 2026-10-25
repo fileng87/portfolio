@@ -48,7 +48,7 @@ export function Hero() {
         className="absolute bottom-6 left-1/2 -translate-x-1/2"
       >
         <a
-          href="#projects"
+          href="#about"
           aria-label={t("scroll")}
           className="block rounded-full p-3 text-muted-foreground outline-none transition-colors duration-300 hover:text-foreground focus-visible:text-foreground focus-visible:ring-2 focus-visible:ring-ring"
         >
