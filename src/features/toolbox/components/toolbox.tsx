@@ -17,21 +17,28 @@ export function Toolbox() {
                 key={tool.title}
                 className="flex items-center gap-3 border-b py-4 text-sm"
               >
-                {tool.path ? (
-                  <svg
-                    aria-hidden="true"
-                    viewBox="0 0 24 24"
-                    className="size-4 shrink-0 fill-current text-muted-foreground"
-                  >
-                    <path d={tool.path} />
-                  </svg>
-                ) : (
-                  <CodeXmlIcon
-                    aria-hidden
-                    strokeWidth={1.75}
-                    className="size-4 shrink-0 text-muted-foreground"
-                  />
-                )}
+                {/* Both icons draw in currentColor: the brand color, or the
+                    text color without one */}
+                <span
+                  className="contents"
+                  style={{ color: tool.hex && `#${tool.hex}` }}
+                >
+                  {tool.path ? (
+                    <svg
+                      aria-hidden="true"
+                      viewBox="0 0 24 24"
+                      className="size-4 shrink-0 fill-current"
+                    >
+                      <path d={tool.path} />
+                    </svg>
+                  ) : (
+                    <CodeXmlIcon
+                      aria-hidden
+                      strokeWidth={1.75}
+                      className="size-4 shrink-0"
+                    />
+                  )}
+                </span>
                 {tool.title}
               </RevealItem>
             ))}

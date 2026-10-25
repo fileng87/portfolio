@@ -7,7 +7,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-geist-sans), var(--font-noto-sans-tc), sans-serif;
   --font-mono: var(--font-geist-mono);
   --font-heading: var(--font-sans);
   --color-sidebar-ring: var(--sidebar-ring);
@@ -217,12 +217,39 @@
     background-color: color-mix(in oklch, var(--ctp-yellow) 35%, transparent);
     color: var(--foreground);
   }
+  /* Tailwind v4 gives buttons the default cursor; shadcn's `init --pointer`
+     restores the pointer with this rule */
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
+}
+
+/* Top scroll edge: content fades out as it nears the top of the screen.
+   The fade follows a cosine curve, flat at both ends, so it shows no band
+   where it starts or ends. On phones it also dims what passes under the
+   menu button and logo. */
+:root {
+  --scroll-edge: 9rem;
+}
+
+@utility scroll-edge {
+  height: var(--scroll-edge);
+  background: linear-gradient(
+    to bottom,
+    var(--background),
+    color-mix(in oklab, var(--background) 90.5%, transparent) 20%,
+    color-mix(in oklab, var(--background) 65.5%, transparent) 40%,
+    color-mix(in oklab, var(--background) 34.5%, transparent) 60%,
+    color-mix(in oklab, var(--background) 9.5%, transparent) 80%,
+    transparent
+  );
 }
 
 /* Theme switch cross-fade */

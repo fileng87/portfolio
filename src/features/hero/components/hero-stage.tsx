@@ -25,10 +25,15 @@ export function HeroStage({
     offset: ["start end", "start start"],
   });
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-  // Drift up at half speed and fade out before the sheet reaches the content
+  // Drift up at half speed, blur and fade out before the sheet reaches the
+  // content
   const contentOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
   const y = useTransform(scrollYProgress, [0, 1], ["0vh", "-50vh"]);
   const scale = useTransform(scrollYProgress, [0, 1], [1, 0.95]);
+  // No filter at rest, so the hero isn't kept on a filtered layer
+  const filter = useTransform(scrollYProgress, (p) =>
+    p > 0 ? `blur(${Math.min(p / 0.4, 1) * 6}px)` : "none",
+  );
 
   return (
     <>
@@ -44,13 +49,18 @@ export function HeroStage({
           style={
             reduceMotion
               ? { opacity: contentOpacity }
-              : { opacity: contentOpacity, y, scale }
+              : { opacity: contentOpacity, y, scale, filter }
           }
         >
           {hero}
         </motion.div>
       </div>
       <div ref={contentRef} className="relative z-10 bg-background">
+        {/* Pinned to the top once the sheet reaches it; content scrolling up
+            fades out under it (see `scroll-edge` in globals.css) */}
+        <div aria-hidden className="pointer-events-none sticky top-0 z-20 h-0">
+          <div className="scroll-edge" />
+        </div>
         {children}
       </div>
     </>

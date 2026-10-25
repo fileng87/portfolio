@@ -59,5 +59,9 @@
     "title": "Page not found",
     "description": "This page hasn't been written yet, or it's gone.",
     "back": "Back home"
+  },
+  "Footer": {
+    "note": "Still just for fun.",
+    "source": "Source"
   }
 }

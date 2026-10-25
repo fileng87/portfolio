@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Noto_Serif_TC } from "next/font/google";
+import {
+  Geist,
+  Geist_Mono,
+  Noto_Sans_TC,
+  Noto_Serif_TC,
+} from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getTranslations } from "next-intl/server";
 import { name, tagline } from "@/constants/site";
@@ -16,6 +21,14 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+// Chinese for the sans stack, after Geist (see --font-sans): Geist draws the
+// latin, so nothing is preloaded and only the CJK chunks a page uses load
+const notoSansTC = Noto_Sans_TC({
+  variable: "--font-noto-sans-tc",
+  subsets: ["latin"],
+  preload: false,
 });
 
 // CJK glyphs are served as unicode-range chunks, so only latin is preloaded
@@ -45,7 +58,7 @@ export default async function RootLayout({
   return (
     <html
       lang={locale}
-      className={`${geistSans.variable} ${geistMono.variable} ${notoSerifTC.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${notoSansTC.variable} ${notoSerifTC.variable} h-full antialiased`}
       suppressHydrationWarning
       data-scroll-behavior="smooth"
     >
