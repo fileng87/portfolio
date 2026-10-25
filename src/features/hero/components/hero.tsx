@@ -3,7 +3,7 @@ import { useTranslations } from "next-intl";
 import { IntroReveal } from "@/components/intro-reveal";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { introDelay } from "@/constants/intro";
-import { name, tagline, taglineEmphasis } from "@/constants/site";
+import { avatarLink, name, tagline, taglineEmphasis } from "@/constants/site";
 import { getGravatarUrl } from "../api/gravatar";
 import { HeroIntro } from "./hero-intro";
 
@@ -19,18 +19,26 @@ export function Hero() {
         emphasis={taglineEmphasis}
         name={name}
         avatar={
-          <Avatar className="size-40 rounded-none after:rounded-none sm:size-56 lg:size-80">
-            {avatarUrl && (
-              <AvatarImage
-                src={avatarUrl}
-                alt={name}
-                className="rounded-none"
-              />
-            )}
-            <AvatarFallback className="rounded-none font-serif text-5xl font-light">
-              {name[0]}
-            </AvatarFallback>
-          </Avatar>
+          // An easter egg: the avatar is a link, nothing says where to
+          <a
+            href={avatarLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block outline-none transition-transform duration-300 ease-out focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background active:scale-[0.98] motion-reduce:transition-none"
+          >
+            <Avatar className="size-40 rounded-none after:rounded-none sm:size-56 lg:size-80">
+              {avatarUrl && (
+                <AvatarImage
+                  src={avatarUrl}
+                  alt={name}
+                  className="rounded-none"
+                />
+              )}
+              <AvatarFallback className="rounded-none font-serif text-5xl font-light">
+                {name[0]}
+              </AvatarFallback>
+            </Avatar>
+          </a>
         }
       />
 

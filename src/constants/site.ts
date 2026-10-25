@@ -6,3 +6,6 @@ export const name = "ZyraX";
 export const tagline = ["Just Coding", "for Fun"];
 // Word in the tagline that gets the highlighter stroke
 export const taglineEmphasis = "Fun";
+
+// Where clicking the hero avatar leads (an easter egg)
+export const avatarLink = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
