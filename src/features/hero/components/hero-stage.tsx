@@ -51,6 +51,12 @@ export function HeroStage({
         </motion.div>
       </div>
       <div ref={contentRef} className="relative z-10 bg-background">
+        {/* Scroll edge: content fades out as it nears the top of the screen.
+            On phones the band starts solid, so nothing scrolls under the
+            fixed menu button and logo. */}
+        <div aria-hidden className="pointer-events-none sticky top-0 z-20 h-0">
+          <div className="h-28 bg-linear-to-b from-background from-[4.5rem] to-transparent md:from-0%" />
+        </div>
         {children}
       </div>
     </>

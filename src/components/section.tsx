@@ -3,11 +3,10 @@ import type { ReactNode } from "react";
 import type { sections } from "@/constants/sections";
 import { cn } from "@/utils";
 import { Reveal } from "./reveal";
-import { SectionExit } from "./section-exit";
 
 // A page section, titled with its nav label so the two never drift apart.
 // Read like chapters: the title rises into view, then its content follows
-// (see Reveal); scrolled past, it fades away for the next.
+// (see Reveal); scrolled past, it fades out at the top edge (see HeroStage).
 // `centered` makes it a full-screen chapter with everything in the middle.
 export function Section({
   id,
@@ -28,7 +27,7 @@ export function Section({
         centered ? "flex min-h-svh flex-col justify-center" : "min-h-[60svh]",
       )}
     >
-      <SectionExit
+      <div
         className={cn(
           "flex flex-col gap-10",
           centered && "items-center text-center",
@@ -40,7 +39,7 @@ export function Section({
           </h2>
         </Reveal>
         {children}
-      </SectionExit>
+      </div>
     </section>
   );
 }
