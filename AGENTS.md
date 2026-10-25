@@ -25,7 +25,8 @@ src/
 │       ├── stores/     # Feature state (zustand)
 │       └── index.ts    # Public API
 ├── components/         # Shared components (header, footer, ...)
-│   └── ui/             # shadcn/ui primitives
+│   ├── ui/             # shadcn/ui primitives, kept as generated
+│   └── custom/         # Customized parts of shadcn/ui components
 ├── hooks/              # Shared hooks
 ├── constants/          # Shared constants (nav sections, locale names, ...)
 ├── types/              # Shared types
@@ -48,4 +49,5 @@ src/
 - State uses zustand: a store used by one feature goes in its `stores/`, a shared one in `src/stores/`. App-wide providers (theme, query client, ...) go in `providers/`.
 - All user-facing text goes in `messages/`; `zh-TW.json` is the source of truth for keys and types.
 - Use `Link` / `redirect` / `useRouter` from `@/i18n/navigation`, not `next/link` or `next/navigation`.
+- Don't edit files in `components/ui/`. To change a shadcn component, put only the changed parts in a same-named file in `components/custom/`, built on the `ui/` ones where possible, and note what changed.
 - `lib/` configures third-party libraries; `utils/` holds pure functions with no setup or side effects.

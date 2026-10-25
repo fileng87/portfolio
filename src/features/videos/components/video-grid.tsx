@@ -3,12 +3,8 @@
 import { ArrowUpRightIcon, XIcon } from "lucide-react";
 import Image from "next/image";
 import { type MouseEvent, useState } from "react";
-import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogTitle,
-} from "@/components/ui/dialog";
+import { DialogContent } from "@/components/custom/dialog";
+import { Dialog, DialogClose, DialogTitle } from "@/components/ui/dialog";
 import { cn } from "@/utils";
 import type { Video } from "../api/videos";
 
@@ -113,7 +109,6 @@ export function VideoGrid({
 
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent
-          showCloseButton={false}
           overlayClassName="bg-black/85 duration-300"
           className="gap-0 rounded-none bg-transparent p-0 ring-0 sm:max-w-5xl"
         >

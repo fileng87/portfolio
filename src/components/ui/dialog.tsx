@@ -42,17 +42,13 @@ function DialogContent({
   className,
   children,
   showCloseButton = true,
-  overlayClassName,
   ...props
 }: DialogPrimitive.Popup.Props & {
   showCloseButton?: boolean;
-  overlayClassName?: string;
 }) {
   return (
     <DialogPortal>
-      {/* The page sits inside MobileNav's Dialog.Root, so every dialog counts
-          as nested, and nested ones skip the backdrop unless forced */}
-      <DialogOverlay forceRender className={overlayClassName} />
+      <DialogOverlay />
       <DialogPrimitive.Popup
         data-slot="dialog-content"
         className={cn(
