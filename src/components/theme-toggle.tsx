@@ -11,6 +11,21 @@ import { cn } from "@/utils";
 const iconMotion =
   "absolute inset-0 transition-[rotate,scale,opacity] duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] motion-reduce:transition-none";
 
+// The longest `data-theme-settle` (ms) among elements on screen: content that
+// needs that long to follow a theme change
+function settleTime() {
+  let longest = 0;
+  for (const el of document.querySelectorAll<HTMLElement>(
+    "[data-theme-settle]",
+  )) {
+    const { top, bottom } = el.getBoundingClientRect();
+    if (bottom > 0 && top < window.innerHeight) {
+      longest = Math.max(longest, Number(el.dataset.themeSettle) || 0);
+    }
+  }
+  return longest;
+}
+
 export function ThemeToggle({ label }: { label: string }) {
   const { resolvedTheme, setTheme } = useTheme();
 
@@ -22,7 +37,13 @@ export function ThemeToggle({ label }: { label: string }) {
       return;
     }
     // Cross-fade instead of an abrupt brightness jump
-    document.startViewTransition(() => flushSync(() => setTheme(next)));
+    document.startViewTransition(async () => {
+      flushSync(() => setTheme(next));
+      // Some content (an iframe) restyles itself a moment later; hold the
+      // snapshot of the new state until it has, so it fades with the rest
+      const settle = settleTime();
+      if (settle) await new Promise((r) => setTimeout(r, settle));
+    });
   };
 
   return (
