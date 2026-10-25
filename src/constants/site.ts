@@ -12,6 +12,9 @@ export const taglineEmphasis = "Fun";
 // Where clicking the hero avatar leads (an easter egg)
 export const avatarLink = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
 
+// This site's own repository, linked from the footer
+export const sourceUrl = "https://github.com/fileng87/portfolio";
+
 // Shown under About, in this order. Icons come from Simple Icons.
 export const socials: { icon: SimpleIcon; href: string }[] = [
   { icon: siGithub, href: "https://github.com/fileng87" },

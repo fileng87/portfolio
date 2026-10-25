@@ -1,4 +1,5 @@
 import { useTranslations } from "next-intl";
+import { Footer } from "@/components/footer";
 import { MobileNav } from "@/components/mobile-nav";
 import { Section, Subsection } from "@/components/section";
 import { SideNav } from "@/components/side-nav";
@@ -39,6 +40,7 @@ export default function Home() {
               <Section id="guestbook">
                 <Guestbook />
               </Section>
+              <Footer />
             </div>
           </HeroStage>
         </main>
