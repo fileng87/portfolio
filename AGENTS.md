@@ -11,6 +11,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 ## Architecture: Feature-based
 
 ```
+brand/                  # Logo masters, variants and usage guidelines
 messages/               # Translations, one JSON per locale (next-intl)
 src/
 ├── app/[locale]/       # Routing only (layout, page, route handlers)
