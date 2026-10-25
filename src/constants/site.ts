@@ -4,10 +4,20 @@ import { type SimpleIcon, siGithub, siX, siYoutube } from "simple-icons";
 
 export const name = "ZyraX";
 
+// Where the site is published; absolute links (share images, sitemap) use it
+export const url = "https://zyrax.dev";
+
 // Brand tagline, identical in every locale; each entry is one line
 export const tagline = ["Just Coding", "for Fun"];
 // Word in the tagline that gets the highlighter stroke
 export const taglineEmphasis = "Fun";
+
+// The card shown when the site is shared (app/opengraph-image.tsx)
+export const shareImage = {
+  alt: `${name} — ${tagline.join(" ")}`,
+  width: 1200,
+  height: 630,
+};
 
 // Where clicking the hero avatar leads (an easter egg)
 export const avatarLink = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";

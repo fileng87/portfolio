@@ -7,7 +7,7 @@ import {
 } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getTranslations } from "next-intl/server";
-import { name, tagline } from "@/constants/site";
+import { name, shareImage, tagline, url } from "@/constants/site";
 import { routing } from "@/i18n/routing";
 import { MotionProvider } from "@/providers/motion-provider";
 import { ThemeProvider } from "@/providers/theme-provider";
@@ -40,9 +40,28 @@ const notoSerifTC = Noto_Serif_TC({
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Metadata");
+  const locale = await getLocale();
+  const title = `${name} — ${tagline.join(" ")}`;
+  const description = t("description", { name });
+
+  // The share image is generated once at the root (app/opengraph-image.tsx),
+  // outside [locale], so it's named here rather than picked up by convention
+  const image = { url: "/opengraph-image", ...shareImage };
+
   return {
-    title: `${name} — ${tagline.join(" ")}`,
-    description: t("description", { name }),
+    // Makes the share image's URL absolute
+    metadataBase: new URL(url),
+    title,
+    description,
+    openGraph: {
+      type: "website",
+      siteName: name,
+      title,
+      description,
+      locale: locale.replace("-", "_"),
+      images: [image],
+    },
+    twitter: { card: "summary_large_image", images: [image] },
   };
 }
 
