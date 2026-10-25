@@ -61,12 +61,6 @@ export function MobileNav({ children }: { children: ReactNode }) {
       modal="trap-focus"
     >
       <IntroReveal delay={introDelay.nav}>
-        {/* A frosted strip behind the floating controls: content passing
-            under them is blurred and dimmed instead of colliding with them */}
-        <div
-          aria-hidden
-          className="pointer-events-none fixed inset-x-0 top-0 z-20 h-24 bg-background/70 backdrop-blur-md [mask-image:linear-gradient(to_bottom,black_60%,transparent)] md:hidden"
-        />
         <Dialog.Trigger
           render={
             <Button
