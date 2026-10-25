@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import { type ReactNode, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { introDelay } from "@/constants/intro";
-import { sections } from "@/constants/sections";
+import { home, navItems, sections } from "@/constants/sections";
 import { useActiveSection } from "@/hooks/use-active-section";
 import { cn } from "@/utils";
 import { IntroReveal } from "./intro-reveal";
@@ -22,7 +22,8 @@ export function MobileNav({ children }: { children: ReactNode }) {
   const t = useTranslations("Nav");
   const [open, setOpen] = useState(false);
   const target = useRef<string | null>(null);
-  const active = useActiveSection(sections);
+  // Above the first section, the top of the page is current
+  const active = useActiveSection(sections) ?? home;
 
   const scrollToTarget = (isOpen: boolean) => {
     if (isOpen || !target.current) return;
@@ -75,7 +76,7 @@ export function MobileNav({ children }: { children: ReactNode }) {
             className="flex flex-1 items-center px-6"
           >
             <ul className="flex flex-col gap-6">
-              {sections.map((section) => (
+              {navItems.map((section) => (
                 <li key={section}>
                   <a
                     href={`#${section}`}

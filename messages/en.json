@@ -1,6 +1,7 @@
 {
   "Nav": {
     "label": "Main navigation",
+    "home": "Home",
     "projects": "Work",
     "toolbox": "Toolbox",
     "guestbook": "Guestbook",

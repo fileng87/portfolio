@@ -1,6 +1,7 @@
 {
   "Nav": {
     "label": "主選單",
+    "home": "首頁",
     "projects": "作品",
     "toolbox": "工具箱",
     "guestbook": "留言",

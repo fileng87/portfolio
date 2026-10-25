@@ -22,9 +22,15 @@ export function useHeroInView() {
 
     // Opened at a #section, the browser (smooth) scrolls there from the top,
     // passing over the hero, so start watching once it has arrived. The
-    // timeout covers a jump that fires no scrollend.
+    // timeout covers a jump that fires no scrollend. A target at the top
+    // (#home) involves no scroll.
     const id = decodeURIComponent(window.location.hash.slice(1));
-    if (!id || !document.getElementById(id)) {
+    const target = id && document.getElementById(id);
+    if (
+      !target ||
+      target.getBoundingClientRect().top + window.scrollY <
+        window.innerHeight / 2
+    ) {
       watch();
       return () => window.removeEventListener("scroll", check);
     }

@@ -3,7 +3,7 @@
 import { motion } from "motion/react";
 import { useTranslations } from "next-intl";
 import { useLayoutEffect, useRef, useState } from "react";
-import { sections } from "@/constants/sections";
+import { home, navItems, sections } from "@/constants/sections";
 import { useActiveSection } from "@/hooks/use-active-section";
 import { cn } from "@/utils";
 
@@ -11,7 +11,8 @@ import { cn } from "@/utils";
 // to whichever section is in view.
 export function SectionLinks() {
   const t = useTranslations("Nav");
-  const active = useActiveSection(sections);
+  // Above the first section, the top of the page is current
+  const active = useActiveSection(sections) ?? home;
   const labels = useRef(new Map<string, HTMLSpanElement>());
   // The line spans the label's rendered box, measured rather than derived
   // from padding: glyph metrics differ per font, and English is rotated
@@ -45,7 +46,7 @@ export function SectionLinks() {
 
   return (
     <ul className="my-auto flex flex-col items-center gap-4">
-      {sections.map((section) => (
+      {navItems.map((section) => (
         <li key={section} className="relative flex">
           <a
             href={`#${section}`}
