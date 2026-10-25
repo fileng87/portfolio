@@ -1,5 +1,4 @@
 import {
-  siBiome,
   siClaude,
   siDocker,
   siDotnet,
@@ -14,7 +13,6 @@ import {
   siNodedotjs,
   siPostgresql,
   siPostman,
-  siProxmox,
   siReact,
   siRedis,
   siRust,
@@ -47,10 +45,8 @@ export const toolbox: Record<"stack" | "tools", Tool[]> = {
   tools: [
     siGit,
     siGithub,
-    siBiome,
     siDocker,
     siLinux,
-    siProxmox,
     { title: "VS Code" },
     siClaude,
     { title: "Codex" },
