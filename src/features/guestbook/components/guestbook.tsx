@@ -1,5 +1,7 @@
+import { MessagesSquareIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Reveal } from "@/components/reveal";
+import { Unavailable } from "@/components/unavailable";
 import { env } from "@/lib/env";
 import { GiscusFrame } from "./giscus-frame";
 
@@ -21,7 +23,19 @@ export function Guestbook() {
             discussion={discussion}
           />
         ) : (
-          <p className="text-muted-foreground">{t("unavailable")}</p>
+          <Unavailable
+            icon={MessagesSquareIcon}
+            title={t("unavailable.title")}
+            description={t("unavailable.description")}
+            action={
+              repo && discussion
+                ? {
+                    href: `https://github.com/${repo}/discussions/${discussion}`,
+                    label: t("unavailable.action"),
+                  }
+                : undefined
+            }
+          />
         )}
       </Reveal>
     </div>

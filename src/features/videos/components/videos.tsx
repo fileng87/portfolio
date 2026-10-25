@@ -1,5 +1,7 @@
-import { ArrowUpRightIcon } from "lucide-react";
+import { ArrowUpRightIcon, MonitorPlayIcon } from "lucide-react";
 import { getFormatter, getTranslations } from "next-intl/server";
+import { Reveal } from "@/components/reveal";
+import { Unavailable } from "@/components/unavailable";
 import { env } from "@/lib/env";
 import { channelUrl, getVideos } from "../api/videos";
 import { VideoGrid } from "./video-grid";
@@ -10,7 +12,23 @@ export async function Videos() {
   const videos = await getVideos();
 
   if (!env.YOUTUBE_CHANNEL_ID || videos.length === 0) {
-    return <p className="text-muted-foreground">{t("empty")}</p>;
+    return (
+      <Reveal>
+        <Unavailable
+          icon={MonitorPlayIcon}
+          title={t("unavailable.title")}
+          description={t("unavailable.description")}
+          action={
+            env.YOUTUBE_CHANNEL_ID
+              ? {
+                  href: channelUrl(env.YOUTUBE_CHANNEL_ID),
+                  label: t("unavailable.action"),
+                }
+              : undefined
+          }
+        />
+      </Reveal>
+    );
   }
 
   return (

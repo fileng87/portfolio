@@ -1,6 +1,8 @@
-import { ArrowUpRightIcon, StarIcon } from "lucide-react";
+import { ArrowUpRightIcon, FolderGit2Icon, StarIcon } from "lucide-react";
 import { getTranslations } from "next-intl/server";
-import { RevealItem, RevealList } from "@/components/reveal";
+import { Reveal, RevealItem, RevealList } from "@/components/reveal";
+import { Unavailable } from "@/components/unavailable";
+import { env } from "@/lib/env";
 import { getRepos } from "../api/repos";
 
 // "https://www.example.com/path" → "example.com/path"
@@ -12,7 +14,25 @@ export async function Projects() {
   const repos = await getRepos();
 
   if (repos.length === 0) {
-    return <p className="text-muted-foreground">{t("empty")}</p>;
+    // The owner of the first listed repo, for a link to their profile
+    const owner = env.GITHUB_REPOS[0]?.split("/")[0];
+    return (
+      <Reveal>
+        <Unavailable
+          icon={FolderGit2Icon}
+          title={t("unavailable.title")}
+          description={t("unavailable.description")}
+          action={
+            owner
+              ? {
+                  href: `https://github.com/${owner}`,
+                  label: t("unavailable.action"),
+                }
+              : undefined
+          }
+        />
+      </Reveal>
+    );
   }
 
   return (

@@ -19,14 +19,22 @@
   },
   "Projects": {
     "stars": "{count} 顆星",
-    "empty": "作品暫時無法載入"
+    "unavailable": {
+      "title": "作品暫時無法載入",
+      "description": "GitHub 那邊沒有回應，可以直接到 GitHub 看看。",
+      "action": "前往 GitHub"
+    }
   },
   "Videos": {
     "more": "在 YouTube 看更多",
     "views": "{views} 次觀看",
     "openOnYouTube": "在 YouTube 開啟",
     "close": "關閉",
-    "empty": "影片暫時無法載入"
+    "unavailable": {
+      "title": "影片暫時無法載入",
+      "description": "YouTube 那邊沒有回應，可以直接到頻道看看。",
+      "action": "前往 YouTube 頻道"
+    }
   },
   "Toolbox": {
     "stack": "技術棧",
@@ -34,6 +42,10 @@
   },
   "Guestbook": {
     "intro": "留個言、打聲招呼，或只是路過也好。",
-    "unavailable": "留言板暫時無法使用"
+    "unavailable": {
+      "title": "留言板暫時無法使用",
+      "description": "還是想說點什麼的話，可以直接到 GitHub Discussions 留言。",
+      "action": "前往 GitHub Discussions"
+    }
   }
 }
