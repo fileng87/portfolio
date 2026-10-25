@@ -171,18 +171,20 @@ function Bamboo({ phase = 0 }: { phase?: number }) {
 }
 
 // On phones the canvas shifts right (max-md:translate-x), keeping the culms
-// near the edge and clear of the text
+// near the edge and clear of the text. The SVGs draw past their own box
+// (overflow-visible), so the shift doesn't cut the leaves off at its left
+// edge; the hero stage clips them to the screen instead.
 export function LeafShadow() {
   return (
     <div
       aria-hidden
-      className="pointer-events-none absolute inset-0 overflow-hidden"
+      className="pointer-events-none absolute inset-0 max-md:translate-x-[10%]"
     >
       <svg
         aria-hidden="true"
         viewBox="0 0 1440 900"
         preserveAspectRatio="xMaxYMin slice"
-        className="absolute inset-0 size-full max-md:translate-x-[10%] text-foreground opacity-[0.07] blur-[6px] dark:opacity-[0.05]"
+        className="absolute inset-0 size-full overflow-visible text-foreground opacity-[0.07] blur-[6px] dark:opacity-[0.05]"
       >
         <Bamboo />
       </svg>
@@ -191,7 +193,7 @@ export function LeafShadow() {
         aria-hidden="true"
         viewBox="0 0 1440 900"
         preserveAspectRatio="xMaxYMin slice"
-        className="absolute inset-0 size-full max-md:translate-x-[10%] text-foreground opacity-[0.05] blur-[14px] dark:opacity-[0.03]"
+        className="absolute inset-0 size-full overflow-visible text-foreground opacity-[0.05] blur-[14px] dark:opacity-[0.03]"
       >
         <Bamboo phase={1.7} />
       </svg>
