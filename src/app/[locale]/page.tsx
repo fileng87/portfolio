@@ -2,6 +2,7 @@ import { useTranslations } from "next-intl";
 import { MobileNav } from "@/components/mobile-nav";
 import { Section, Subsection } from "@/components/section";
 import { SideNav } from "@/components/side-nav";
+import { Guestbook } from "@/features/guestbook";
 import { Hero, HeroStage } from "@/features/hero";
 import { Projects } from "@/features/projects";
 import { Toolbox } from "@/features/toolbox";
@@ -31,7 +32,7 @@ export default function Home() {
                 <Toolbox />
               </Section>
               <Section id="guestbook">
-                <p className="text-muted-foreground">{t("Placeholder")}</p>
+                <Guestbook />
               </Section>
             </div>
           </HeroStage>

@@ -31,5 +31,8 @@
     "stack": "Stack",
     "tools": "Tools"
   },
-  "Placeholder": "Under construction"
+  "Guestbook": {
+    "intro": "Leave a message, say hi, or just pass by.",
+    "unavailable": "The guestbook isn't available right now"
+  }
 }

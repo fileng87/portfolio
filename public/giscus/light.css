@@ -1,0 +1,43 @@
+/* giscus theme matching the site's light palette (see src/app/globals.css).
+   Loaded by the giscus iframe, so it can't read the site's CSS variables. */
+@import url("https://giscus.app/themes/light.css");
+
+main {
+  --color-canvas-default: oklch(0.982 0.004 85);
+  --color-canvas-overlay: oklch(0.982 0.004 85);
+  --color-canvas-inset: oklch(0.965 0.005 80);
+  --color-canvas-subtle: oklch(0.965 0.005 80);
+  --color-fg-default: oklch(0.2 0.006 60);
+  --color-fg-muted: oklch(0.5 0.006 70);
+  --color-fg-subtle: oklch(0.6 0.006 70);
+  --color-border-default: oklch(0.9 0.005 75);
+  --color-border-muted: oklch(0.93 0.005 75);
+  --color-accent-fg: oklch(0.2 0.006 60);
+  --color-accent-emphasis: oklch(0.2 0.006 60);
+  --color-btn-primary-text: oklch(0.982 0.004 85);
+  --color-btn-primary-bg: oklch(0.2 0.006 60);
+  --color-btn-primary-border: transparent;
+  --color-btn-primary-hover-bg: oklch(0.32 0.006 60);
+  --color-btn-primary-hover-border: transparent;
+  --color-btn-primary-selected-bg: oklch(0.2 0.006 60);
+  --color-btn-primary-disabled-text: oklch(0.982 0.004 85 / 70%);
+  --color-btn-primary-disabled-bg: oklch(0.2 0.006 60 / 40%);
+  --color-btn-primary-disabled-border: transparent;
+  --color-btn-primary-shadow: none;
+  --color-btn-primary-inset-shadow: none;
+  --color-btn-text: oklch(0.2 0.006 60);
+  --color-btn-bg: oklch(0.965 0.005 80);
+  --color-btn-border: oklch(0.2 0.006 60 / 12%);
+  --color-btn-shadow: none;
+  --color-btn-inset-shadow: none;
+  --color-btn-hover-bg: oklch(0.95 0.005 80);
+  --color-btn-hover-border: oklch(0.2 0.006 60 / 12%);
+  --color-btn-active-bg: oklch(0.93 0.005 80);
+  --color-btn-active-border: oklch(0.2 0.006 60 / 12%);
+  --color-btn-selected-bg: oklch(0.94 0.005 80);
+  --color-action-list-item-default-hover-bg: oklch(0.2 0.006 60 / 6%);
+  /* Comment order toggle (oldest / newest) */
+  --color-segmented-control-bg: oklch(0.2 0.006 60 / 6%);
+  --color-segmented-control-button-bg: oklch(0.982 0.004 85);
+  --color-segmented-control-button-selected-border: oklch(0.2 0.006 60 / 20%);
+}

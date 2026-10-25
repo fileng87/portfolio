@@ -25,6 +25,13 @@ const schema = z.object({
     .string()
     .regex(/^[\w-]{11}$/)
     .optional(),
+  // Guestbook comments live in one GitHub Discussion (https://giscus.app)
+  GISCUS_REPO: z
+    .string()
+    .regex(/^[\w.-]+\/[\w.-]+$/)
+    .optional(),
+  GISCUS_REPO_ID: z.string().min(1).optional(),
+  GISCUS_DISCUSSION: z.coerce.number().int().positive().optional(),
 });
 
 export const env = schema.parse(process.env);

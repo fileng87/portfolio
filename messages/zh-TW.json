@@ -31,5 +31,8 @@
     "stack": "技術棧",
     "tools": "開發工具"
   },
-  "Placeholder": "建置中"
+  "Guestbook": {
+    "intro": "留個言、打聲招呼，或只是路過也好。",
+    "unavailable": "留言板暫時無法使用"
+  }
 }
