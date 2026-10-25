@@ -1,0 +1,63 @@
+{
+  "Metadata": {
+    "description": "寫程式只是因為好玩。這裡放著 {name} 做過的東西、拍過的影片，還有一個留言板。"
+  },
+  "Nav": {
+    "label": "主選單",
+    "logo": "{name}，回到首頁",
+    "about": "關於",
+    "projects": "作品",
+    "toolbox": "工具箱",
+    "guestbook": "留言",
+    "toggleTheme": "切換主題",
+    "switchLocale": "語言",
+    "open": "開啟選單",
+    "close": "關閉選單"
+  },
+  "About": {
+    "body": "我寫程式通常沒什麼偉大的理由，就是覺得好玩。所以會出現用 AI 排序陣列這種不太需要存在的東西。不過做都做了，細節還是得調到我滿意為止。偶爾也剪剪影片、畫畫圖。"
+  },
+  "Work": {
+    "code": "程式",
+    "videos": "影片"
+  },
+  "Hero": {
+    "scroll": "往下看看"
+  },
+  "Projects": {
+    "stars": "{count} 顆星",
+    "unavailable": {
+      "title": "作品暫時無法載入",
+      "description": "GitHub 那邊沒有回應，可以直接到 GitHub 看看。",
+      "action": "前往 GitHub"
+    }
+  },
+  "Videos": {
+    "more": "在 YouTube 看更多",
+    "views": "{views} 次觀看",
+    "openOnYouTube": "在 YouTube 開啟",
+    "close": "關閉",
+    "unavailable": {
+      "title": "影片暫時無法載入",
+      "description": "YouTube 那邊沒有回應，可以直接到頻道看看。",
+      "action": "前往 YouTube 頻道"
+    }
+  },
+  "Toolbox": {
+    "stack": "技術棧",
+    "tools": "開發工具"
+  },
+  "Guestbook": {
+    "intro": "留個言、打聲招呼，或只是路過也好。",
+    "unavailable": {
+      "title": "留言板暫時無法使用",
+      "description": "還是想說點什麼的話，可以直接到 GitHub Discussions 留言。",
+      "action": "前往 GitHub Discussions"
+    }
+  },
+  "NotFound": {
+    "title": "找不到這一頁",
+    "description": "這頁還沒被寫出來，或是已經不在了。",
+    "back": "回到首頁"
+  }
+}

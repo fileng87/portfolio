@@ -1,0 +1,63 @@
+{
+  "Metadata": {
+    "description": "Coding just for fun. Things {name} has built, videos, and a guestbook."
+  },
+  "Nav": {
+    "label": "Main navigation",
+    "logo": "{name}, back to the top",
+    "about": "About",
+    "projects": "Work",
+    "toolbox": "Toolbox",
+    "guestbook": "Guestbook",
+    "toggleTheme": "Toggle theme",
+    "switchLocale": "Language",
+    "open": "Open menu",
+    "close": "Close menu"
+  },
+  "About": {
+    "body": "I usually write code for no grand reason other than that it's fun, which is how things like sorting arrays with AI end up existing. Still, once I've made something, the details have to be right. Now and then I edit videos and draw, too."
+  },
+  "Work": {
+    "code": "Code",
+    "videos": "Videos"
+  },
+  "Hero": {
+    "scroll": "Scroll down"
+  },
+  "Projects": {
+    "stars": "{count, plural, one {# star} other {# stars}}",
+    "unavailable": {
+      "title": "Projects couldn't be loaded",
+      "description": "GitHub isn't responding right now. You can find them there directly.",
+      "action": "Open GitHub"
+    }
+  },
+  "Videos": {
+    "more": "More on YouTube",
+    "views": "{views} views",
+    "openOnYouTube": "Open on YouTube",
+    "close": "Close",
+    "unavailable": {
+      "title": "Videos couldn't be loaded",
+      "description": "YouTube isn't responding right now. You can watch them on the channel.",
+      "action": "Open YouTube channel"
+    }
+  },
+  "Toolbox": {
+    "stack": "Stack",
+    "tools": "Tools"
+  },
+  "Guestbook": {
+    "intro": "Leave a message, say hi, or just pass by.",
+    "unavailable": {
+      "title": "The guestbook isn't available",
+      "description": "If you'd still like to say something, you can leave it on GitHub Discussions.",
+      "action": "Open GitHub Discussions"
+    }
+  },
+  "NotFound": {
+    "title": "Page not found",
+    "description": "This page hasn't been written yet, or it's gone.",
+    "back": "Back home"
+  }
+}

@@ -1,256 +1,233 @@
-@import 'tailwindcss';
-@plugin 'tailwindcss-animate';
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
 @custom-variant dark (&:is(.dark *));
 
-@theme {
-  --padding-header: 5rem;
-
-  /* 顏色變數 - 使用 OKLCH 格式 */
+@theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-sans);
   --color-sidebar-ring: var(--sidebar-ring);
-
-  /* 圓角半徑 */
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
 
-  /* 自定義動畫 */
-  --animate-cursor: cursor 1s linear infinite;
-  --animate-marquee: marquee 20s linear infinite;
-  --animate-accordion-down: accordion-down 0.2s ease-out;
-  --animate-accordion-up: accordion-up 0.2s ease-out;
-  --animate-pulse-slow: pulse-slow 10s ease-in-out infinite;
-  --animate-rain: rain 5s linear infinite;
-  --animate-float: float 6s linear infinite;
+  /* Catppuccin accents: Latte in light mode, Mocha in dark mode */
+  --color-ctp-rosewater: var(--ctp-rosewater);
+  --color-ctp-flamingo: var(--ctp-flamingo);
+  --color-ctp-pink: var(--ctp-pink);
+  --color-ctp-mauve: var(--ctp-mauve);
+  --color-ctp-red: var(--ctp-red);
+  --color-ctp-maroon: var(--ctp-maroon);
+  --color-ctp-peach: var(--ctp-peach);
+  --color-ctp-yellow: var(--ctp-yellow);
+  --color-ctp-green: var(--ctp-green);
+  --color-ctp-teal: var(--ctp-teal);
+  --color-ctp-sky: var(--ctp-sky);
+  --color-ctp-sapphire: var(--ctp-sapphire);
+  --color-ctp-blue: var(--ctp-blue);
+  --color-ctp-lavender: var(--ctp-lavender);
 
-  /* 自定義網格 */
-  --grid-template-columns-14: repeat(14, minmax(0, 1fr));
+  --font-serif: var(--font-noto-serif-tc), serif;
 
-  /* 關鍵幀動畫 */
-  @keyframes cursor {
-    0%,
-    100% {
-      opacity: 100%;
-    }
-    50% {
-      opacity: 0%;
-    }
-  }
+  /* Wind sway about the element's transform-origin; amplitude from --sway.
+     Duration and delay are set per element. */
+  --animate-sway: sway 8s ease-in-out infinite alternate;
 
-  @keyframes marquee {
-    0% {
-      transform: translateX(0%);
-    }
-    100% {
-      transform: translateX(-25%);
-    }
-  }
-
-  @keyframes accordion-down {
+  @keyframes sway {
     from {
-      height: 0;
+      rotate: calc(var(--sway, 1deg) * -1);
     }
     to {
-      height: var(--radix-accordion-content-height);
+      rotate: var(--sway, 1deg);
     }
   }
 
-  @keyframes accordion-up {
-    from {
-      height: var(--radix-accordion-content-height);
-    }
-    to {
-      height: 0;
-    }
-  }
+  /* Smooth fade rather than a hard on/off blink */
+  --animate-caret: caret 1s ease-in-out infinite;
 
-  @keyframes pulse-slow {
-    0%,
-    100% {
-      transform: scale(1);
-      opacity: 0.7;
-    }
+  @keyframes caret {
     50% {
-      transform: scale(1.2);
-      opacity: 0.9;
+      opacity: 0;
     }
   }
 
-  @keyframes rain {
-    0% {
-      transform: translateY(-100%);
-    }
-    100% {
-      transform: translateY(200%);
-    }
-  }
+  /* Continuous slow float */
+  --animate-drift: drift 2.4s ease-in-out infinite;
 
-  @keyframes float {
-    0% {
-      transform: translateY(0);
-    }
-    100% {
-      transform: translateY(-140%);
+  @keyframes drift {
+    50% {
+      transform: translateY(4px);
     }
   }
 }
 
-/* 主題顏色變數定義 */
 :root {
-  --radius: 0.625rem;
+  /* Washi off-white and sumi ink. Surfaces stay close to the page; hover
+     and muted fills are a warm paper grey; focus uses the yellow accent. */
+  --background: oklch(0.982 0.004 85);
+  --foreground: oklch(0.2 0.006 60);
+  --card: oklch(0.99 0.004 85);
+  --card-foreground: oklch(0.2 0.006 60);
+  --popover: oklch(0.99 0.004 85);
+  --popover-foreground: oklch(0.2 0.006 60);
+  --primary: oklch(0.2 0.006 60);
+  --primary-foreground: oklch(0.982 0.004 85);
+  --secondary: oklch(0.955 0.006 80);
+  --secondary-foreground: oklch(0.2 0.006 60);
+  --muted: oklch(0.955 0.006 80);
+  --muted-foreground: oklch(0.5 0.006 70);
+  --accent: oklch(0.955 0.006 80);
+  --accent-foreground: oklch(0.2 0.006 60);
+  --destructive: var(--ctp-red);
+  --border: oklch(0.9 0.006 75);
+  --input: oklch(0.9 0.006 75);
+  --ring: var(--ctp-yellow);
+  --chart-1: var(--ctp-blue);
+  --chart-2: var(--ctp-green);
+  --chart-3: var(--ctp-yellow);
+  --chart-4: var(--ctp-mauve);
+  --chart-5: var(--ctp-peach);
+  /* Nearly square, like the avatar and thumbnails */
+  --radius: 0.25rem;
+  --sidebar: oklch(0.99 0.004 85);
+  --sidebar-foreground: oklch(0.2 0.006 60);
+  --sidebar-primary: oklch(0.2 0.006 60);
+  --sidebar-primary-foreground: oklch(0.982 0.004 85);
+  --sidebar-accent: oklch(0.955 0.006 80);
+  --sidebar-accent-foreground: oklch(0.2 0.006 60);
+  --sidebar-border: oklch(0.9 0.006 75);
+  --sidebar-ring: var(--ctp-yellow);
 
-  /* 亮色模式 */
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-
-  /* 圖表顏色 */
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-
-  /* 側邊欄顏色 */
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --ctp-rosewater: #dc8a78;
+  --ctp-flamingo: #dd7878;
+  --ctp-pink: #ea76cb;
+  --ctp-mauve: #8839ef;
+  --ctp-red: #d20f39;
+  --ctp-maroon: #e64553;
+  --ctp-peach: #fe640b;
+  --ctp-yellow: #df8e1d;
+  --ctp-green: #40a02b;
+  --ctp-teal: #179299;
+  --ctp-sky: #04a5e5;
+  --ctp-sapphire: #209fb5;
+  --ctp-blue: #1e66f5;
+  --ctp-lavender: #7287fd;
 }
 
 .dark {
-  /* 暗色模式 */
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
+  --ctp-rosewater: #f5e0dc;
+  --ctp-flamingo: #f2cdcd;
+  --ctp-pink: #f5c2e7;
+  --ctp-mauve: #cba6f7;
+  --ctp-red: #f38ba8;
+  --ctp-maroon: #eba0ac;
+  --ctp-peach: #fab387;
+  --ctp-yellow: #f9e2af;
+  --ctp-green: #a6e3a1;
+  --ctp-teal: #94e2d5;
+  --ctp-sky: #89dceb;
+  --ctp-sapphire: #74c7ec;
+  --ctp-blue: #89b4fa;
+  --ctp-lavender: #b4befe;
 
-  /* 圖表顏色 - 暗色模式 */
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-
-  /* 側邊欄顏色 - 暗色模式 */
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --background: oklch(0.17 0.004 60);
+  --foreground: oklch(0.93 0.006 85);
+  --card: oklch(0.2 0.005 65);
+  --card-foreground: oklch(0.93 0.006 85);
+  --popover: oklch(0.2 0.005 65);
+  --popover-foreground: oklch(0.93 0.006 85);
+  --primary: oklch(0.93 0.006 85);
+  --primary-foreground: oklch(0.17 0.004 60);
+  --secondary: oklch(0.24 0.005 65);
+  --secondary-foreground: oklch(0.93 0.006 85);
+  --muted: oklch(0.24 0.005 65);
+  --muted-foreground: oklch(0.708 0.005 75);
+  --accent: oklch(0.24 0.005 65);
+  --accent-foreground: oklch(0.93 0.006 85);
+  --destructive: var(--ctp-red);
+  --border: oklch(1 0.005 75 / 10%);
+  --input: oklch(1 0.005 75 / 15%);
+  --ring: var(--ctp-yellow);
+  --chart-1: var(--ctp-blue);
+  --chart-2: var(--ctp-green);
+  --chart-3: var(--ctp-yellow);
+  --chart-4: var(--ctp-mauve);
+  --chart-5: var(--ctp-peach);
+  --sidebar: oklch(0.2 0.005 65);
+  --sidebar-foreground: oklch(0.93 0.006 85);
+  --sidebar-primary: oklch(0.93 0.006 85);
+  --sidebar-primary-foreground: oklch(0.17 0.004 60);
+  --sidebar-accent: oklch(0.24 0.005 65);
+  --sidebar-accent-foreground: oklch(0.93 0.006 85);
+  --sidebar-border: oklch(1 0.005 75 / 10%);
+  --sidebar-ring: var(--ctp-yellow);
 }
 
-/* Tailwind CSS v4 兼容性樣式 */
-@layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
-  }
-}
-
-/* 自定義工具類 */
-@utility shadow-glow {
-  @apply shadow-[0_0_10px_var(--color-pink-200)];
-
-  .dark & {
-    @apply shadow-[0_0_10px_var(--color-cyan-500)];
-  }
-}
-
-@utility bg-cyber {
-  background-image:
-    linear-gradient(0deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.7) 100%),
-    repeating-linear-gradient(
-      0deg,
-      transparent 0%,
-      rgba(0, 255, 255, 0.1) 1px,
-      transparent 2px
-    );
-  background-size:
-    100% 100%,
-    100% 4px;
-}
-
-/* 基礎樣式 */
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
-
   body {
     @apply bg-background text-foreground;
   }
+  html {
+    @apply font-sans;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in oklch, var(--foreground) 20%, transparent)
+      transparent;
+  }
+  ::selection {
+    background-color: color-mix(in oklch, var(--ctp-yellow) 35%, transparent);
+    color: var(--foreground);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Theme switch cross-fade */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.5s;
+  animation-timing-function: ease-out;
 }

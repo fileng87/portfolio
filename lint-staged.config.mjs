@@ -1,13 +1,7 @@
-/**
- * @filename: lint-staged.config.js
- * @type {import('lint-staged').Configuration}
- */
+/** @type {import('lint-staged').Configuration} */
 const config = {
-  // Run ESLint on JS/TS files
-  '**/*': ['eslint --fix'],
-
-  // Format with Prettier
-  '**/*': 'prettier --write --ignore-unknown',
+  "*": "biome check --write --no-errors-on-unmatched --files-ignore-unknown=true",
+  "*.{ts,tsx}": "vitest related --run --passWithNoTests",
 };
 
 export default config;
