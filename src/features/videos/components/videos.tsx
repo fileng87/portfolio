@@ -18,12 +18,17 @@ export async function Videos() {
       <VideoGrid
         videos={videos.map((video) => ({
           ...video,
-          views: t("views", {
-            views: format.number(video.views, { notation: "compact" }),
-          }),
-          date: format.dateTime(new Date(video.published), {
-            dateStyle: "medium",
-          }),
+          views:
+            video.views !== undefined
+              ? t("views", {
+                  views: format.number(video.views, { notation: "compact" }),
+                })
+              : undefined,
+          date: video.published
+            ? format.dateTime(new Date(video.published), {
+                dateStyle: "medium",
+              })
+            : undefined,
         }))}
         labels={{ openOnYouTube: t("openOnYouTube"), close: t("close") }}
       />

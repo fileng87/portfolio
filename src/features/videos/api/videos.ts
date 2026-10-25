@@ -36,8 +36,9 @@ export type Video = {
   id: string;
   title: string;
   url: string;
-  published: string;
-  views: number;
+  // Only known for videos read from a feed
+  published?: string;
+  views?: number;
   thumbnail: string;
 };
 
@@ -72,37 +73,68 @@ async function getPlaylist(prefix: "UULF" | "UULP", channelId: string) {
   );
 }
 
+// oEmbed gives the title of any public video without an API key
+const oembed = z.object({ title: z.string() });
+
+async function getEmbedded(id: string): Promise<Video> {
+  const url = `https://www.youtube.com/watch?v=${id}`;
+  const res = await fetch(
+    `https://www.youtube.com/oembed?format=json&url=${encodeURIComponent(url)}`,
+  );
+  if (!res.ok) throw new Error(`YouTube oEmbed responded ${res.status}`);
+  const { title } = oembed.parse(await res.json());
+  return { id, title, url, thumbnail: thumbnailUrl(id, "hqdefault") };
+}
+
 // hqdefault is 4:3 with letterboxing, which a 16:9 box crops away. The lead
 // is large and its box taller than 16:9, so it needs the bare 1280×720
 // frame; videos uploaded below 720p have none.
 async function leadThumbnail(id: string) {
   const maxres = thumbnailUrl(id, "maxresdefault");
-  const res = await fetch(maxres, { method: "HEAD" });
-  return res.ok ? maxres : thumbnailUrl(id, "hqdefault");
+  const res = await fetch(maxres, { method: "HEAD" }).catch(() => undefined);
+  return res?.ok ? maxres : thumbnailUrl(id, "hqdefault");
 }
 
-// The latest video first, then the most popular ones
+// Logs a failed source and carries on without it, so one feed being down
+// doesn't take the others with it
+async function settle<T>(promise: Promise<T>, what: string) {
+  try {
+    return await promise;
+  } catch (error) {
+    console.error(`Failed to fetch ${what}:`, error);
+    return undefined;
+  }
+}
+
+// The featured video (or else the latest) first, then the most popular ones
 export async function getVideos(): Promise<Video[]> {
   "use cache";
-  cacheLife("hours");
 
-  const channelId = env.YOUTUBE_CHANNEL_ID;
-  if (!channelId) return [];
-
-  try {
-    const [latest, popular] = await Promise.all([
-      getPlaylist("UULF", channelId),
-      getPlaylist("UULP", channelId),
-    ]);
-    const lead = latest[0] ?? popular[0];
-    if (!lead) return [];
-    return [
-      { ...lead, thumbnail: await leadThumbnail(lead.id) },
-      ...popular.filter((v) => v.id !== lead.id).slice(0, popularCount),
-    ];
-  } catch (error) {
-    // Render the section without the list rather than failing the page
-    console.error("Failed to fetch videos:", error);
+  const { YOUTUBE_CHANNEL_ID: channelId, YOUTUBE_FEATURED_VIDEO: featuredId } =
+    env;
+  if (!channelId) {
+    cacheLife("hours");
     return [];
   }
+
+  const [latest, popular, embedded] = await Promise.all([
+    settle(getPlaylist("UULF", channelId), "latest videos"),
+    settle(getPlaylist("UULP", channelId), "popular videos"),
+    featuredId && settle(getEmbedded(featuredId), "featured video"),
+  ]);
+  // Keep a failure only briefly, so it's retried soon
+  if (latest && popular && (!featuredId || embedded)) cacheLife("hours");
+  else cacheLife("minutes");
+
+  const lead = featuredId
+    ? // The feeds carry views and date; oEmbed only the title
+      ([...(latest ?? []), ...(popular ?? [])].find(
+        (v) => v.id === featuredId,
+      ) ?? embedded)
+    : (latest?.[0] ?? popular?.[0]);
+  if (!lead) return [];
+  return [
+    { ...lead, thumbnail: await leadThumbnail(lead.id) },
+    ...(popular ?? []).filter((v) => v.id !== lead.id).slice(0, popularCount),
+  ];
 }

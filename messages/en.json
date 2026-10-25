@@ -1,14 +1,17 @@
 {
   "Nav": {
     "label": "Main navigation",
-    "projects": "Projects",
-    "videos": "Videos",
+    "projects": "Work",
     "toolbox": "Toolbox",
     "guestbook": "Guestbook",
     "toggleTheme": "Toggle theme",
     "switchLocale": "Language",
     "open": "Open menu",
     "close": "Close menu"
+  },
+  "Work": {
+    "code": "Code",
+    "videos": "Videos"
   },
   "Hero": {
     "scroll": "Scroll down"

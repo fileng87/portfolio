@@ -1,6 +1,6 @@
 import { useTranslations } from "next-intl";
 import { MobileNav } from "@/components/mobile-nav";
-import { Section } from "@/components/section";
+import { Section, Subsection } from "@/components/section";
 import { SideNav } from "@/components/side-nav";
 import { Hero, HeroStage } from "@/features/hero";
 import { Projects } from "@/features/projects";
@@ -17,10 +17,14 @@ export default function Home() {
           <HeroStage hero={<Hero />}>
             <div className="mx-auto flex max-w-5xl flex-col px-6 md:pl-22">
               <Section id="projects">
-                <Projects />
-              </Section>
-              <Section id="videos">
-                <Videos />
+                <div className="flex flex-col gap-20">
+                  <Subsection title={t("Work.code")}>
+                    <Projects />
+                  </Subsection>
+                  <Subsection title={t("Work.videos")}>
+                    <Videos />
+                  </Subsection>
+                </div>
               </Section>
               {(["toolbox", "guestbook"] as const).map((id) => (
                 <Section key={id} id={id}>

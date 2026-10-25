@@ -19,6 +19,12 @@ const schema = z.object({
     .string()
     .regex(/^UC[\w-]{22}$/)
     .optional(),
+  // Video id (the "v" in youtube.com/watch?v=...) shown large first;
+  // without one, the latest upload leads
+  YOUTUBE_FEATURED_VIDEO: z
+    .string()
+    .regex(/^[\w-]{11}$/)
+    .optional(),
 });
 
 export const env = schema.parse(process.env);

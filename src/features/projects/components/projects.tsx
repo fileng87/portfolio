@@ -19,7 +19,7 @@ export async function Projects() {
       {repos.map((repo) => (
         <li key={repo.url} className="group relative py-7">
           <div className="flex items-baseline justify-between gap-6">
-            <h3 className="font-serif text-xl font-light">
+            <h4 className="font-serif text-xl font-light">
               {/* Stretched over the whole row; the homepage link sits above it */}
               <a
                 href={repo.url}
@@ -33,7 +33,7 @@ export async function Projects() {
                   className="size-4 -translate-x-1 self-center text-muted-foreground opacity-0 transition-[opacity,translate] duration-300 group-hover:translate-x-0 group-hover:opacity-100 motion-reduce:transition-none"
                 />
               </a>
-            </h3>
+            </h4>
             {repo.stargazerCount > 0 && (
               <span
                 className="flex shrink-0 items-center gap-1 font-mono text-xs text-muted-foreground tabular-nums"

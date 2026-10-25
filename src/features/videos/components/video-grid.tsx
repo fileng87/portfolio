@@ -17,8 +17,8 @@ export type VideoItem = Pick<
   "id" | "title" | "url" | "published" | "thumbnail"
 > & {
   // Formatted on the server, in the page's locale
-  views: string;
-  date: string;
+  views?: string;
+  date?: string;
 };
 
 // A large lead video followed by smaller ones. Clicking plays the video in a
@@ -87,7 +87,7 @@ export function VideoGrid({
                   />
                 </div>
                 <div className={cn("flex flex-col gap-1.5", !lead && "flex-1")}>
-                  <h3
+                  <h4
                     className={cn(
                       "line-clamp-2 underline-offset-4 decoration-ctp-yellow group-hover:underline",
                       lead
@@ -96,12 +96,14 @@ export function VideoGrid({
                     )}
                   >
                     {video.title}
-                  </h3>
+                  </h4>
                   {/* Pinned to the bottom so cards in a row line up */}
-                  <p className="mt-auto flex justify-between gap-4 text-xs text-muted-foreground">
-                    <span>{video.views}</span>
-                    <time dateTime={video.published}>{video.date}</time>
-                  </p>
+                  {(video.views || video.date) && (
+                    <p className="mt-auto flex justify-between gap-4 text-xs text-muted-foreground">
+                      <span>{video.views}</span>
+                      <time dateTime={video.published}>{video.date}</time>
+                    </p>
+                  )}
                 </div>
               </a>
             </li>

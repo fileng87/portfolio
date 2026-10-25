@@ -24,3 +24,21 @@ export function Section({
     </section>
   );
 }
+
+// A titled group within a section
+export function Subsection({
+  title,
+  children,
+}: {
+  title: string;
+  children: ReactNode;
+}) {
+  return (
+    <div className="flex flex-col gap-8">
+      <h3 className="text-sm tracking-[0.2em] text-muted-foreground">
+        {title}
+      </h3>
+      {children}
+    </div>
+  );
+}
