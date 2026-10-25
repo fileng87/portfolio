@@ -1,9 +1,9 @@
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="brand/zyrax-horizontal-dark.svg" />
-  <img alt="ZyraX" src="brand/zyrax-horizontal.svg" height="48" />
+  <source media="(prefers-color-scheme: dark)" srcset="brand/zyrax-symbol-dark.svg" />
+  <img alt="ZyraX" src="brand/zyrax-symbol.svg" height="64" />
 </picture>
 
-ZyraX's portfolio — Just Coding for Fun. Live at [wennya.xyz](https://wennya.xyz).
+ZyraX's portfolio — Just Coding for Fun. Live at [zyrax.dev](https://zyrax.dev).
 
 Built with Next.js 16, Tailwind CSS, shadcn/ui, Motion and next-intl (English / 繁體中文).
 
