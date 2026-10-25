@@ -15,9 +15,11 @@ export const culmSpecs = [
 // pointing up and to the left (angle in radians, SVG y points down), then
 // arch over and droop.
 export const branchSpecs = [
+  { culm: 0, seed: 71, x: 1387, y: 180, angle: 3.85, length: 420 },
   { culm: 0, seed: 11, x: 1381, y: 330, angle: 3.75, length: 680 },
   { culm: 0, seed: 29, x: 1373, y: 500, angle: 3.5, length: 540 },
   { culm: 1, seed: 47, x: 1277, y: 260, angle: 3.95, length: 500 },
+  { culm: 1, seed: 83, x: 1282, y: 410, angle: 3.6, length: 460 },
 ];
 
 // Wind: culms sway gently about their base, twigs more about their node.

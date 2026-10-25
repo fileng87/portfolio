@@ -21,7 +21,7 @@ type Leaf = { x: number; y: number; angle: number; scale: number };
 const toDeg = (rad: number) => (rad * 180) / Math.PI;
 
 // A bamboo twig: a thin stem that rises, then arches and droops, with a fan of
-// three to five long leaves hanging from each node.
+// four to six long leaves hanging from each node.
 function branch(
   seed: number,
   x0: number,
@@ -46,7 +46,7 @@ function branch(
 
     // A node roughly every 70–100 units, after a short bare stretch
     if (d > 60 && d % 80 < 10 && rand() > 0.15) {
-      const count = 3 + Math.floor(rand() * 3);
+      const count = 4 + Math.floor(rand() * 3);
       // Leaves hang between the stem's direction and straight down
       const hang = toDeg(heading) * 0.25 + 90 * 0.75;
       for (let k = 0; k < count; k++) {
@@ -170,6 +170,8 @@ function Bamboo({ phase = 0 }: { phase?: number }) {
   ));
 }
 
+// On phones the canvas shifts right (max-md:translate-x), keeping the culms
+// near the edge and clear of the text
 export function LeafShadow() {
   return (
     <div
@@ -180,7 +182,7 @@ export function LeafShadow() {
         aria-hidden="true"
         viewBox="0 0 1440 900"
         preserveAspectRatio="xMaxYMin slice"
-        className="absolute inset-0 size-full text-foreground opacity-[0.07] blur-[6px] dark:opacity-[0.05]"
+        className="absolute inset-0 size-full max-md:translate-x-[10%] text-foreground opacity-[0.07] blur-[6px] dark:opacity-[0.05]"
       >
         <Bamboo />
       </svg>
@@ -189,7 +191,7 @@ export function LeafShadow() {
         aria-hidden="true"
         viewBox="0 0 1440 900"
         preserveAspectRatio="xMaxYMin slice"
-        className="absolute inset-0 size-full text-foreground opacity-[0.05] blur-[14px] dark:opacity-[0.03]"
+        className="absolute inset-0 size-full max-md:translate-x-[10%] text-foreground opacity-[0.05] blur-[14px] dark:opacity-[0.03]"
       >
         <Bamboo phase={1.7} />
       </svg>
