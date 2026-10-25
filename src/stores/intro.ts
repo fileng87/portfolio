@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-// Whether the page entrance has played in this page load. The store survives
+// Whether the hero intro has started in this page load. The store survives
 // client-side navigation (e.g. switching locale remounts the page) but resets
 // on a full reload, so the intro plays once per visit.
 // Only written from effects, so the server always sees `false`: no state is

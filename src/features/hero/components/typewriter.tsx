@@ -46,6 +46,7 @@ export function Typewriter({
   wrap,
   emphasis,
   skip = false,
+  paused = false,
   onComplete,
 }: {
   lines: string[];
@@ -54,6 +55,8 @@ export function Typewriter({
   emphasis?: string;
   // Start fully typed, without animating or calling onComplete
   skip?: boolean;
+  // Holds off starting until false
+  paused?: boolean;
   onComplete?: () => void;
 }) {
   const reduceMotion = useReducedMotion();
@@ -64,7 +67,7 @@ export function Typewriter({
   onCompleteRef.current = onComplete;
 
   useEffect(() => {
-    if (skip) return;
+    if (skip || paused) return;
     if (reduceMotion) {
       setTyped(total);
       onCompleteRef.current?.();
@@ -82,7 +85,7 @@ export function Typewriter({
     };
     timer = setTimeout(next, delay);
     return () => clearTimeout(timer);
-  }, [skip, reduceMotion, total]);
+  }, [skip, paused, reduceMotion, total]);
 
   // Block caret sits where the next character will appear, or after the last
   // one once done. It blinks throughout.

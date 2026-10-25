@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from "motion/react";
 import { type ReactNode, useEffect, useState } from "react";
+import { useHeroInView } from "@/hooks/use-hero-in-view";
 import { useIntroStore } from "@/stores/intro";
 import { cn } from "@/utils";
 import { Typewriter } from "./typewriter";
@@ -27,10 +28,12 @@ export function HeroIntro({
   const [skip] = useState(() => useIntroStore.getState().played);
   const [revealed, setRevealed] = useState(skip);
   const markPlayed = useIntroStore((s) => s.markPlayed);
+  // Opened at a #section, the intro waits until the hero is scrolled into view
+  const heroInView = useHeroInView();
 
   useEffect(() => {
-    markPlayed();
-  }, [markPlayed]);
+    if (heroInView) markPlayed();
+  }, [heroInView, markPlayed]);
 
   return (
     <div
@@ -52,6 +55,7 @@ export function HeroIntro({
             emphasis={emphasis}
             wrap={revealed}
             skip={skip}
+            paused={!heroInView}
             onComplete={() => setRevealed(true)}
           />
         </h1>

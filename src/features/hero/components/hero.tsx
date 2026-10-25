@@ -36,6 +36,7 @@ export function Hero() {
 
       <IntroReveal
         delay={introDelay.scrollHint}
+        waitForHero
         className="absolute bottom-6 left-1/2 -translate-x-1/2"
       >
         <a
