@@ -8,7 +8,7 @@ import {
 } from "motion/react";
 import { type ReactNode, useRef } from "react";
 
-// Fades a section out and lifts it away as its end scrolls up past the middle
+// Fades a section out and lifts it away as its end scrolls up toward the top
 // of the screen, handing the stage to the next one. Tied to scroll, so it
 // plays back when scrolling up.
 export function SectionExit({
@@ -22,7 +22,9 @@ export function SectionExit({
   const reduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["end 60%", "end 15%"],
+    // Late enough that a short section, scrolled to by the nav (its top
+    // near the top of the screen), isn't already fading
+    offset: ["end 45%", "end 10%"],
   });
   const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
   const y = useTransform(scrollYProgress, [0, 1], [0, -48]);
