@@ -57,6 +57,11 @@ export function HeroStage({
         </motion.div>
       </div>
       <div ref={contentRef} className="relative z-10 bg-background">
+        {/* Pinned to the top once the sheet reaches it; content scrolling up
+            fades out under it (see `scroll-edge` in globals.css) */}
+        <div aria-hidden className="pointer-events-none sticky top-0 z-20 h-0">
+          <div className="scroll-edge" />
+        </div>
         {children}
       </div>
     </>

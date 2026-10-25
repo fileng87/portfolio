@@ -225,6 +225,27 @@
   }
 }
 
+/* Top scroll edge: content fades out as it nears the top of the screen.
+   The fade follows a cosine curve, flat at both ends, so it shows no band
+   where it starts or ends. On phones it also dims what passes under the
+   menu button and logo. */
+:root {
+  --scroll-edge: 9rem;
+}
+
+@utility scroll-edge {
+  height: var(--scroll-edge);
+  background: linear-gradient(
+    to bottom,
+    var(--background),
+    color-mix(in oklab, var(--background) 90.5%, transparent) 20%,
+    color-mix(in oklab, var(--background) 65.5%, transparent) 40%,
+    color-mix(in oklab, var(--background) 34.5%, transparent) 60%,
+    color-mix(in oklab, var(--background) 9.5%, transparent) 80%,
+    transparent
+  );
+}
+
 /* Theme switch cross-fade */
 ::view-transition-old(root),
 ::view-transition-new(root) {
