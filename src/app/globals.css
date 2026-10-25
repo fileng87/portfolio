@@ -217,6 +217,12 @@
     background-color: color-mix(in oklch, var(--ctp-yellow) 35%, transparent);
     color: var(--foreground);
   }
+  /* Tailwind v4 gives buttons the default cursor; shadcn's `init --pointer`
+     restores the pointer with this rule */
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
