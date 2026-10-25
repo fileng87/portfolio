@@ -14,8 +14,13 @@ export function useActiveSection(ids: readonly string[]) {
           const id = entry.target.id;
           if (entry.isIntersecting) {
             setActive(id);
-          } else if (entry.boundingClientRect.top > 0) {
-            // Scrolled back up past this section's top
+          } else if (
+            // The section's top dropped below the line: scrolled back up
+            // above it. (Not just any miss: the mobile menu pushes the page
+            // sideways out of view, which mustn't clear it.)
+            entry.boundingClientRect.top >
+            (entry.rootBounds?.top ?? window.innerHeight * 0.45)
+          ) {
             setActive((current) => (current === id ? null : current));
           }
         }
