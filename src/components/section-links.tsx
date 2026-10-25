@@ -3,27 +3,40 @@
 import { motion } from "motion/react";
 import { useTranslations } from "next-intl";
 import { useLayoutEffect, useRef, useState } from "react";
-import { home, navItems, sections } from "@/constants/sections";
+import { sections } from "@/constants/sections";
 import { useActiveSection } from "@/hooks/use-active-section";
 import { cn } from "@/utils";
 
+const slide = { type: "spring", bounce: 0, duration: 0.5 } as const;
+
 // Vertical section links for the desktop side nav. A thin accent line slides
-// to whichever section is in view.
+// to whichever section is in view, and fades in from (or out to) the top of
+// the page, where no section is.
 export function SectionLinks() {
   const t = useTranslations("Nav");
-  // Above the first section, the top of the page is current
-  const active = useActiveSection(sections) ?? home;
+  const active = useActiveSection(sections);
+  const list = useRef<HTMLUListElement>(null);
   const labels = useRef(new Map<string, HTMLSpanElement>());
   // The line spans the label's rendered box, measured rather than derived
   // from padding: glyph metrics differ per font, and English is rotated
-  const [extent, setExtent] = useState<{ top: number; height: number }>();
+  const [line, setLine] = useState<{ x: number; y: number; height: number }>();
+
+  // Slide only between two sections; arriving from the top, the line
+  // appears in place and fades in instead of sliding from its last spot
+  const [previous, setPrevious] = useState(active);
+  const [sliding, setSliding] = useState(false);
+  if (active !== previous) {
+    setPrevious(active);
+    setSliding(previous !== null && active !== null);
+  }
 
   useLayoutEffect(() => {
     if (!active) return;
     const measure = () => {
       const label = labels.current.get(active);
       const item = label?.closest("li");
-      if (!label || !item) return;
+      if (!label || !item || !list.current) return;
+      const origin = list.current.getBoundingClientRect();
       const box = label.getBoundingClientRect();
       // The box includes letter-spacing after the last character; trim it.
       // It sits at the bottom, or at the top once rotated (English).
@@ -31,9 +44,10 @@ export function SectionLinks() {
       const rotated = label.parentElement
         ? getComputedStyle(label.parentElement).rotate !== "none"
         : false;
-      setExtent({
-        top:
-          box.top - item.getBoundingClientRect().top + (rotated ? tracking : 0),
+      setLine({
+        // 6px in from the item's right edge, beside the text
+        x: item.getBoundingClientRect().right - origin.left - 7,
+        y: box.top - origin.top + (rotated ? tracking : 0),
         height: box.height - tracking,
       });
     };
@@ -45,9 +59,12 @@ export function SectionLinks() {
   }, [active]);
 
   return (
-    <ul className="my-auto flex flex-col items-center gap-4">
-      {navItems.map((section) => (
-        <li key={section} className="relative flex">
+    <ul
+      ref={list}
+      className="relative my-auto flex flex-col items-center gap-4"
+    >
+      {sections.map((section) => (
+        <li key={section} className="flex">
           <a
             href={`#${section}`}
             aria-current={active === section ? "location" : undefined}
@@ -65,24 +82,22 @@ export function SectionLinks() {
               {t(section)}
             </span>
           </a>
-          {/* Outside the link: English links are rotated 180°, which would
-              flip the indicator's slide direction */}
-          {active === section && (
-            <motion.span
-              layoutId="section-indicator"
-              transition={{ type: "spring", bounce: 0, duration: 0.5 }}
-              className="absolute top-3 right-1.5 bottom-3 w-px bg-ctp-yellow"
-              style={
-                extent && {
-                  top: extent.top,
-                  bottom: "auto",
-                  height: extent.height,
-                }
-              }
-            />
-          )}
         </li>
       ))}
+      {/* One line for the whole list, outside the links: English links are
+          rotated 180°, which would flip its slide direction */}
+      {line && (
+        <motion.span
+          aria-hidden
+          className="pointer-events-none absolute top-0 left-0 w-px bg-ctp-yellow"
+          initial={{ ...line, opacity: 0 }}
+          animate={{ ...line, opacity: active ? 1 : 0 }}
+          transition={{
+            default: sliding ? slide : { duration: 0 },
+            opacity: { duration: 0.4, ease: "easeOut" },
+          }}
+        />
+      )}
     </ul>
   );
 }

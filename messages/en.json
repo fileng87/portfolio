@@ -4,7 +4,7 @@
   },
   "Nav": {
     "label": "Main navigation",
-    "home": "Home",
+    "logo": "{name}, back to the top",
     "projects": "Work",
     "toolbox": "Toolbox",
     "guestbook": "Guestbook",

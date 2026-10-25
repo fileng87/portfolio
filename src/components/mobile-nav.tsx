@@ -7,9 +7,10 @@ import { useTranslations } from "next-intl";
 import { type ReactNode, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { introDelay } from "@/constants/intro";
-import { home, navItems, sections } from "@/constants/sections";
+import { sections } from "@/constants/sections";
 import { useActiveSection } from "@/hooks/use-active-section";
 import { cn } from "@/utils";
+import { HomeLink } from "./home-link";
 import { IntroReveal } from "./intro-reveal";
 import { LocaleSwitch } from "./locale-switch";
 import { ThemeToggle } from "./theme-toggle";
@@ -39,8 +40,7 @@ function MenuToggleIcon({ open }: { open: boolean }) {
 export function MobileNav({ children }: { children: ReactNode }) {
   const t = useTranslations("Nav");
   const [open, setOpen] = useState(false);
-  // Above the first section, the top of the page is current
-  const active = useActiveSection(sections) ?? home;
+  const active = useActiveSection(sections);
 
   // Closes the menu and scrolls to the section together; the page isn't
   // scroll-locked while the menu is open (modal="trap-focus")
@@ -73,6 +73,8 @@ export function MobileNav({ children }: { children: ReactNode }) {
         >
           <MenuToggleIcon open={open} />
         </Dialog.Trigger>
+        {/* Beside the menu button, and above the open menu like it */}
+        <HomeLink className="fixed top-4 left-14 z-40 md:hidden" />
       </IntroReveal>
 
       <Dialog.Portal>
@@ -95,7 +97,7 @@ export function MobileNav({ children }: { children: ReactNode }) {
             className="flex flex-1 items-center px-6"
           >
             <ul className="flex flex-col gap-6">
-              {navItems.map((section) => (
+              {sections.map((section) => (
                 <li key={section}>
                   <a
                     href={`#${section}`}
