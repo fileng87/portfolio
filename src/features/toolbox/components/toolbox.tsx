@@ -21,7 +21,8 @@ export function Toolbox() {
                   <svg
                     aria-hidden="true"
                     viewBox="0 0 24 24"
-                    className="size-4 shrink-0 fill-current text-muted-foreground"
+                    className="size-4 shrink-0 fill-current"
+                    style={{ color: tool.hex && `#${tool.hex}` }}
                   >
                     <path d={tool.path} />
                   </svg>
@@ -29,7 +30,8 @@ export function Toolbox() {
                   <CodeXmlIcon
                     aria-hidden
                     strokeWidth={1.75}
-                    className="size-4 shrink-0 text-muted-foreground"
+                    className="size-4 shrink-0"
+                    style={{ color: tool.hex && `#${tool.hex}` }}
                   />
                 )}
                 {tool.title}
