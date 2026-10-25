@@ -26,10 +26,10 @@ export function Section({
       className={cn(
         "py-24",
         // Jumped to, a full-screen chapter fills the screen; others land with
-        // their title (below 6rem of padding) 1rem under the top edge's fade
+        // their title (below the py-24 padding) 1rem under the top edge's fade
         centered
           ? "flex min-h-svh flex-col justify-center"
-          : "min-h-[60svh] scroll-mt-[calc(var(--scroll-edge)-5rem)]",
+          : "min-h-[60svh] scroll-mt-[calc(var(--scroll-edge)+1rem-var(--spacing)*24)]",
       )}
     >
       <div

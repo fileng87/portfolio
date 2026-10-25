@@ -26,14 +26,13 @@ export function HeroStage({
   });
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
   // Drift up at half speed, blur and fade out before the sheet reaches the
-  // content, like every block after it (`scroll-exit` in globals.css)
+  // content
   const contentOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
   const y = useTransform(scrollYProgress, [0, 1], ["0vh", "-50vh"]);
   const scale = useTransform(scrollYProgress, [0, 1], [1, 0.95]);
-  const blur = useTransform(scrollYProgress, [0, 0.4], [0, 6]);
   // No filter at rest, so the hero isn't kept on a filtered layer
-  const filter = useTransform(blur, (px) =>
-    px > 0 ? `blur(${px}px)` : "none",
+  const filter = useTransform(scrollYProgress, (p) =>
+    p > 0 ? `blur(${Math.min(p / 0.4, 1) * 6}px)` : "none",
   );
 
   return (
