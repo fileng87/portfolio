@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Noto_Serif_TC } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
+import { MotionProvider } from "@/providers/motion-provider";
 import { ThemeProvider } from "@/providers/theme-provider";
 import "../globals.css";
 
@@ -46,7 +47,9 @@ export default async function RootLayout({
     >
       <body className="flex min-h-full flex-col">
         <NextIntlClientProvider>
-          <ThemeProvider>{children}</ThemeProvider>
+          <ThemeProvider>
+            <MotionProvider>{children}</MotionProvider>
+          </ThemeProvider>
         </NextIntlClientProvider>
       </body>
     </html>

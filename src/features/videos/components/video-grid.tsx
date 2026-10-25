@@ -4,6 +4,7 @@ import { ArrowUpRightIcon, XIcon } from "lucide-react";
 import Image from "next/image";
 import { type MouseEvent, useState } from "react";
 import { DialogContent } from "@/components/custom/dialog";
+import { RevealItem, RevealList } from "@/components/reveal";
 import { Dialog, DialogClose, DialogTitle } from "@/components/ui/dialog";
 import { cn } from "@/utils";
 import type { Video } from "../api/videos";
@@ -42,14 +43,14 @@ export function VideoGrid({
 
   return (
     <>
-      <ul className="grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+      <RevealList className="grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
         {videos.map((video, i) => {
           const lead = i === 0;
           // In two columns the lead takes a full row, so an odd number
           // after it would leave a gap at the end
           const unpaired = i === videos.length - 1 && i % 2 === 1;
           return (
-            <li
+            <RevealItem
               key={video.id}
               className={cn(
                 lead && "sm:col-span-2 lg:row-span-2",
@@ -102,10 +103,10 @@ export function VideoGrid({
                   )}
                 </div>
               </a>
-            </li>
+            </RevealItem>
           );
         })}
-      </ul>
+      </RevealList>
 
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent

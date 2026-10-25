@@ -1,5 +1,6 @@
 import { ArrowUpRightIcon, StarIcon } from "lucide-react";
 import { getTranslations } from "next-intl/server";
+import { RevealItem, RevealList } from "@/components/reveal";
 import { getRepos } from "../api/repos";
 
 // "https://www.example.com/path" → "example.com/path"
@@ -15,9 +16,9 @@ export async function Projects() {
   }
 
   return (
-    <ul className="divide-y border-y">
+    <RevealList className="divide-y border-y">
       {repos.map((repo) => (
-        <li key={repo.url} className="group relative py-7">
+        <RevealItem key={repo.url} className="group relative py-7">
           <div className="flex items-baseline justify-between gap-6">
             <h4 className="font-serif text-xl font-light">
               {/* Stretched over the whole row; the homepage link sits above it */}
@@ -78,8 +79,8 @@ export async function Projects() {
               )}
             </div>
           )}
-        </li>
+        </RevealItem>
       ))}
-    </ul>
+    </RevealList>
   );
 }

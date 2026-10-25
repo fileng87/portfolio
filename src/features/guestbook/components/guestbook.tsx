@@ -1,4 +1,5 @@
 import { useTranslations } from "next-intl";
+import { Reveal } from "@/components/reveal";
 import { env } from "@/lib/env";
 import { GiscusFrame } from "./giscus-frame";
 
@@ -9,16 +10,20 @@ export function Guestbook() {
 
   return (
     <div className="flex flex-col gap-10">
-      <p className="text-muted-foreground">{t("intro")}</p>
-      {repo && repoId && discussion ? (
-        <GiscusFrame
-          repo={repo as `${string}/${string}`}
-          repoId={repoId}
-          discussion={discussion}
-        />
-      ) : (
-        <p className="text-muted-foreground">{t("unavailable")}</p>
-      )}
+      <Reveal>
+        <p className="text-muted-foreground">{t("intro")}</p>
+      </Reveal>
+      <Reveal delay={0.15}>
+        {repo && repoId && discussion ? (
+          <GiscusFrame
+            repo={repo as `${string}/${string}`}
+            repoId={repoId}
+            discussion={discussion}
+          />
+        ) : (
+          <p className="text-muted-foreground">{t("unavailable")}</p>
+        )}
+      </Reveal>
     </div>
   );
 }

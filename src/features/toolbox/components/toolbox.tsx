@@ -1,5 +1,6 @@
 import { CodeXmlIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { RevealItem, RevealList } from "@/components/reveal";
 import { Subsection } from "@/components/section";
 import { toolbox } from "../constants/toolbox";
 
@@ -10,9 +11,9 @@ export function Toolbox() {
     <div className="flex flex-col gap-20">
       {(["stack", "tools"] as const).map((group) => (
         <Subsection key={group} title={t(group)}>
-          <ul className="grid grid-cols-2 gap-x-6 border-t sm:grid-cols-3 lg:grid-cols-4">
+          <RevealList className="grid grid-cols-2 gap-x-6 border-t sm:grid-cols-3 lg:grid-cols-4">
             {toolbox[group].map((tool) => (
-              <li
+              <RevealItem
                 key={tool.title}
                 className="flex items-center gap-3 border-b py-4 text-sm"
               >
@@ -32,9 +33,9 @@ export function Toolbox() {
                   />
                 )}
                 {tool.title}
-              </li>
+              </RevealItem>
             ))}
-          </ul>
+          </RevealList>
         </Subsection>
       ))}
     </div>
