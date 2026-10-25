@@ -27,5 +27,9 @@
     "close": "Close",
     "empty": "Videos couldn't be loaded right now"
   },
+  "Toolbox": {
+    "stack": "Stack",
+    "tools": "Tools"
+  },
   "Placeholder": "Under construction"
 }

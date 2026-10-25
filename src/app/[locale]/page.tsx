@@ -4,6 +4,7 @@ import { Section, Subsection } from "@/components/section";
 import { SideNav } from "@/components/side-nav";
 import { Hero, HeroStage } from "@/features/hero";
 import { Projects } from "@/features/projects";
+import { Toolbox } from "@/features/toolbox";
 import { Videos } from "@/features/videos";
 
 export default function Home() {
@@ -26,11 +27,12 @@ export default function Home() {
                   </Subsection>
                 </div>
               </Section>
-              {(["toolbox", "guestbook"] as const).map((id) => (
-                <Section key={id} id={id}>
-                  <p className="text-muted-foreground">{t("Placeholder")}</p>
-                </Section>
-              ))}
+              <Section id="toolbox">
+                <Toolbox />
+              </Section>
+              <Section id="guestbook">
+                <p className="text-muted-foreground">{t("Placeholder")}</p>
+              </Section>
             </div>
           </HeroStage>
         </main>

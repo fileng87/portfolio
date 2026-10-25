@@ -27,5 +27,9 @@
     "close": "關閉",
     "empty": "影片暫時無法載入"
   },
+  "Toolbox": {
+    "stack": "技術棧",
+    "tools": "開發工具"
+  },
   "Placeholder": "建置中"
 }
