@@ -8,7 +8,7 @@ import {
 } from "motion/react";
 import { type ReactNode, useRef } from "react";
 import { IntroReveal } from "@/components/intro-reveal";
-import { LeafShadow } from "./leaf-shadow";
+import { BambooShadow } from "./bamboo-shadow";
 
 // Keeps the hero pinned while the content slides up over it like a sheet.
 export function HeroStage({
@@ -41,7 +41,7 @@ export function HeroStage({
         {/* The backdrop only fades; scaling it would expose its edges */}
         <motion.div className="absolute inset-0" style={{ opacity }}>
           <IntroReveal delay={0} duration={2.4} className="absolute inset-0">
-            <LeafShadow />
+            <BambooShadow />
           </IntroReveal>
         </motion.div>
         <motion.div
