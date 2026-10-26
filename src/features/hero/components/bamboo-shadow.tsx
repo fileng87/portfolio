@@ -5,7 +5,7 @@ import {
   culmSpecs,
   leafPath,
   sway,
-} from "../constants/leaf-shadow";
+} from "../constants/bamboo-shadow";
 
 // Deterministic PRNG so server and client render the same branches
 function random(seed: number) {
@@ -174,7 +174,7 @@ function Bamboo({ phase = 0 }: { phase?: number }) {
 // near the edge and clear of the text. The SVGs draw past their own box
 // (overflow-visible), so the shift doesn't cut the leaves off at its left
 // edge; the hero stage clips them to the screen instead.
-export function LeafShadow() {
+export function BambooShadow() {
   return (
     <div
       aria-hidden

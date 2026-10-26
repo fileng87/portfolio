@@ -26,8 +26,12 @@ const nextConfig: NextConfig = {
     ];
   },
   images: {
-    // YouTube video thumbnails
-    remotePatterns: [new URL("https://i.ytimg.com/vi/**")],
+    remotePatterns: [
+      // YouTube video thumbnails
+      new URL("https://i.ytimg.com/vi/**"),
+      // The hero avatar; `search` is left out so its ?s=&d= query is allowed
+      { protocol: "https", hostname: "gravatar.com", pathname: "/avatar/**" },
+    ],
   },
   turbopack: {
     rules: {
